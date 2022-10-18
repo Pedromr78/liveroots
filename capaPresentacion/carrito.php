@@ -149,6 +149,7 @@ session_start();
 					$carro->setidpro($codproducto);
 					$carro->setfechañadida(date('d-m-Y'));
 					$carro->añadircarrito();
+					$carro->añadircarrito();
 			
 				
 		
