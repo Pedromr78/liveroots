@@ -4,6 +4,7 @@
 include '../capaNegocio/usuario.php';
 include '../capaNegocio/productos.php';
 include '../capaNegocio/informacion.php';
+include '../capaNegocio/cart.php';
 session_start();
 
 /** Inicia sesión. */
@@ -143,15 +144,17 @@ session_start();
 					 
 						 $codproducto = intval($_POST['fila']) ;
 			 
-					
-					
+					$carro= new Cart();
+					$carro->setemail($_SESSION['usuario']->getemail());
+					$carro->setidpro($codproducto);
+					$carro->setfechañadida(date('d-m-Y'));
+					$carro->añadircarrito();
 			
-				$cesta[] = array("codpro"=>$codproducto);
 				
 		
 				
 					
-					$_SESSION["cesta"]=	$cesta;
+				
 			
 			  }}
 				
