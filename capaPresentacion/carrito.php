@@ -148,8 +148,7 @@ session_start();
 					$carro->setemail($_SESSION['usuario']->getemail());
 					$carro->setidpro($codproducto);
 					$carro->setfechañadida(date('d-m-Y'));
-					$carro->añadircarrito();
-					$carro->añadircarrito();
+					$carro->añadircarrito();			
 			
 				
 		
