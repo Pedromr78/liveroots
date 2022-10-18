@@ -33,11 +33,11 @@ create table
         telefono int not null
     );
 create table 
-cart(
-id int not null auto_increment primary key,
-client_email varchar(255),
-created_at datetime not null
-);
+    cart(
+        id int not null auto_increment primary key,
+        client_email varchar(255),
+        created_at datetime not null
+    );
 
 create table
     Productos (

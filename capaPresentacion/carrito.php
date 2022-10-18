@@ -132,10 +132,52 @@ session_start();
          </div>
          <div id="productos">
          
-			 <h1>Compras </h1>
+			 <h1>Carrito </h1>
 			 <br>
 			
-			  
+			  <?php	
+			  if(isset($_POST['cesta'])){
+				
+			  	if(isset($_POST['cesta'])){
+					
+					 
+						 $codproducto = intval($_POST['fila']) ;
+			 
+					
+					
+			
+				$cesta[] = array("codpro"=>$codproducto);
+				
+		
+				
+					
+					$_SESSION["cesta"]=	$cesta;
+			
+			  }}
+				
+			if(!isset($_SESSION["cesta"])){
+				echo'La cesta esta vacia';
+			}else{
+		
+				
+			
+				$producto= new Productos();
+					foreach ($_SESSION["cesta"] as $sesion) {
+						
+						$nose=$producto->leerProductos($sesion["codpro"]);
+				foreach ($nose as $fila) {
+					
+					
+               ?>         
+			 
+			 <img width="250" src="img/<?php echo $fila->getimg()?>">
+			 <h3><?php echo $fila->getnombreProducto()?></h3>
+			  <p>Precio: <?php echo $fila->getprecio()?>$</p>
+			 
+			  <?php	
+			}}}
+			  ?>  
+          
  
          </div>
 			
