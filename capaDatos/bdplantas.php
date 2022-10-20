@@ -24,7 +24,7 @@ abstract class BDPlantas {
 	/** 
 	 * @const string Nombre del usuario del servidor de bases de datos.
 	 */
-	const USUARIO = "UBDplantas";
+	const USUARIO = "UBDPlantas";
 
 	/** 
 	 * @const string Contraseña del usuario.
