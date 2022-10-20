@@ -34,7 +34,11 @@ create table
     );
 create table 
     cart(
+<<<<<<< HEAD
         id int,
+=======
+        id int primary key,
+>>>>>>> 818aaeb4ff8e49acec09ef3ee5583eb205025e77
         client_email varchar(255),
         fechañadido date,
         cantidad int

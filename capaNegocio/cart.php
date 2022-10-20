@@ -137,6 +137,7 @@ class Cart {
 		/** Comprueba si existe el usuario. */
 		/** El usuario no existe. */
 		return $bdcart->añadircarrito();
+
 	}
 
 	public function extraerProducto(string $email) {
@@ -165,11 +166,15 @@ class Cart {
 			return false;
 		}
 	}
+
+
 	public function eliminaProducto() {
+
 
 		/** @var BDUsuarios Instancia un objeto de la clase. */
 		$bdcart = new BDCart();
 		/** Inicializa los atributos del objeto. */
+
 		$bdcart->setemail($this->email);
 		$bdcart->setidpro($this->idpro);
 		/** Comprueba si existe el usuario. */
@@ -178,4 +183,10 @@ class Cart {
 	}
 	
 
-}
+		/** Comprueba si existe el usuario. */
+		/** El usuario no existe. */
+
+	}
+
+
+

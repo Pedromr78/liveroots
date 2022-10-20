@@ -52,6 +52,7 @@ class BDCart extends BDPlantas {
 	 * @param integer $idPromocion Identificador de la promoción.
 	 * @return void
 	 */
+
 	public function setcantidad(int $cantidad): void {
 		$this->cantidad = $cantidad;
 	}
@@ -63,6 +64,7 @@ class BDCart extends BDPlantas {
 	 * @param integer $idPromocion Identificador de la promoción.
 	 * @return void
 	 */
+
 	public function setemail(string $email): void {
 		$this->email = $email;
 	}
@@ -214,6 +216,12 @@ class BDCart extends BDPlantas {
 			$resultado->bindParam(':id', $id);
 			$email = $this->email;
 			$resultado->bindParam(':email', $email);
+
+						
+			/** Vincula un parámetro al nombre de variable especificado. */
+			$id = $this->idpro;
+			$resultado->bindParam(':id', $id);
+
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
 				/** Comprueba que el número de filas sea 1. */
@@ -226,6 +234,7 @@ class BDCart extends BDPlantas {
 		/** No existe el email del usuario. */
 		return false;
 	}
+
 	
 		/**
 	 * Método que comprueba si existe el usuario en la base de datos.
