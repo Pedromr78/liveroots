@@ -25,6 +25,14 @@ session_start();
 
 	<body>
 		<?php
+		if(isset($_POST['eliminaproduct'])){
+			$cart = new Cart();
+			
+			$cart->setemail($_POST['eliemail']);
+			$cart->setidpro($_POST['elicod']);
+			
+			$cart->eliminaProducto();
+		}
 		if (isset($_POST['cierrasesion'])) {
 			$_SESSION = array();
 
@@ -134,7 +142,7 @@ session_start();
 
 						<h1>Carrito </h1>
 						<br>
-
+						<form action="carrito.php" method="post">
 						<?php
 						if (isset($_POST['cesta'])) {
 
@@ -167,11 +175,15 @@ session_start();
 							foreach ($datoscarro as $fila) {
 								$datos = $producto->leerProductos($fila->getidpro());
 								?>         
-
+								<input type="hidden" name="eliemail" value="<?php echo $_SESSION['usuario']->getEmail(); ?>">
+								<input type="hidden" name="elicod" value="<?php echo $fila->getidpro(); ?>">
 								<img width="250" src="img/<?php echo $datos[0]->getimg() ?>">
 								<h3><?php echo $datos[0]->getnombreProducto() ?></h3>
 								<p>Cantidad: <?php echo $fila->getcantidad() ?></p>
 								<p>Precio: <?php echo $datos[0]->getprecio() ?>$</p>
+								<br>
+								<input type="submit" name="eliminaproduct" value="eliminar">
+								<br>
 
 			<?php
 			$precio = $datos[0]->getprecio();
@@ -184,7 +196,7 @@ session_start();
 	}
 	?>  
 
-
+						</form>
 					</div>
 
 					<div class="row mb-lg-4">

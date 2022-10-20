@@ -226,5 +226,37 @@ class BDCart extends BDPlantas {
 		/** No existe el email del usuario. */
 		return false;
 	}
+	
+		/**
+	 * Método que comprueba si existe el usuario en la base de datos.
+	 *
+	 * @access public
+	 * @return boolean	True si existe
+	 * 					False en otro caso.
+	 */
+	public function eliminaProducto(): bool {
+		/** Comprueba si existe conexión con la base de datos. */
+		if ($this->pdocon) {
+			/** Prepara la sentencia SQL. */
+			$resultado = $this->pdocon->prepare(
+				"DELETE
+						FROM cart
+						WHERE id = :id AND client_email = :email");
+			/** Vincula un parámetro al nombre de variable especificado. */
+			$id = $this->idpro;
+			$resultado->bindParam(':id', $id);
+			$email = $this->email;
+			$resultado->bindParam(':email', $email);
+			/** Ejecuta la sentencia preparada y comprueba un posible error. */
+		if ($resultado->execute()) {
+				/** Devuelve true si se ha conseguido. */
+				return true;
+			}
+		}
+		/** Devuelve false si se ha producido un error. */
+		return false;
+	
+		}
+
 
 }
