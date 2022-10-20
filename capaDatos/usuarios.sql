@@ -34,9 +34,10 @@ create table
     );
 create table 
     cart(
-        id int not null auto_increment primary key,
+        id int primary key,
         client_email varchar(255),
-        created_at datetime not null
+        fechañadido date,
+        cantidad int
     );
 
 create table

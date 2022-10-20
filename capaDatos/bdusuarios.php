@@ -5,7 +5,6 @@
  * Módulo secundario que implementa la clase BDUsuarios.
  *
  */
-
 /** Incluye la clase. */
 include_once '../capaDatos/bdplantas.php';
 
@@ -17,7 +16,7 @@ class BDUsuarios extends BDPlantas {
 	 */
 	private string $email;
 
-		/**
+	/**
 	 * @var string Dirección de correo electrónico del usuario.
 	 * @access private
 	 */
@@ -34,7 +33,7 @@ class BDUsuarios extends BDPlantas {
 	 * @access private
 	 */
 	private string $nombre;
-	
+
 	/**
 	 * @var string Apelliidos del usuario.
 	 * @access private
@@ -60,20 +59,20 @@ class BDUsuarios extends BDPlantas {
 	 * @param string $email Nombre del usuario.
 	 * @return void
 	 */
-	public function setEmail(string $email) : void {
+	public function setEmail(string $email): void {
 		$this->email = $email;
 	}
-		/**
+
+	/**
 	 * Método que inicializa el atributo email.
 	 *
 	 * @access public
 	 * @param string $email Nombre del usuario.
 	 * @return void
 	 */
-	public function setEmail2(string $email2) : void {
+	public function setEmail2(string $email2): void {
 		$this->email2 = $email2;
 	}
-
 
 	/**
 	 * Método que inicializa el atributo contraseña.
@@ -82,7 +81,7 @@ class BDUsuarios extends BDPlantas {
 	 * @param string $contraseña Contraseña del usuario.
 	 * @return void
 	 */
-	public function setContraseña(string $contraseña) : void {
+	public function setContraseña(string $contraseña): void {
 		$this->contraseña = $contraseña;
 	}
 
@@ -93,10 +92,10 @@ class BDUsuarios extends BDPlantas {
 	 * @param string $nombre Nombre del usuario.
 	 * @return void
 	 */
-	public function setNombre(string $nombre) : void {
+	public function setNombre(string $nombre): void {
 		$this->nombre = $nombre;
 	}
-		
+
 	/**
 	 * Método que inicializa el atributo email.
 	 *
@@ -136,16 +135,17 @@ class BDUsuarios extends BDPlantas {
 	 * @access public
 	 * @return string Email del usuario.
 	 */
-	public function getEmail() : string {
+	public function getEmail(): string {
 		return $this->email;
 	}
-		/**
+
+	/**
 	 * Método que devuelve el valor del atributo email.
 	 *
 	 * @access public
 	 * @return string Email del usuario.
 	 */
-	public function getEmail2() : string {
+	public function getEmail2(): string {
 		return $this->email2;
 	}
 
@@ -155,7 +155,7 @@ class BDUsuarios extends BDPlantas {
 	 * @access public
 	 * @return string Contraseña del usuario.
 	 */
-	public function getContraseña() : string {
+	public function getContraseña(): string {
 		return $this->contraseña;
 	}
 
@@ -165,10 +165,11 @@ class BDUsuarios extends BDPlantas {
 	 * @access public
 	 * @return string Nombre completo del usuario.
 	 */
-	public function getNombre() : string {
+	public function getNombre(): string {
 		return $this->nombre;
 	}
-		/**
+
+	/**
 	 * Método que devuelve el valor del atributo nombre.
 	 *
 	 * @access public
@@ -177,7 +178,7 @@ class BDUsuarios extends BDPlantas {
 	public function getApellidos(): string {
 		return $this->apellidos;
 	}
-	
+
 	/**
 	 * Método que devuelve el valor del atributo nombre.
 	 *
@@ -203,14 +204,14 @@ class BDUsuarios extends BDPlantas {
 	 *
 	 * @access public
 	 * @return boolean	True si existe
-	 *					False en otro caso.
+	 * 					False en otro caso.
 	 */
-	public function existeUsuario() : bool {
+	public function existeUsuario(): bool {
 		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
 			/** Prepara la sentencia SQL. */
 			$resultado = $this->pdocon->prepare(
-					"SELECT *
+				"SELECT *
 						FROM Usuario
 						WHERE email = :email");
 			/** Vincula un parámetro al nombre de variable especificado. */
@@ -228,19 +229,19 @@ class BDUsuarios extends BDPlantas {
 		/** No existe el email del usuario. */
 		return false;
 	}
-		
+
 	/**
 	 * Método que valida un usuario en la base de datos.
 	 * 
 	 * @access public
 	 * @return boolean	True si existe
-	 *					False en otro caso.
+	 * 					False en otro caso.
 	 */
-	public function modificaUsuario() : bool {
-		
+	public function modificaUsuario(): bool {
+
 		if ($this->pdocon) {
 			$resultado = $this->pdocon->prepare(
-					"UPDATE  Usuario Set email = :email,
+				"UPDATE  Usuario Set email = :email,
 						contraseña = :contrasena,
 						nombre = :nombre
 					 WHERE email = :email2");
@@ -253,26 +254,20 @@ class BDUsuarios extends BDPlantas {
 			$resultado->bindParam(':nombre', $nombre);
 			$resultado->bindParam(':contraseña', $contraseña);
 			if ($resultado->execute()) {
-					return true;
+				return true;
 			}
 		}
-			return false;
-		
+		return false;
 	}
-	
-	
-	
-	
-	
 
 	/**
 	 * Método que valida un usuario en la base de datos.
 	 * 
 	 * @access public
 	 * @return boolean	True si existe
-	 *					False en otro caso.
+	 * 					False en otro caso.
 	 */
-	public function validaUsuario() : bool {
+	public function validaUsuario(): bool {
 		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
 			/** Prepara la sentencia SQL. */
@@ -309,14 +304,14 @@ class BDUsuarios extends BDPlantas {
 	 * 
 	 * @access public
 	 * @return boolean	True si tiene éxito
-	 *					False en otro caso
+	 * 					False en otro caso
 	 */
-	public function almacenaUsuario() : bool {
+	public function almacenaUsuario(): bool {
 		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
 			/** Prepara la sentencia SQL. */
 			$resultado = $this->pdocon->prepare(
-					"INSERT INTO Usuario (email, contraseña, nombre,apellidos,fechanacimiento,telefono)
+				"INSERT INTO Usuario (email, contraseña, nombre,apellidos,fechanacimiento,telefono)
 						VALUES (:email, :contrasena, :nombre, :apellidos, :fechanacimiento, :telefono)");
 			/** Vincula un parámetro al nombre de variable especificado. */
 			$email = $this->email;
@@ -327,10 +322,10 @@ class BDUsuarios extends BDPlantas {
 			$resultado->bindParam(':nombre', $nombre);
 			$apellidos = $this->apellidos;
 			$resultado->bindParam(':apellidos', $apellidos);
-			$fechaNacimiento= $this->fechaNacimiento;
-			$resultado->bindParam('fechanacimiento',$fechaNacimiento);
-			$telefono= $this->telefono;
-			$resultado->bindParam('telefono',$telefono);
+			$fechaNacimiento = $this->fechaNacimiento;
+			$resultado->bindParam('fechanacimiento', $fechaNacimiento);
+			$telefono = $this->telefono;
+			$resultado->bindParam('telefono', $telefono);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
 				/** Devuelve true si se ha conseguido. */

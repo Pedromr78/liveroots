@@ -15,12 +15,12 @@ class Usuario {
 	 * @access private
 	 */
 	private string $email;
-		/**
+
+	/**
 	 * @var string Dirección de correo electrónico del usuario.
 	 * @access private
 	 */
 	private string $email2;
-
 
 	/**
 	 * @var string Contraseña del usuario.
@@ -34,7 +34,6 @@ class Usuario {
 	 */
 	private string $nombre;
 
-	
 	/**
 	 * @var string Apelliidos del usuario.
 	 * @access private
@@ -53,7 +52,6 @@ class Usuario {
 	 */
 	private string $fechaNacimiento;
 
-
 	/**
 	 * Método que inicializa el atributo email.
 	 *
@@ -64,7 +62,8 @@ class Usuario {
 	public function setEmail(string $email): void {
 		$this->email = $email;
 	}
-		/**
+
+	/**
 	 * Método que inicializa el atributo email.
 	 *
 	 * @access public
@@ -96,7 +95,7 @@ class Usuario {
 	public function setNombre(string $nombre): void {
 		$this->nombre = $nombre;
 	}
-	
+
 	/**
 	 * Método que inicializa el atributo email.
 	 *
@@ -139,7 +138,7 @@ class Usuario {
 	public function getEmail(): string {
 		return $this->email;
 	}
-	
+
 	/**
 	 * Método que devuelve el valor del atributo email.
 	 *
@@ -149,7 +148,6 @@ class Usuario {
 	public function getEmail2(): string {
 		return $this->email2;
 	}
-
 
 	/**
 	 * Método que devuelve el valor del atributo contraseña.
@@ -170,6 +168,7 @@ class Usuario {
 	public function getNombre(): string {
 		return $this->nombre;
 	}
+
 	/**
 	 * Método que devuelve el valor del atributo nombre.
 	 *
@@ -179,7 +178,7 @@ class Usuario {
 	public function getApellidos(): string {
 		return $this->apellidos;
 	}
-	
+
 	/**
 	 * Método que devuelve el valor del atributo nombre.
 	 *
@@ -199,9 +198,6 @@ class Usuario {
 	public function getFechaNacimiento(): string {
 		return $this->fechaNacimiento;
 	}
-	
-	
-	
 
 	/**
 	 * Método que comprueba si un usuario existe en la base de datos.
@@ -249,8 +245,8 @@ class Usuario {
 		/** Devuelve false si se ha producido un error. */
 		return false;
 	}
-	
-		public function modificaUsuario() : bool {
+
+	public function modificaUsuario(): bool {
 		/** @var BDUsuarios Instancia un objeto de la clase. */
 		$bdusuario = new BDUsuarios();
 		/** Inicializa el atributo del objeto. */
@@ -259,13 +255,8 @@ class Usuario {
 		$bdusuario->setContraseña($this->contraseña);
 		$bdusuario->setNombre($this->nombre);
 		$bdusuario->modificaUsuario();
-			/** Devuelve true si se ha conseguido. */
-			}
-
-
-	
-	
-	
+		/** Devuelve true si se ha conseguido. */
+	}
 
 	/**
 	 * Método que valida un usuario registrado en la base de datos.
@@ -413,27 +404,23 @@ class Usuario {
 						if (!$especialesbandera < 1) {
 
 							return $frase = "el usuario se a creado correctamente";
-						} 
-						/** Si la contraseña no contiene un carácter especial me devuelve la frase. */
-						else {
+						}
+						/** Si la contraseña no contiene un carácter especial me devuelve la frase. */ else {
 
 							return $frase = "Tiene que contener minimo los caracteres @%$&-_";
 						}
-					} 
-					/** Si la contraseña no contiene una mayuscula me devuelve la frase. */
-					else {
+					}
+					/** Si la contraseña no contiene una mayuscula me devuelve la frase. */ else {
 
 						return $frase = "tiene que contener al menos una mayuscula";
 					}
-				} 
-				/** Si la nocontraseña contiene un carácter numerico me devuelve la frase. */
-				else {
+				}
+				/** Si la nocontraseña contiene un carácter numerico me devuelve la frase. */ else {
 
 					return $frase = "tiene que contener al menos un numero";
 				}
-			} 	
-			/** Si la nocontraseña contiene un espacio en blanco me devuelve la frase. */
-			else {
+			}
+			/** Si la nocontraseña contiene un espacio en blanco me devuelve la frase. */ else {
 
 				return $frase = "contiene un espacio en blanco";
 			}
