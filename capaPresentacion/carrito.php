@@ -2,8 +2,8 @@
 /** Incluye la clase. */
 include '../capaNegocio/usuario.php';
 include '../capaNegocio/productos.php';
-include '../capaNegocio/informacion.php';
 include '../capaNegocio/cart.php';
+include '../capaNegocio/compras.php';
 session_start();
 
 /** Inicia sesión. */
@@ -172,6 +172,8 @@ session_start();
 							echo 'No hay productos en la cesta';
 						} else {
 							$total = 0;
+							$compras = array();
+			
 							foreach ($datoscarro as $fila) {
 								?> 
 								<form action="carrito.php" method="post">
@@ -199,11 +201,28 @@ session_start();
 			$conjun = $cantipro * $precio;
 
 			$total += $conjun;
+			
+			$compra= new Compras();
+			$compra->setidpro($fila->getidpro());
+			$compra->setprecio($conjun);
+			$compra->setemail($_SESSION['usuario']->getEmail());
+			$compra->setcantidad($fila->getcantidad());
+			
+			
+		
+			array_push($compras,$compra);
+			
 		}
+		$_SESSION['producto']=$compras;
 		echo '<h3>Total ' . $total . '$<h3>';
+		?>	<form method="post" action="compras.php">
+			
+			<input type="submit" value="comprar" name="comprar">
+		</form>
+			<?php
 	}
-	?>  
-
+	?>						
+							
 
 					</div>
 

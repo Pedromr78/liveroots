@@ -34,11 +34,7 @@ create table
     );
 create table 
     cart(
-<<<<<<< HEAD
         id int,
-=======
-        id int primary key,
->>>>>>> 818aaeb4ff8e49acec09ef3ee5583eb205025e77
         client_email varchar(255),
         fechañadido date,
         cantidad int
@@ -56,11 +52,14 @@ create table
 
 create table
     Compras(
-        email varchar(40),
-        codCompra int primary key,
-        codProducto int,
+        email varchar(40) not null,
+        codCompra varchar(30),
+        codProducto int not null,
         fechaCompra DATE,
-        nombreProducto varchar(50)
+        cantidadProducto int,
+        Precio int,
+        FOREIGN KEY (email) REFERENCES Usuario(email),
+        FOREIGN KEY (codProducto) REFERENCES Productos(codProducto)
     );
 
 create table

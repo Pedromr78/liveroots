@@ -3,7 +3,8 @@
 /** Incluye la clase. */
 include '../capaNegocio/usuario.php';
 include '../capaNegocio/productos.php';
-include '../capaNegocio/informacion.php';
+include '../capaNegocio/compras.php';
+include '../capaNegocio/cart.php';
 session_start();
 
 /** Inicia sesión. */
@@ -56,6 +57,68 @@ session_start();
                 </div>
             </header>
             <br>
+					<?php
+			if(isset($_POST['comprar'])){
+			
+			
+				?>
+			<form action="compras.php" method="post">
+			Nombre del Titular <br>
+			<input type="text" style="width:250px"><br>
+			NºTarjeta <br>
+			<input type="text" style="width:250px"><br>
+			Fecha de Caducidad <br>
+			<input type="text" maxlength="5" style="width:60px"><br>
+			CVV <br>
+			<input type="text" maxlength="3" style="width:40px"><br>
+			<input type="submit" value="Aceptar" name="aceptar"><input type="submit" value="Cancelar" name="cancelar">
+			
+			</form>
+				<?php
+			}else{
+				if(isset($_POST['aceptar'])){
+					$compra= new Compras();
+					$carrit = new Cart();
+					$random=rand(1000, 9999);
+					$random2=rand(1000, 9999);
+					$dia= str_replace("-","",date('Y-m-d'));
+						$cadena="$random-$random2-$dia";
+					foreach ($_SESSION['producto'] as $fila) {
+						
+							
+						
+						
+							
+						
+						$compra->setemail($fila->getemail());
+						$compra->setidpro($fila->getidpro());
+						$compra->setidcompra($cadena);
+						$compra->setcantidad($fila->getcantidad());
+						$compra->setprecio($fila->getprecio());
+						$compra->añadircompra();
+						
+						$carrit->setemail($fila->getemail());
+						$carrit->setidpro($fila->getidpro());
+
+						$carrit->eliminaProducto();
+						
+	
+					}
+					echo 'Su compra a sido realizada';
+					?>
+				<script>
+					function funcion() {
+						window.open("../capaPresentacion/tienda.php","_top");
+					}
+					let tiempo = setTimeout(funcion, 2000);
+				</script>
+			<?php
+				}
+				else if(isset($_POST['cancelar'])){
+					
+				}else{
+				
+			  ?>
             <div id="header">
                 <nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
                     <div class="container-fluid">
@@ -134,13 +197,44 @@ session_start();
          
 			 <h1>Compras </h1>
 			 <br>
-			
-			  
- 
+	
+			 <?php
+					$compras= new Compras();
+					$producto = new Productos();
+					$datoscarro = $compras->extraerCompra($_SESSION['usuario']->getEmail());
+						if (!isset($datoscarro)) {
+							echo 'No hay productos en la cesta';
+						} else {
+								foreach ($datoscarro as $fila) {
+									$datosproductos = $producto->leerProductos($fila->getidpro());
+									
+								
+									?> 
+									<h4>Nº de pedido <?php echo $fila->getidcompra() ?></h4> 
+									
+									<form action="Facturas.php" method="post">
+										<input type="hidden" value="<?php echo $fila->getidcompra() ?>" name="idfactura">
+										<input type="submit" value="Descargar Factura">
+									</form>
+									<br>
+										<?php
+										
+								?> 
+									
+								<img width="250"  src="img/<?php echo $datosproductos[0]->getimg()?>">
+								<h6><?php echo $datosproductos[0]->getnombreProducto() ?></h6>
+								<p>Cantidad: <?php echo $fila->getcantidad() ?></p>
+								<p>Precio: <?php echo $fila->getprecio() ?> $</p>
+				
+				
+						<?php
+								}
+						}
+					 ?>
          </div>
 			
             <div class="row mb-lg-4">
-        
+				
             </div>
 
             <footer>
@@ -241,7 +335,7 @@ session_start();
     </div>
 	 <?php
 
-					
+			}}	
 						
 					}
 					

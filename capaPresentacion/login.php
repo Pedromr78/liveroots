@@ -123,7 +123,7 @@ session_start();
 					function funcion() {
 						window.open("../capaPresentacion/tienda.php","_top");
 					}
-					let tiempo = setTimeout(funcion, 5000);
+					let tiempo = setTimeout(funcion, 1000);
 				</script>
 			<?php
 

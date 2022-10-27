@@ -102,8 +102,9 @@ ul, ol {
 .titulos {
     text-align-last: center;
 }
+
 body {
-    background-image: url("./img/fondo.jpg");
+    background-color:#b0ef88;
     background-size: cover;
     background-position: center top;
     background-repeat: no-repeat;
