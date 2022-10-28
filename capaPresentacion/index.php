@@ -22,6 +22,7 @@
                     <div class="col">
                     </div>
                     <div class="titulo col">
+						 <img src="img/logo.png" width="200"> 
                         <h1>Living Roots</h1>
                     </div>
                     <div class="col"></div>

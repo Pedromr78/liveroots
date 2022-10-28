@@ -35,7 +35,8 @@ session_start();
                     <div class="col">
                     </div>
                     <div class="titulo col">
-                        <h1>Living Roots</h1>
+                      <img src="/img/logo.png" width="200"> 
+					   <h1>Living Roots</h1>
                     </div>
                     <div class="col"></div>
                 </div>
@@ -107,7 +108,7 @@ $dompdf->loadHtml($html);
 $dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
 
-$dompdf->stream("$nombrearchivo.pdf",array("Attachment"=> true));
+$dompdf->stream("$nombrearchivo.pdf",array("Attachment"=> false));
 
 
 ?>
