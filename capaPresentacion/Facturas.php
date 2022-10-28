@@ -63,10 +63,13 @@ session_start();
 						$datosproductos = $producto->leerProductos($fila->getidpro());
 						?> 
 			
-				<p><?php echo $datosproductos[0]->getnombreProducto()?> x<?php echo $fila->getcantidad()?> <?php echo $fila->getprecio() ?>$</p>
+				<p><?php echo $datosproductos[0]->getnombreProducto()?> x<?php echo $fila->getcantidad()?> <?php echo $fila->getprecio() ?>$  + iva 21%</p>
 				
 			<?php
-				$precio = $fila->getprecio();
+				$iva=$fila->getprecio()* 0.21;
+				$precio = $fila->getprecio()+$iva;
+			
+				echo $precio;
 			$cantipro = $fila->getcantidad();
 			$conjun = $cantipro * $precio;
 			$total += $conjun;

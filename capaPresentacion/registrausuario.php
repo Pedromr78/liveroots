@@ -66,7 +66,7 @@ session_start();
 						function funcion() {
 							window.open("../capaPresentacion/tienda.php","_top");
 						}
-						let tiempo = setTimeout(funcion, 5000);
+						let tiempo = setTimeout(funcion, 1000);
 					</script>
 				<?php
 				} else {
@@ -77,7 +77,7 @@ session_start();
 						function funcion() {
 							window.open("../capaPresentacion/login.php","_top");
 						}
-						let tiempo = setTimeout(funcion, 5000);
+						let tiempo = setTimeout(funcion, 1000);
 					</script>
 				<?php
 				}
@@ -89,7 +89,7 @@ session_start();
 					function funcion() {
 						window.open("../capaPresentacion/login.php","_top");
 					}
-					let tiempo = setTimeout(funcion, 5000);
+					let tiempo = setTimeout(funcion, 1000);
 				</script>
 			<?php
 			}
@@ -112,7 +112,7 @@ session_start();
 					function funcion() {
 						window.open("../capaPresentacion/login.php", "", "");
 					}
-					let tiempo = setTimeout(funcion, 5000);
+					let tiempo = setTimeout(funcion, 1000);
 				</script>
 		<?php
 			}

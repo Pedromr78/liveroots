@@ -198,5 +198,69 @@ class Productos {
 		/** El usuario no existe. */
 		return $bdproducto->leerProductos($codProducto);
 	}
+		/**
+	 * Método que comprueba si un usuario existe en la base de datos.
+	 *
+	 * @access public
+	 * @return array	true en caso afirmativo
+	 * 					false en caso contrario.
+	 */
+	public function extraerBonsai() {
+
+		/** @var BDUsuarios Instancia un objeto de la clase. */
+		$bdproducto = new BDProductos();
+		/** Inicializa los atributos del objeto. */
+		/** Comprueba si existe el usuario. */
+		/** El usuario no existe. */
+		return $bdproducto->extraerBonsai();
+	}
+		/**
+	 * Método que comprueba si un usuario existe en la base de datos.
+	 *
+	 * @access public
+	 * @return array	true en caso afirmativo
+	 * 					false en caso contrario.
+	 */
+	public function extraerPrebonsai() {
+
+		/** @var BDUsuarios Instancia un objeto de la clase. */
+		$bdproducto = new BDProductos();
+		/** Inicializa los atributos del objeto. */
+		/** Comprueba si existe el usuario. */
+		/** El usuario no existe. */
+		return $bdproducto->extraerPrebonsai();
+	}
+		/**
+	 * Método que comprueba si un usuario existe en la base de datos.
+	 *
+	 * @access public
+	 * @return array	true en caso afirmativo
+	 * 					false en caso contrario.
+	 */
+	public function extraerPlanton() {
+
+		/** @var BDUsuarios Instancia un objeto de la clase. */
+		$bdproducto = new BDProductos();
+		/** Inicializa los atributos del objeto. */
+		/** Comprueba si existe el usuario. */
+		/** El usuario no existe. */
+		return $bdproducto->extraerPlanton();
+	}
+		/**
+	 * Método que comprueba si un usuario existe en la base de datos.
+	 *
+	 * @access public
+	 * @return array	true en caso afirmativo
+	 * 					false en caso contrario.
+	 */
+	public function buscador($valor) {
+
+		/** @var BDUsuarios Instancia un objeto de la clase. */
+		$bdproducto = new BDProductos();
+		/** Inicializa los atributos del objeto. */
+		/** Comprueba si existe el usuario. */
+		/** El usuario no existe. */
+		return $bdproducto->buscador($valor);
+	}
 
 }

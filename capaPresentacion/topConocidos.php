@@ -16,7 +16,7 @@ session_start();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Living Roots</title>
     <link rel="stylesheet" href="index.css" type="text/css" media="screen" />
 
@@ -70,12 +70,11 @@ session_start();
                                     <a id="produ3" class="nav-link" href="tienda.php" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Productos
                                     </a>
-                                    <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Venta</a></li>
-                                        <li><a class="dropdown-item" href="#">Info Productos</a></li>
-                                        <li><a class="dropdown-item" href="#" data-bs-toggle="offcanvas"
-                                            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Info Colaboradores</a></li>
-                                    </ul> -->
+                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
+												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Prebonsais" name="productosprebonsai"></form></li>
+													<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
+											</ul>
                                 </li>
 
 
@@ -269,7 +268,7 @@ session_start();
 
 						
                 ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   
 </body>
 

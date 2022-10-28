@@ -116,5 +116,179 @@ class BDProductos extends BDPlantas {
 			}
 		}
 	}
+	
+	/**
+	 * Método que comprueba si existe el usuario en la base de datos.
+	 *
+	 * @access public
+	 * @return array	True si existe
+	 * 					False en otro caso.
+	 */
+	public function extraerBonsai() {
+		$tipo='bonsai';
+
+		$data = array();
+		/** Comprueba si existe conexión con la base de datos. */
+		if ($this->pdocon) {
+			/** Prepara la sentencia SQL. */
+			$resultado = $this->pdocon->prepare(
+				"SELECT *
+						FROM Productos WHERE tipo = :bonsai"
+			);
+			/** Vincula un parámetro al nombre de variable especificado. */
+			$resultado->bindParam(':bonsai',$tipo);
+			/** Ejecuta la sentencia preparada y comprueba un posible error. */
+			if ($resultado->execute()) {
+
+				foreach ($resultado as $fila) {
+
+					$producto = new Productos();
+
+					$producto->setcodProducto($fila['codProducto']);
+					$producto->setnombreProducto($fila['nombreProducto']);
+					$producto->setdescripcion($fila['descripcion']);
+					$producto->setcantidad($fila['cantidad']);
+					$producto->setimg($fila['img']);
+					$producto->setprecio($fila['precio']);
+					
+
+					$data[] = $producto;
+				}
+
+
+				return $data;
+			}
+		}
+	}
+	
+	/**
+	 * Método que comprueba si existe el usuario en la base de datos.
+	 *
+	 * @access public
+	 * @return array	True si existe
+	 * 					False en otro caso.
+	 */
+	public function extraerPrebonsai() {
+		$tipo='prebonsai';
+
+		$data = array();
+		/** Comprueba si existe conexión con la base de datos. */
+		if ($this->pdocon) {
+			/** Prepara la sentencia SQL. */
+			$resultado = $this->pdocon->prepare(
+				"SELECT *
+						FROM Productos WHERE tipo = :prebonsai"
+			);
+			/** Vincula un parámetro al nombre de variable especificado. */
+			$resultado->bindParam(':prebonsai',$tipo);
+			/** Ejecuta la sentencia preparada y comprueba un posible error. */
+			if ($resultado->execute()) {
+
+				foreach ($resultado as $fila) {
+
+					$producto = new Productos();
+
+					$producto->setcodProducto($fila['codProducto']);
+					$producto->setnombreProducto($fila['nombreProducto']);
+					$producto->setdescripcion($fila['descripcion']);
+					$producto->setcantidad($fila['cantidad']);
+					$producto->setimg($fila['img']);
+					$producto->setprecio($fila['precio']);
+					
+
+					$data[] = $producto;
+				}
+
+
+				return $data;
+			}
+		}
+	}
+	/**
+	 * Método que comprueba si existe el usuario en la base de datos.
+	 *
+	 * @access public
+	 * @return array	True si existe
+	 * 					False en otro caso.
+	 */
+	public function extraerPlanton() {
+		$tipo='planton';
+
+		$data = array();
+		/** Comprueba si existe conexión con la base de datos. */
+		if ($this->pdocon) {
+			/** Prepara la sentencia SQL. */
+			$resultado = $this->pdocon->prepare(
+				"SELECT *
+						FROM Productos WHERE tipo = :planton"
+			);
+			/** Vincula un parámetro al nombre de variable especificado. */
+			$resultado->bindParam(':planton',$tipo);
+			/** Ejecuta la sentencia preparada y comprueba un posible error. */
+			if ($resultado->execute()) {
+
+				foreach ($resultado as $fila) {
+
+					$producto = new Productos();
+
+					$producto->setcodProducto($fila['codProducto']);
+					$producto->setnombreProducto($fila['nombreProducto']);
+					$producto->setdescripcion($fila['descripcion']);
+					$producto->setcantidad($fila['cantidad']);
+					$producto->setimg($fila['img']);
+					$producto->setprecio($fila['precio']);
+					
+
+					$data[] = $producto;
+				}
+
+
+				return $data;
+			}
+		}
+	}
+		/**
+	 * Método que comprueba si existe el usuario en la base de datos.
+	 *
+	 * @access public
+	 * @return array	True si existe
+	 * 					False en otro caso.
+	 */
+	public function buscador($valor) {
+		
+
+		$data = array();
+		/** Comprueba si existe conexión con la base de datos. */
+		if ($this->pdocon) {
+			/** Prepara la sentencia SQL. */
+			$resultado = $this->pdocon->prepare(
+				"SELECT *
+						FROM Productos WHERE name LIKE %:nombre% OR descripcion LIKE %:nombre%"
+			);
+			/** Vincula un parámetro al nombre de variable especificado. */
+			$resultado->bindParam(':nombre',$valor);
+			/** Ejecuta la sentencia preparada y comprueba un posible error. */
+			if ($resultado->execute()) {
+
+				foreach ($resultado as $fila) {
+
+					$producto = new Productos();
+
+					$producto->setcodProducto($fila['codProducto']);
+					$producto->setnombreProducto($fila['nombreProducto']);
+					$producto->setdescripcion($fila['descripcion']);
+					$producto->setcantidad($fila['cantidad']);
+					$producto->setimg($fila['img']);
+					$producto->setprecio($fila['precio']);
+					
+
+					$data[] = $producto;
+				}
+
+
+				return $data;
+			}
+		}
+	}
 
 }

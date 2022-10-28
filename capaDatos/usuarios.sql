@@ -47,7 +47,8 @@ create table
         descripcion varchar(50),
         cantidad int,
         img varchar(100),
-        precio int
+        precio int,
+        tipo varchar(15)
     );
 
 create table
@@ -96,7 +97,8 @@ insert into
         descripcion,
         cantidad,
         img,
-        precio
+        precio,
+        tipo
     )
 values (
         1,
@@ -104,22 +106,90 @@ values (
         'Un arbol japones con hojas rojas',
         50,
         'arcePrebonsai.jfif',
-        30
+        30,
+        'prebonsai'
     ), (
         2,
         'Pino thumbergi',
         'Pino japones',
         30,
         'thunbergiPrebonsai.jpg',
-        40
+        40,
+        'prebonsai'
+    ),(
+        10,
+        'Junipero Chinensis',
+        'Junipero procedente de china',
+        10,
+        'juniperochinensisBonsai.jpg',
+        3200,
+        'bonsai'
     ), (
         3,
         'Ulmus parvifolia',
         'Olmo Japones',
         100,
         'ulmusPrebonsai.jpg',
-        25
-    );
+        25,
+        'prebonsai'
+    ), (
+        4,
+        'Ficus Retusa',
+        'Arbol tropical, familia de las higueras comunes',
+        20,
+        'ficusretusaPrebonsai.jpg',
+        20,
+        'prebonsai'
+    ),(
+        5,
+        'Sakura',
+        'Cerezo Jampones',
+        10,
+        'sakuraPrebonsai.jpg',
+        50,
+        'prebonsai'
+    ),(
+        6,
+        'Granado Nejikan',
+        'Granado Jampones',
+        40,
+        'nejikanPrebonsai.jpg',
+        40,
+        'prebonsai'
+    ),(
+        9,
+        'Pinus Pinea',
+        'Pino Piñonero',
+        20,
+        'pinuspineaBonsai.jpeg',
+        1100,
+        'bonsai'
+    ),(
+        7,
+        'Pinus Pinea',
+        'Pino piñonero',
+        80,
+        'pinuspineaPrebonsai.jpg',
+        20,
+        'prebonsai'
+    ),(
+        8,
+        'Juniperus Chinensis',
+        'Junipero procedente de china',
+        40,
+        'juniperuschinensisPrebonsai.jpg',
+        35,
+        'prebonsai'
+    ),(
+        11,
+        'Arce Palmatum',
+        'Planton de arce palmatum',
+        200,
+        'arcepalmatumPlanton.jpg',
+        10,
+        'planton'
+    )
+;
 
 insert into
     Informacion(nombre, descripcion, img)

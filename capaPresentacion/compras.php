@@ -134,12 +134,11 @@ session_start();
                                     <a id="produ3" class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         Productos
                                     </a>
-                                    <!-- <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Venta</a></li>
-                                        <li><a class="dropdown-item" href="#">Info Productos</a></li>
-                                        <li><a class="dropdown-item" href="#" data-bs-toggle="offcanvas"
-                                            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Info Colaboradores</a></li>
-                                    </ul> -->
+                                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
+												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Prebonsais" name="productosprebonsai"></form></li>
+													<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
+											</ul>
                                 </li>
 
 
