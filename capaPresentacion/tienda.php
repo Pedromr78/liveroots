@@ -69,10 +69,10 @@ session_start();
 											<a id="produ3" class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 												Productos
 											</a>
-										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
+											<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
 												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Prebonsais" name="productosprebonsai"></form></li>
-													<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
+												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
 											</ul>
 										</li>
 
@@ -111,13 +111,13 @@ session_start();
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 									<li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
 									<li><a class="dropdown-item" href="compras.php">Compras</a></li>
-									 <?php
-										  if($_SESSION['usuario']->getEmail()=="admin@livingroots.es"){
-										  ?>
-									<li><a class="dropdown-item" href="administracion.php">Administracion</a></li>
-									 <?php
-									 }
-										  ?>
+									<?php
+									if ($_SESSION['usuario']->getEmail() == "admin@livingroots.es") {
+										?>
+										<li><a class="dropdown-item" href="administracion.php">Administracion</a></li>
+										<?php
+									}
+									?>
 									<li><a class="dropdown-item" href="#"><form action="tienda.php" method="post">
 												<input type="submit" value="cierra sesion" name="cierrasesion"> 
 											</form></a></li>
@@ -136,160 +136,157 @@ session_start();
 						</nav>   
 					</div>
 					<div id="productos">
-						
+
 
 						<?php
-						if(isset($_POST['productosbonsai'])){
+						if (isset($_POST['productosbonsai'])) {
 							$producto = new Productos();
 							$nose = $producto->extraerBonsai();
-							
-								foreach ($nose as $fila) {
-							?>
-							<form action="carrito.php" method="post">
-								<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-								<img width="250" src="img/<?php echo $fila->getimg() ?>">
-								<h3><?php echo $fila->getnombreProducto() ?></h3>
-								<p><?php echo $fila->getdescripcion() ?></p>
-								<p>Precio: <?php echo $fila->getprecio() ?>$</p>
-								<?php
-								if ($fila->getcantidad() == 0) {
-									echo "No hay en el Stock";
-								} else {
-									?> 
-									<input type="number" min="1" max="10" name="cantidad" value="1">
-									<br>
-									<input type="submit" value="Añadir a la cesta" name="cesta"> 
 
+							foreach ($nose as $fila) {
+								?>
+								<form action="carrito.php" method="post">
+									<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+									<img width="250" src="img/<?php echo $fila->getimg() ?>">
+									<h3><?php echo $fila->getnombreProducto() ?></h3>
+									<p><?php echo $fila->getdescripcion() ?></p>
+									<p>Precio: <?php echo $fila->getprecio() ?>$</p>
 									<?php
-								}
-								?> 
-							</form>
-							<br>
+									if ($fila->getcantidad() == 0) {
+										echo "No hay en el Stock";
+									} else {
+										?> 
+										<input type="number" min="1" max="10" name="cantidad" value="1">
+										<br>
+										<input type="submit" value="Añadir a la cesta" name="cesta"> 
 
-							<?php
-						}
-						}else if(isset($_POST['productosprebonsai'])){
-								$producto = new Productos();
+										<?php
+									}
+									?> 
+								</form>
+								<br>
+
+								<?php
+							}
+						} else if (isset($_POST['productosprebonsai'])) {
+							$producto = new Productos();
 							$nose = $producto->extraerPrebonsai();
-							
-								foreach ($nose as $fila) {
-							?>
-							<form action="carrito.php" method="post">
-								<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-								<img width="250" src="img/<?php echo $fila->getimg() ?>">
-								<h3><?php echo $fila->getnombreProducto() ?></h3>
-								<p><?php echo $fila->getdescripcion() ?></p>
-								<p>Precio: <?php echo $fila->getprecio() ?>$</p>
-								<?php
-								if ($fila->getcantidad() == 0) {
-									echo "No hay en el Stock";
-								} else {
-									?> 
-									<input type="number" min="1" max="10" name="cantidad" value="1">
-									<br>
-									<input type="submit" value="Añadir a la cesta" name="cesta"> 
 
+							foreach ($nose as $fila) {
+								?>
+								<form action="carrito.php" method="post">
+									<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+									<img width="250" src="img/<?php echo $fila->getimg() ?>">
+									<h3><?php echo $fila->getnombreProducto() ?></h3>
+									<p><?php echo $fila->getdescripcion() ?></p>
+									<p>Precio: <?php echo $fila->getprecio() ?>$</p>
 									<?php
-								}
-								?> 
-							</form>
-							<br>
+									if ($fila->getcantidad() == 0) {
+										echo "No hay en el Stock";
+									} else {
+										?> 
+										<input type="number" min="1" max="10" name="cantidad" value="1">
+										<br>
+										<input type="submit" value="Añadir a la cesta" name="cesta"> 
 
-							<?php
-						}
-						}
-						else if(isset($_POST['productosplanton'])){
-								$producto = new Productos();
+										<?php
+									}
+									?> 
+								</form>
+								<br>
+
+								<?php
+							}
+						} else if (isset($_POST['productosplanton'])) {
+							$producto = new Productos();
 							$nose = $producto->extraerPlanton();
-							
-								foreach ($nose as $fila) {
-							?>
-							<form action="carrito.php" method="post">
-								<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-								<img width="250" src="img/<?php echo $fila->getimg() ?>">
-								<h3><?php echo $fila->getnombreProducto() ?></h3>
-								<p><?php echo $fila->getdescripcion() ?></p>
-								<p>Precio: <?php echo $fila->getprecio() ?>$</p>
-								<?php
-								if ($fila->getcantidad() == 0) {
-									echo "No hay en el Stock";
-								} else {
-									?> 
-									<input type="number" min="1" max="10" name="cantidad" value="1">
-									<br>
-									<input type="submit" value="Añadir a la cesta" name="cesta"> 
 
+							foreach ($nose as $fila) {
+								?>
+								<form action="carrito.php" method="post">
+									<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+									<img width="250" src="img/<?php echo $fila->getimg() ?>">
+									<h3><?php echo $fila->getnombreProducto() ?></h3>
+									<p><?php echo $fila->getdescripcion() ?></p>
+									<p>Precio: <?php echo $fila->getprecio() ?>$</p>
 									<?php
-								}
-								?> 
-							</form>
-							<br>
+									if ($fila->getcantidad() == 0) {
+										echo "No hay en el Stock";
+									} else {
+										?> 
+										<input type="number" min="1" max="10" name="cantidad" value="1">
+										<br>
+										<input type="submit" value="Añadir a la cesta" name="cesta"> 
 
-							<?php
-						}
-						}
-						else if(isset($_POST['botonsearch'])){	
+										<?php
+									}
+									?> 
+								</form>
+								<br>
+
+								<?php
+							}
+						} else if (isset($_POST['botonsearch'])) {
 							echo'entra';
-						$producto = new Productos();
+							$producto = new Productos();
 							$nose = $producto->buscador($_POST['buscador']);
-							
-								foreach ($nose as $fila) {
-							?>
-							<form action="carrito.php" method="post">
-								<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-								<img width="250" src="img/<?php echo $fila->getimg() ?>">
-								<h3><?php echo $fila->getnombreProducto() ?></h3>
-								<p><?php echo $fila->getdescripcion() ?></p>
-								<p>Precio: <?php echo $fila->getprecio() ?>$</p>
-								<?php
-								if ($fila->getcantidad() == 0) {
-									echo "No hay en el Stock";
-								} else {
-									?> 
-									<input type="number" min="1" max="10" name="cantidad" value="1">
-									<br>
-									<input type="submit" value="Añadir a la cesta" name="cesta"> 
 
-									<?php
-								}
-								?> 
-							</form>
-							<br>
+							foreach ($nose as $fila) {
+								?>
+								<form action="carrito.php" method="post">
+									<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+									<img width="250" src="img/<?php echo $fila->getimg() ?>">
+									<h3><?php echo $fila->getnombreProducto() ?></h3>
+									<p><?php echo $fila->getdescripcion() ?></p>
+									<p>Precio: <?php echo $fila->getprecio() ?>$</p>
+			<?php
+			if ($fila->getcantidad() == 0) {
+				echo "No hay en el Stock";
+			} else {
+				?> 
+										<input type="number" min="1" max="10" name="cantidad" value="1">
+										<br>
+										<input type="submit" value="Añadir a la cesta" name="cesta"> 
 
-							<?php
-						}
-	
-						}else{
-						$producto = new Productos();
-						$nose = $producto->extraerProductos();
+				<?php
+			}
+			?> 
+								</form>
+								<br>
 
-						foreach ($nose as $fila) {
-							?>
-							<form action="carrito.php" method="post">
-								<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-								<img width="250" src="img/<?php echo $fila->getimg() ?>">
-								<h3><?php echo $fila->getnombreProducto() ?></h3>
-								<p><?php echo $fila->getdescripcion() ?></p>
-								<p>Precio: <?php echo $fila->getprecio() ?>$</p>
-								<?php
-								if ($fila->getcantidad() == 0) {
-									echo "No hay en el Stock";
-								} else {
-									?> 
-									<input type="number" min="1" max="10" name="cantidad" value="1">
-									<br>
-									<input type="submit" value="Añadir a la cesta" name="cesta"> 
+			<?php
+		}
+	} else {
+		$producto = new Productos();
+		$nose = $producto->extraerProductos();
 
-									<?php
-								}
-								?> 
-							</form>
-							<br>
+		foreach ($nose as $fila) {
+			?>
+								<form action="carrito.php" method="post">
+									<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+									<img width="250" src="img/<?php echo $fila->getimg() ?>">
+									<h3><?php echo $fila->getnombreProducto() ?></h3>
+									<p><?php echo $fila->getdescripcion() ?></p>
+									<p>Precio: <?php echo $fila->getprecio() ?>$</p>
+			<?php
+			if ($fila->getcantidad() == 0) {
+				echo "No hay en el Stock";
+			} else {
+				?> 
+										<input type="number" min="1" max="10" name="cantidad" value="1">
+										<br>
+										<input type="submit" value="Añadir a la cesta" name="cesta"> 
 
-							<?php
-						}
-						}
-						?>         
+				<?php
+			}
+			?> 
+								</form>
+								<br>
+
+			<?php
+		}
+	}
+	?>         
 					</div>
 
 					<div class="row mb-lg-4">
@@ -392,12 +389,12 @@ session_start();
 					</div>
 				</div>
 			</div>
-			<?php
-		} else {
-			/** Si el usuario no se ha validado. */
-			echo '<h5>El usuario no ha sido validado correctamente</h5>';
-		}
-		?>
+	<?php
+} else {
+	/** Si el usuario no se ha validado. */
+	echo '<h5>El usuario no ha sido validado correctamente</h5>';
+}
+?>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 	</body>
