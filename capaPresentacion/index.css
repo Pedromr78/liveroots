@@ -9,7 +9,7 @@
 }
 .titulo{
   
-    color:forestgreen;
+    color:whitesmoke;
     text-align: center; ;
 
 }
@@ -45,7 +45,7 @@
 
 
 footer{
-    background:seagreen;   
+    
     padding: 10px;
 }
 
@@ -104,8 +104,10 @@ ul, ol {
 }
 
 body {
-    background-color:#b0ef88;
-    background-size: cover;
+    
+    background-image: url("img/descarga.jfif");
+    background-color:#EBEFE9;
+    background-size: contain;
     background-position: center top;
     background-repeat: no-repeat;
     background-attachment: fixed;

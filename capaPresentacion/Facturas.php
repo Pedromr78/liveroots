@@ -33,9 +33,10 @@ session_start();
             <header>
                 <div class="row">
                     <div class="col">
+						  <img src="../capaPresentacion/img/logo.png" width="200"> 
                     </div>
                     <div class="titulo col">
-                      <img src="/img/logo.png" width="200"> 
+                    
 					   <h1>Living Roots</h1>
                     </div>
                     <div class="col"></div>
@@ -63,7 +64,7 @@ session_start();
 						$datosproductos = $producto->leerProductos($fila->getidpro());
 						?> 
 			
-				<p><?php echo $datosproductos[0]->getnombreProducto()?> x<?php echo $fila->getcantidad()?> <?php echo $fila->getprecio() ?>$  + iva 21%</p>
+				<p><?php echo $datosproductos[0]->getnombreProducto()?> x<?php echo $fila->getcantidad()?> <?php echo $fila->getprecio() ?>$ iva incluido (21%)</p>
 				
 			<?php
 				$iva=$fila->getprecio()* 0.21;

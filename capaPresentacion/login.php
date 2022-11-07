@@ -25,24 +25,18 @@ session_start();
 </head>
 
 <body>
-    <div class="total">
+ 
         <div class="container-fluid">
-            <header>
-                <div class="row">
-                    <div class="col">
-                    </div>
-                    <div class="titulo col">
-                        <h1>Living Roots</h1>
-                    </div>
-                    <div class="col"></div>
-                </div>
-            </header>
-            <br>
-            <div id="header">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
+           <header>
+		
+           
+                    <div class="row navbar-light bg-light border-top border-bottom border-secondary">
+                   
+						         
+                <nav class="navbar navbar-expand-lg navbar-light bg-light p-1">
                     <div class="container-fluid">
 
-                        <a class="navbar-brand" href="index.php">Inicio</a>
+                        <a class="navbar-brand" href="index.php"> <img class="img-fluid" src="img/logo titulo.png" width="170"></a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -51,62 +45,40 @@ session_start();
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Productos
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Venta</a></li>
-                                        <li><a class="dropdown-item" href="#">Info Productos</a></li>
-                                        <li><a class="dropdown-item" href="#" data-bs-toggle="offcanvas"
-                                            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Info Colaboradores</a></li>
-                                    </ul>
-                                </li>
+                               
 
 
-                                <li class="nav-item">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Informacion general
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="topconocidos.html">Top Conocidos</a></li>
-                                        <li><a class="dropdown-item" href="#">Conocidos</a></li>
-                                        <li><a class="dropdown-item" href="#">Distintos Tipos</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Informacion tienda
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Temaperaturas</a></li>
-                                        <li><a class="dropdown-item" href="#">Localidad</a></li>
-                                        <li><a class="dropdown-item" href="#" data-bs-target="#myModal"
-                                                data-bs-toggle="modal">Formulario</a></li>
+                                
+                               <li><a class=" nav-link  text-dark dropdown-item" href="infoCuidados.php">Info Cuidados</a></li>
+								<li class="nav-item dropdown">
+											<a id="produ3" class=" nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												Productos
+											</a>
+											<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
+												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Prebonsais" name="productosprebonsai"></form></li>
+												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
+											</ul>
+										</li>
 
-                                    </ul>
-                                </li>
-                       
-                                <li class="nav-item">
-                                    <a class="nav-link" href="login.php ">
+                              
+                            </ul>
+                           
+							<a class="nav-link" href="login.php ">
                                        Login/Register
                                     </a>
-                                   
-                                </li>
-                            </ul>
-                            <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
-                            </form>
 
                         </div>
 
                     </div>
-		
-            </div>
+
+          
+                      
+                  
+                  
+					 </div>
+              
+            </header>	
 							<?php
 			if (isset($_SESSION['usuario'])) {
 				echo 'Usuario: ' . $_SESSION['usuario']->getNombre();
@@ -132,9 +104,9 @@ session_start();
 			else {
 				
 				?>
-            <table>
-                <td>
-                    <form action="validausuario.php" method="post">
+						<div class="row row-cols-2 justify-content-center">
+         	<div class="col  bg-light rounded border border-secondary col-md-2 m-lg-5" id="productos">
+                    <form class="m-lg-5" action="validausuario.php" method="post">
                     <h1>Login</h1>
                     Correo Electronico:
                     <br>
@@ -170,10 +142,9 @@ session_start();
 											}
 											?>>Recordar 
                     </form>
-                </td>
-              
-                <td>
-                <form action="registrausuario.php" method="post">
+                </div>
+			<div class="col  bg-light rounded border border-secondary col-md-2 m-lg-5" id="productos">
+                <form class="m-lg-5" action="registrausuario.php" method="post">
                     <h1>Registred</h1>
                     Nombre:
                     <br>
@@ -202,15 +173,13 @@ session_start();
 
                     <input type="submit" value="Registrarse">
                     </form>
-                </td>
-
-            </table>
+		</div>
 			<?php
 			}
 				?>
         </div>
 
-    </div>
+
 </body>
 
 </html>

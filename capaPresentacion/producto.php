@@ -37,28 +37,18 @@ session_start();
 			</script>
 			<?php
 		}
-		if (isset($_POST['modificar'])) {
-
-			$_SESSION['usuario']->setEmail2($_POST['email']);
-			$_SESSION['usuario']->setNombre($_POST['nombre']);
-			$_SESSION['usuario']->setContraseña($_POST['contraseña']);
-			$_SESSION['usuario']->modificaUsuario();
-		}
 		if (isset($_SESSION['usuario'])) {
 			?>
 
-			<?php
-			?>
 
-
-
-			<div class="container-fluid">
-				<header class="navbar-light bg-light row border-top border-bottom border-secondary">
+			
+				<div class="container-fluid ">
+					<header class="navbar-light bg-light row border-top border-bottom border-secondary">
 									
 						<nav class="navbar navbar-expand-lg navbar-light bg-light">
 							<div class="container-fluid">
 
-								<a class="navbar-brand" href="tienda.php "><img src="img/logo titulo.png" width="170"></a>
+								<a class="navbar-brand" href="tienda.php "><img class="img-fluid" src="img/logo titulo.png" width="170"></a>
 								<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 									<span class="navbar-toggler-icon"></span>
 								</button>
@@ -144,137 +134,67 @@ session_start();
 						</nav>   
 			
 					</header>
-
-
-				<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16"> 
-				<path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.
-					  5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.
-					  5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/> 
-				<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/> </svg><h1><?php echo $_SESSION['usuario']->getNombre(); ?></h1>
-				<form action="perfil.php" method="post">
-					<label>Correo: </label>
-					<input type="text" value="<?php echo $_SESSION['usuario']->getEmail(); ?>" name="email">
-					<input type="submit" value="modificar" name="modificar">
-					<br>
-					<label>Nombre: </label>
-					<input type="text" value="<?php echo $_SESSION['usuario']->getNombre(); ?>" name="nombre">
-					<input type="submit" value="modificar" name="modificar">
-					<br>
-					<label>Contraseña: </label>
-					<input type="text" value="<?php echo $_SESSION['usuario']->getContraseña(); ?>" name="contraseña">
-					<input type="submit" value="modificar" name="modificar">
-				</form>
-
-
-
-
-				<div class="row mb-lg-4">
-
-				</div>
-
-				<footer>
-					<div class="fooder">
-						<table>
-							<td>
-								<h4>Informacion</h4>
-								<h6>
-									Villarrobledo-Albacete <br>
-									Calle Socuellamos nº53 <br>
-									Telefono:671424198 <br>
-									Peropela336@gmail.com
-								</h6>
-							</td>
-							<td>
-								<h3>Redes</h3>
-
-								<img src="img/facebook.png" height="40">
-								<img src="img/insta.jpg" height="40">
-
-							</td>
-							<td>
-								<h3>Comentarios</h3>
-								<input type="text" name="nombredelacaja">
-							<td>
-
-						</table>
+					
+					<div>
+						<?php 
+						if(isset($_POST['cesta'])){
+							$producto = new Productos();
+							$prod=$producto ->leerProductos($_POST['fila']);
+							
+							
+						?>
+							<form action="carrito.php" method="post">
+								<input type="hidden" name="fila" value="<?php echo  $prod['0']->getcodProducto() ?>">
+						<img class="img-fluid" width="300" src="img/<?php echo $prod['0']->getimg()?>">
+						<h3><?php echo $prod['0']->getnombreProducto()?></h3>
+							<p><?php echo $prod['0']->getdescripcion()?></p>
+							<p><?php echo $prod['0']->getprecio()?> $</p>
+							<?php
+									if ($prod['0']->getcantidad() == 0) {
+										echo "No hay en el Stock";
+									} else {
+										?> 
+											<input type="number" min="1" max="10" name="cantidad" value="1">
+											<input type="submit" name="cesta" value="Añadir a la cesta">
+										<?php
+									}
+									?>
+											</form>
+						<?php 
+							
+						}
+						?>
 					</div>
-				</footer>
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header text-center">
-								<h4 class="modal-title w-100 font-weight-bold">Registrate</h4>
-								<button type="button" class="btn-close" data-bs-dismiss="modal">
-							</div>
-							<div class="modal-body mx-3">
-								<div class="md-form mb-4">
-									<i class="fas fa-envelope prefix grey-text"></i>
-									<input type="email" id="defaultForm-email" class="form-control validate">
-									<label data-error="wrong" data-success="right" for="defaultForm-email">Email</label>
-								</div>
 
-								<div class="md-form mb-4">
-									<i class="fas fa-lock prefix grey-text"></i>
-									<input type="password" id="defaultForm-pass" class="form-control validate">
-									<label data-error="wrong" data-success="right" for="defaultForm-pass">Contraseña</label>
-								</div>
-
-								<div class="md-form mb-4">
-									<i class="fas fa-lock prefix grey-text"></i>
-									<input type="text" id="defaultForm-pass" class="form-control validate">
-									<label data-error="wrong" data-success="right" for="defaultForm-pass">Nombre</label>
-								</div>
-								<div class="md-form mb-4">
-									<i class="fas fa-lock prefix grey-text"></i>
-									<input type="text" id="defaultForm-pass" class="form-control validate">
-									<label data-error="wrong" data-success="right" for="defaultForm-pass">Apellidos</label>
-								</div>
-								<div class="md-form mb-4">
-									<i class="fas fa-lock prefix grey-text"></i>
-									<input type="date" id="defaultForm-pass" class="form-control validate">
-									<label data-error="wrong" data-success="right" for="defaultForm-pass">Fecha de
-										nacimiento</label>
-								</div>
-								<div class="progress">
-									<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-
-
-							</div>
-							<div class="modal-footer d-flex justify-content-center">
-								<button class="btn btn-default bg-primary text-white">Guardar</button>
-							</div>
+					<footer class="fooder row bg-light border-top border-bottom border-secondary">
+						<div class="col text-center">
+							
+									<h4>Informacion de contacto</h4>
+									<h6>
+										Villarrobledo-Albacete <br>
+										Telefono:671424198 <br>
+										Peropela336@gmail.com
+									</h6>
 						</div>
-					</div>
-				</div>
-				<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasLabel">
-					<div class="offcanvas-header">
-						<h5 class="offcanvas-title" id="offcanvasLabel">Colaboradores</h5>
-						<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-					</div>
-					<div class="offcanvas-body">
-						Pedro montero
-						<br>
-						Juan Camacho
-						<br>
-						Pablo Mecinas
-						<br>
-						Alberto Biosca
-						<br>
-						Antonio de la Fuente
-						<br>
-						Chorizo Jonshon
-					</div>
-				</div>
-			</div>
+						<div class="col text-center">
+									<h3>Redes</h3>
 
+									<a href="https://www.facebook.com/profile.php?id=100008619615493"><img class="img-fluid" src="img/facebook.png" width="60"></a>
+									<a href="https://www.instagram.com/pedro_mr78/"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
+									<a href="https://www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab/"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
+
+						</div>
+									
+						
+					</footer>
+				
+				</div>
+			
 	<?php
-} else {
-	/** Si el usuario no se ha validado. */
-	echo '<h5>El usuario no ha sido validado correctamente</h5>';
 }
 ?>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+				
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 	</body>
 

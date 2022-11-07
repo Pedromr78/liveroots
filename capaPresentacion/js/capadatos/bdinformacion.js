@@ -27,4 +27,9 @@ class bdinformacion {
     get cuidados() {
         return this._id;
     }
+
+    extraerinformacion(){
+        
+    }
+
 }

@@ -15,98 +15,63 @@
 
 <body>
 
-    <div class="total">
+ 
         <div class="container-fluid">
+		
             <header>
-                <div class="row">
-                    <div class="col">
-                    </div>
-                    <div class="titulo col">
-						 <img src="img/logo.png" width="200"> 
-                        <h1>Living Roots</h1>
-                    </div>
-                    <div class="col"></div>
-                </div>
-            </header>
-            <br>
-            <div id="header">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light p-3">
-                    <div class="container-fluid">
+		
+           
+                    <div class="row navbar-light bg-light border-top border-bottom border-secondary">
+                   
+						     <div class="container-fluid">     
+                <nav class="navbar navbar-expand-lg navbar-light bg-light p-1">
+                   
 
-                        <a class="navbar-brand" href="index.php">Inicio</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+                        <a class="navbar-brand" href="index.php"> <img class="img-fluid" src="img/logo titulo.png" width="170"></a>
+                      
 
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Productos
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Venta</a></li>
-                                        <li><a class="dropdown-item" href="#">Info Productos</a></li>
-                                        <li><a class="dropdown-item" href="#" data-bs-toggle="offcanvas"
-                                            data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">Info Colaboradores</a></li>
-                                    </ul>
-                                </li>
+                               
 
 
-                                <li class="nav-item">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Informacion general
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="topconocidos.html">Top Conocidos</a></li>
-                                        <li><a class="dropdown-item" href="#">Conocidos</a></li>
-                                        <li><a class="dropdown-item" href="#">Distintos Tipos</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                        data-bs-toggle="dropdown" aria-expanded="false">
-                                        Informacion tienda
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Temaperaturas</a></li>
-                                        <li><a class="dropdown-item" href="#">Localidad</a></li>
-                                        <li><a class="dropdown-item" href="#" data-bs-target="#myModal"
-                                                data-bs-toggle="modal">Formulario</a></li>
-
-                                    </ul>
-                                </li>
-                       
-                                <li class="nav-item">
-                                    <a class="nav-link" href="login.php ">
-                                       Login/Register
-                                    </a>
-                                   
-                                </li>
-                            </ul>
-                            <form class="d-flex">
-                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-outline-success" type="submit">Search</button>
-                            </form>
+                                
+                               <li><a class=" nav-link  text-dark dropdown-item" href="infoCuidados.php">Info Cuidados</a></li>
+								<li class="nav-item dropdown">
+											<a id="produ3" class=" nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												Productos
+											</a>
+											<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
+												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Prebonsais" name="productosprebonsai"></form></li>
+												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
+											</ul>
+										</li>
+										 </ul>
+							 <ul class="navbar-nav">
+								<li>
+							<a class="nav-link text-dark" href="login.php ">Login/Register</a>
+								</li>
+ </ul>
+                              
+                           
+                            
 
                         </div>
 
-                    </div>
+                   
+          </nav>  
+                       </div>
 
-            </div>
-            <div id="display" class="alert alert-danger" role="alert">
-                A simple danger alert—check it out!
-                <button type="button" id="quitar" class="btn btn-secondary"><svg xmlns="http://www.w3.org/2000/svg"
-                        width="16" height="16" fill="currentColor" class="bi bi-check2-all" viewBox="0 0 16 16">
-                        <path
-                            d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z" />
-                        <path d="m5.354 7.146.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z" />
-                    </svg></button>
-            </div>
+                  
+                  
+					 </div>
+              
+            </header>
+			
+            <br>
+   
+       
 
             </nav>
             <div class="row mb-lg-4">
@@ -444,7 +409,7 @@
                 </div>
               </div>
         </div>
-    </div>
+  
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 <script src="index.js"></script>

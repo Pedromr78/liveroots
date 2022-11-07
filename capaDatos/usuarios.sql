@@ -90,6 +90,39 @@ values (
         '671424198'
     );
 
+
+
+insert into
+    Informacion(nombre, descripcion, img)
+values 
+    (
+        'Arce palmatum',
+        'El arce japonés se trata de una planta de naturaleza muy delicada, que contrariamente a otros arces este es de porte arbustivo.
+    Alcanzan una altura de 3 a 8 metros de porte globoso con numerosas ramas ligeramente caedizas que contienen hojas palmeadas, muy regulares, de 5, 7, 9 u 11 lóbulos enteros o finamente recortados.
+    Posee numerosas variedades que varían del verde al amarillo dorado y al rojo púrpura. Su crecimiento es bastante lento, característica que hace que se emplee para el cultivo en bonsáis.
+    Este arbusto muy empleado en jardinería es remarcable por su porte gracioso, por la forma de sus hojas y la riqueza de sus coloridos, sobre todo en primavera, y nuevamente en otoño, cuando todas sus hojas se vuelven de tonos rojos.
+    Es sensible a cochinilla, a carencias de hierro en suelo calizo y a las quemaduras foliares por el sol o el viento',
+    'arcePalmatum.jpg'
+    ), 
+    (
+        'Pino thumbergi',
+    'El pino japonés de Thunberg puede llegar a la altura de 40 m, 
+        pero raramente alcanza este tamaño fuera de su zona de distribución natural. 
+        Las acículas están en fascículos de dos con una vaina blanca en la base, 7-12 cm de largo; los conos femeninos tienen una longitud de 4-7 cm, 
+        ecamosos, con pequeñas puntas en el extremo de las escamas, tardando dos años en madurar. Los conos masculinos tienen una longitud de 1-2 cm en 
+        macizos de 12-20 en las puntas del crecimiento en primavera. La corteza es gris en los árboles jóvenes y pequeñas ramas, cambiando al negro y plateado 
+        en ramas más grandes y el tronco; haciéndose bastante espesas en troncos de más edad.',
+    'pinusThumbergi.jpg'
+    ),
+    (
+        'Ulmus parvifolia',
+    'Es un árbol que alcanza hasta 20 metros, caducifolio, con comportamiento de especie de hoja semiperenne, cultivándolo en clima mediterráneo y temperaturas templadas en invierno.
+    El árbol joven presenta un tronco de color gris y corteza fina, formando escamas en su madurez. La madera es de color marrón claro, ocasionalmente con algún tono rojizo.
+    Sus hojas son pequeñas, simples, alternas, ovaladas, dentadas y terminadas en punta. Nervadura muy señalada de color verde intenso, que cambia de color durante el otoño a tonos amarillos, naranja y rojizos.
+    Al final del verano presenta flores muy pequeñas, hermafroditas, verdosas, blancuzcas o rojizas.
+    Fruto sámara aplanado circular, de color verdizo al principio, que termina secándose al final del desarrollo, en el que adopta un tono amarillento. Entre los 15 o 25 años de edad aparecen los primeros frutos.4​',
+    'ulmusParvifolia.jpg'
+    );
 insert into
     Productos (
         codProducto,
@@ -116,6 +149,14 @@ values (
         'thunbergiPrebonsai.jpg',
         40,
         'prebonsai'
+    ), (
+        12,
+        'Arce Palmatum',
+        'Arce con hojas rojas',
+        32,
+        'arcePalmatum.jpg',
+        5000,
+        'bonsai'
     ),(
         10,
         'Junipero Chinensis',
@@ -140,6 +181,14 @@ values (
         'ficusretusaPrebonsai.jpg',
         20,
         'prebonsai'
+    ), (
+        13,
+        'Ulmus Parvifolia',
+        'Olmo Japones',
+        20,
+        'ulmusParvifolia.jpg',
+        6000,
+        'bonsai'
     ),(
         5,
         'Sakura',
@@ -190,35 +239,3 @@ values (
         'planton'
     )
 ;
-
-insert into
-    Informacion(nombre, descripcion, img)
-values 
-    (
-        'Arce palmatum',
-        'El arce japonés se trata de una planta de naturaleza muy delicada, que contrariamente a otros arces este es de porte arbustivo.
-    Alcanzan una altura de 3 a 8 metros de porte globoso con numerosas ramas ligeramente caedizas que contienen hojas palmeadas, muy regulares, de 5, 7, 9 u 11 lóbulos enteros o finamente recortados.
-    Posee numerosas variedades que varían del verde al amarillo dorado y al rojo púrpura. Su crecimiento es bastante lento, característica que hace que se emplee para el cultivo en bonsáis.
-    Este arbusto muy empleado en jardinería es remarcable por su porte gracioso, por la forma de sus hojas y la riqueza de sus coloridos, sobre todo en primavera, y nuevamente en otoño, cuando todas sus hojas se vuelven de tonos rojos.
-    Es sensible a cochinilla, a carencias de hierro en suelo calizo y a las quemaduras foliares por el sol o el viento',
-    'arcePalmatum.jpg'
-    ), 
-    (
-        'Pino thumbergi',
-    'El pino japonés de Thunberg puede llegar a la altura de 40 m, 
-        pero raramente alcanza este tamaño fuera de su zona de distribución natural. 
-        Las acículas están en fascículos de dos con una vaina blanca en la base, 7-12 cm de largo; los conos femeninos tienen una longitud de 4-7 cm, 
-        ecamosos, con pequeñas puntas en el extremo de las escamas, tardando dos años en madurar. Los conos masculinos tienen una longitud de 1-2 cm en 
-        macizos de 12-20 en las puntas del crecimiento en primavera. La corteza es gris en los árboles jóvenes y pequeñas ramas, cambiando al negro y plateado 
-        en ramas más grandes y el tronco; haciéndose bastante espesas en troncos de más edad.',
-    'pinusThumbergi.jpg'
-    ),
-    (
-        'Ulmus parvifolia',
-    'Es un árbol que alcanza hasta 20 metros, caducifolio, con comportamiento de especie de hoja semiperenne, cultivándolo en clima mediterráneo y temperaturas templadas en invierno.
-    El árbol joven presenta un tronco de color gris y corteza fina, formando escamas en su madurez. La madera es de color marrón claro, ocasionalmente con algún tono rojizo.
-    Sus hojas son pequeñas, simples, alternas, ovaladas, dentadas y terminadas en punta. Nervadura muy señalada de color verde intenso, que cambia de color durante el otoño a tonos amarillos, naranja y rojizos.
-    Al final del verano presenta flores muy pequeñas, hermafroditas, verdosas, blancuzcas o rojizas.
-    Fruto sámara aplanado circular, de color verdizo al principio, que termina secándose al final del desarrollo, en el que adopta un tono amarillento. Entre los 15 o 25 años de edad aparecen los primeros frutos.4​',
-    'ulmusParvifolia.jpg'
-    );
