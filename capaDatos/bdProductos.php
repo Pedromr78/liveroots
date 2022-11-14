@@ -69,6 +69,7 @@ class BDProductos extends BDPlantas {
 					$producto->setcantidad($fila['cantidad']);
 					$producto->setimg($fila['img']);
 					$producto->setprecio($fila['precio']);
+					$producto->setdescuento($fila['descuento']);
 
 					$data[] = $producto;
 				}
@@ -106,6 +107,7 @@ class BDProductos extends BDPlantas {
 						$producto->setcantidad($fila['cantidad']);
 						$producto->setimg($fila['img']);
 						$producto->setprecio($fila['precio']);
+						$producto->setdescuento($fila['descuento']);
 
 						$data[] = $producto;
 					}
@@ -150,6 +152,7 @@ class BDProductos extends BDPlantas {
 					$producto->setcantidad($fila['cantidad']);
 					$producto->setimg($fila['img']);
 					$producto->setprecio($fila['precio']);
+					$producto->setdescuento($fila['descuento']);
 					
 
 					$data[] = $producto;
@@ -194,7 +197,7 @@ class BDProductos extends BDPlantas {
 					$producto->setcantidad($fila['cantidad']);
 					$producto->setimg($fila['img']);
 					$producto->setprecio($fila['precio']);
-					
+					$producto->setdescuento($fila['descuento']);
 
 					$data[] = $producto;
 				}
@@ -237,7 +240,7 @@ class BDProductos extends BDPlantas {
 					$producto->setcantidad($fila['cantidad']);
 					$producto->setimg($fila['img']);
 					$producto->setprecio($fila['precio']);
-					
+					$producto->setdescuento($fila['descuento']);
 
 					$data[] = $producto;
 				}
@@ -280,6 +283,7 @@ class BDProductos extends BDPlantas {
 					$producto->setcantidad($fila['cantidad']);
 					$producto->setimg($fila['img']);
 					$producto->setprecio($fila['precio']);
+					$producto->setdescuento($fila['descuento']);
 					
 
 					$data[] = $producto;

@@ -107,7 +107,7 @@ session_start();
 											}
 											?>
 											<li><a class="dropdown-item" href="#"><form action="tienda.php" method="post">
-														<input class="btn btn-light" type="submit" value="cierra sesion" name="cierrasesion"> 
+														<button class="bg-light border border-0" type="submit" name="cierrasesion">cierra sesion</button>
 													</form></a></li>
 										</ul>
 
@@ -148,12 +148,21 @@ session_start();
 							?>
 							<div class="col p-5">
 								<form action="producto.php" method="post">
-									<button type="submit"  name="cesta"> 
+									<button class="bg-light border border-0" type="submit"  name="cesta"> 
 										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 										<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
 										<h4><?php echo $fila->getnombreProducto() ?></h4>
+										<?php
+										if($fila->getdescuento()>0){
+											?> 
+											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
+										<?php
+										}
+										?> 
 
 										<h3><?php echo $fila->getprecio() ?>$</h3>
+										
+										
 									</button>
 									<?php
 									if ($fila->getcantidad() == 0) {
@@ -177,11 +186,17 @@ session_start();
 							?>
 							<div class="col p-5">
 								<form action="producto.php" method="post">
-									<button type="submit"  name="cesta"> 
+									<button class="bg-light border border-0" type="submit"  name="cesta"> 
 										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 										<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
 										<h4><?php echo $fila->getnombreProducto() ?></h4>
-										<p><?php echo $fila->getdescripcion() ?></p>
+										<?php
+										if($fila->getdescuento()>0){
+											?> 
+											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
+										<?php
+										}
+										?> 
 										<h3>Precio: <?php echo $fila->getprecio() ?>$</h3>
 									</button>
 									<?php
@@ -208,11 +223,17 @@ session_start();
 							?>
 							<div class="col p-5">
 								<form action="producto.php" method="post">
-									<button type="submit"  name="cesta"> 
+									<button class="bg-light border border-0" type="submit"  name="cesta"> 
 										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 										<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
 										<h4><?php echo $fila->getnombreProducto() ?></h4>
-										<p><?php echo $fila->getdescripcion() ?></p>
+									<?php
+										if($fila->getdescuento()>0){
+											?> 
+											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
+										<?php
+										}
+										?> 
 										<h3>Precio: <?php echo $fila->getprecio() ?>$</h3>
 									</button>
 									<?php
@@ -240,11 +261,17 @@ session_start();
 							?>
 							<div class="col p-5">
 								<form action="producto.php" method="post">
-									<button type="submit"  name="cesta"> 
+									<button class="bg-light border border-0" type="submit"  name="cesta"> 
 										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 										<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
 										<h4><?php echo $fila->getnombreProducto() ?></h4>
-										<p><?php echo $fila->getdescripcion() ?></p>
+										<?php
+										if($fila->getdescuento()>0){
+											?> 
+											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
+										<?php
+										}
+										?> 
 										<h3>Precio: <?php echo $fila->getprecio() ?>$</h3>
 									</button>
 									<?php
@@ -270,11 +297,18 @@ session_start();
 							?>
 							<div class="col p-5">
 								<form action="producto.php" method="post">
-									<button class="" type="submit"  name="cesta"> 
+									<button class="bg-light border border-0" type="submit"  name="cesta"> 
 										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-										<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+
+										<img class="img-fluid"  src="img/<?php echo $fila->getimg() ?>">
 										<h4><?php echo $fila->getnombreProducto() ?></h4>
-										<p><?php echo $fila->getdescripcion() ?></p>
+									<?php
+										if($fila->getdescuento()>0){
+											?> 
+											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
+										<?php
+										}
+										?> 
 										<h3>Precio: <?php echo $fila->getprecio() ?>$</h3>
 									</button>
 									<?php
@@ -383,7 +417,7 @@ session_start();
 
 					</div>
 
-	            </header>
+				</header>
 				<br>
 
 				<div class="row row-cols-4 col-md-8 m-auto mt-5 bg-light rounded border border-secondary" id="productos">
@@ -541,100 +575,27 @@ session_start();
 
 				</div>
 
-				<footer>
-					<div class="fooder">
-						<table>
-							<td>
-								<h4>Informacion</h4>
-								<h6>
-									Villarrobledo-Albacete <br>
-									Calle Socuellamos nº53 <br>
-									Telefono:671424198 <br>
-									Peropela336@gmail.com
-								</h6>
-							</td>
-							<td>
-								<h3>Redes</h3>
+				<footer class="fooder row bg-light border-top border-bottom border-secondary">
+					<div class="col text-center">
 
-								<img class="img-fluid" src="img/facebook.png" width="60">
-								<img class="img-fluid" src="img/insta.jpg" width="90">
-
-							</td>
-							<td>
-								<h3>Comentarios</h3>
-								<input type="text" name="nombredelacaja">
-							<td>
-
-						</table>
+						<h4>Informacion de contacto</h4>
+						<h6>
+							Villarrobledo-Albacete <br>
+							Telefono:671424198 <br>
+							Peropela336@gmail.com
+						</h6>
 					</div>
+					<div class="col text-center">
+						<h3>Redes</h3>
+
+						<a href="https://www.facebook.com/profile.php?id=100008619615493"><img class="img-fluid" src="img/facebook.png" width="60"></a>
+						<a href="https://www.instagram.com/pedro_mr78/"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
+						<a href="www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
+
+					</div>
+
+
 				</footer>
-				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header text-center">
-								<h4 class="modal-title w-100 font-weight-bold">Registrate</h4>
-								<button type="button" class="btn-close" data-bs-dismiss="modal">
-							</div>
-							<div class="modal-body mx-3">
-								<div class="md-form mb-4">
-									<i class="fas fa-envelope prefix grey-text"></i>
-									<input type="email" id="defaultForm-email" class="form-control validate">
-									<label data-error="wrong" data-success="right" for="defaultForm-email">Email</label>
-								</div>
-
-								<div class="md-form mb-4">
-									<i class="fas fa-lock prefix grey-text"></i>
-									<input type="password" id="defaultForm-pass" class="form-control validate">
-									<label data-error="wrong" data-success="right" for="defaultForm-pass">Contraseña</label>
-								</div>
-
-								<div class="md-form mb-4">
-									<i class="fas fa-lock prefix grey-text"></i>
-									<input type="text" id="defaultForm-pass" class="form-control validate">
-									<label data-error="wrong" data-success="right" for="defaultForm-pass">Nombre</label>
-								</div>
-								<div class="md-form mb-4">
-									<i class="fas fa-lock prefix grey-text"></i>
-									<input type="text" id="defaultForm-pass" class="form-control validate">
-									<label data-error="wrong" data-success="right" for="defaultForm-pass">Apellidos</label>
-								</div>
-								<div class="md-form mb-4">
-									<i class="fas fa-lock prefix grey-text"></i>
-									<input type="date" id="defaultForm-pass" class="form-control validate">
-									<label data-error="wrong" data-success="right" for="defaultForm-pass">Fecha de
-										nacimiento</label>
-								</div>
-								<div class="progress">
-									<div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-								</div>
-
-
-							</div>
-							<div class="modal-footer d-flex justify-content-center">
-								<button class="btn btn-default bg-primary text-white">Guardar</button>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasLabel">
-					<div class="offcanvas-header">
-						<h5 class="offcanvas-title" id="offcanvasLabel">Colaboradores</h5>
-						<button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-					</div>
-					<div class="offcanvas-body">
-						Pedro montero
-						<br>
-						Juan Camacho
-						<br>
-						Pablo Mecinas
-						<br>
-						Alberto Biosca
-						<br>
-						Antonio de la Fuente
-						<br>
-						Chorizo Jonshon
-					</div>
-				</div>
 			</div>
 
 			<?php

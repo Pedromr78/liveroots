@@ -106,7 +106,7 @@ session_start();
 				?>
 						<div class="row row-cols-2 justify-content-center">
          	<div class="col  bg-light rounded border border-secondary col-md-2 m-lg-5" id="productos">
-                    <form class="m-lg-5" action="validausuario.php" method="post">
+                    <form class="m-lg-3" action="validausuario.php" method="post">
                     <h1>Login</h1>
                     Correo Electronico:
                     <br>
@@ -131,6 +131,7 @@ session_start();
 												   ?>">
                     <br>
                     <input type="submit" value="Iniciar">
+					<br>
 				
 					<input type="checkbox" name="recordar"
 											<?php
@@ -144,7 +145,7 @@ session_start();
                     </form>
                 </div>
 			<div class="col  bg-light rounded border border-secondary col-md-2 m-lg-5" id="productos">
-                <form class="m-lg-5" action="registrausuario.php" method="post">
+                <form class="m-lg-3" action="registrausuario.php" method="post">
                     <h1>Registred</h1>
                     Nombre:
                     <br>

@@ -48,7 +48,8 @@ create table
         cantidad int,
         img varchar(100),
         precio int,
-        tipo varchar(15)
+        tipo varchar(15),
+        descuento varchar(20)
     );
 
 create table
@@ -131,7 +132,8 @@ insert into
         cantidad,
         img,
         precio,
-        tipo
+        tipo,
+        descuento
     )
 values (
         1,
@@ -140,7 +142,8 @@ values (
         50,
         'arcePrebonsai.jfif',
         30,
-        'prebonsai'
+        'prebonsai',
+        '0'
     ), (
         2,
         'Pino thumbergi',
@@ -148,7 +151,8 @@ values (
         30,
         'thunbergiPrebonsai.jpg',
         40,
-        'prebonsai'
+        'prebonsai',
+        '0'
     ), (
         12,
         'Arce Palmatum',
@@ -156,7 +160,8 @@ values (
         32,
         'arcePalmatum.jpg',
         5000,
-        'bonsai'
+        'bonsai',
+        '0'
     ),(
         10,
         'Junipero Chinensis',
@@ -164,7 +169,8 @@ values (
         10,
         'juniperochinensisBonsai.jpg',
         3200,
-        'bonsai'
+        'bonsai',
+        '20'
     ), (
         3,
         'Ulmus parvifolia',
@@ -172,7 +178,8 @@ values (
         100,
         'ulmusPrebonsai.jpg',
         25,
-        'prebonsai'
+        'prebonsai',
+        '0'
     ), (
         4,
         'Ficus Retusa',
@@ -180,7 +187,8 @@ values (
         20,
         'ficusretusaPrebonsai.jpg',
         20,
-        'prebonsai'
+        'prebonsai',
+        '0'
     ), (
         13,
         'Ulmus Parvifolia',
@@ -188,7 +196,8 @@ values (
         20,
         'ulmusParvifolia.jpg',
         6000,
-        'bonsai'
+        'bonsai',
+        '0'
     ),(
         5,
         'Sakura',
@@ -196,7 +205,8 @@ values (
         10,
         'sakuraPrebonsai.jpg',
         50,
-        'prebonsai'
+        'prebonsai',
+        '15'
     ),(
         6,
         'Granado Nejikan',
@@ -204,7 +214,8 @@ values (
         40,
         'nejikanPrebonsai.jpg',
         40,
-        'prebonsai'
+        'prebonsai',
+        '0'
     ),(
         9,
         'Pinus Pinea',
@@ -212,7 +223,8 @@ values (
         20,
         'pinuspineaBonsai.jpeg',
         1100,
-        'bonsai'
+        'bonsai',
+        '0'
     ),(
         7,
         'Pinus Pinea',
@@ -220,7 +232,8 @@ values (
         80,
         'pinuspineaPrebonsai.jpg',
         20,
-        'prebonsai'
+        'prebonsai',
+        '0'
     ),(
         8,
         'Juniperus Chinensis',
@@ -228,7 +241,8 @@ values (
         40,
         'juniperuschinensisPrebonsai.jpg',
         35,
-        'prebonsai'
+        'prebonsai',
+        '0'
     ),(
         11,
         'Arce Palmatum',
@@ -236,6 +250,7 @@ values (
         200,
         'arcepalmatumPlanton.jpg',
         10,
-        'planton'
+        'planton',
+        '0'
     )
 ;

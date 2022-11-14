@@ -45,6 +45,11 @@ class Productos {
 	 * @access private
 	 */
 	private int $precio;
+		/**
+	 * @var integer cantidad del producto.
+	 * @access private
+	 */
+	private int $descuento;
 
 	/**
 	 * Método que inicializa el atributo idPromocion.
@@ -111,6 +116,16 @@ class Productos {
 	public function setprecio(int $precio): void {
 		$this->precio = $precio;
 	}
+	/**
+	 * Método que inicializa el atributo idPromocion.
+	 *
+	 * @access public
+	 * @param integer $idPromocion Identificador de la promoción.
+	 * @return void
+	 */
+	public function setdescuento(int $descuento): void {
+		$this->descuento = $descuento;
+	}
 
 	/**
 	 * Método que devuelve el valor del atributo fechaFin.
@@ -170,6 +185,15 @@ class Productos {
 	 */
 	public function getprecio(): int {
 		return $this->precio;
+	}
+	/**
+	 * Método que devuelve el valor del atributo fechaFin.
+	 *
+	 * @access public
+	 * @return DateTime Fecha de finalización de la promoción.
+	 */
+	public function getdescuento(): int {
+		return $this->descuento;
 	}
 
 	/**
