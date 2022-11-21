@@ -36,7 +36,16 @@
 
 
                                 
-                               <li><a class=" nav-link  text-dark dropdown-item" href="infoCuidados.php">Info Cuidados</a></li>
+                             <li class="nav-item dropdown ">
+										<a id="info3" class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Informacion Cuidados
+										</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<li><a class="dropdown-item" href="topconocidos.php">Top Conocidos</a></li>
+											<li><a class="dropdown-item" href="infoCuidados.php">Info Cuidados</a></li>
+
+										</ul>
+									</li>
 								<li class="nav-item dropdown">
 											<a id="produ3" class=" nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 												Productos
@@ -312,7 +321,7 @@
                 </section>
             </div>
 
-          <footer class="fooder row bg-light border-top border-bottom border-secondary">
+         <footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
 					<div class="col text-center">
 
 						<h4>Informacion de contacto</h4>
@@ -321,6 +330,9 @@
 							Telefono:671424198 <br>
 							Peropela336@gmail.com
 						</h6>
+					</div>
+					<div class="col text-center">
+						<p>&copy; Pagina web de bonsais</p>
 					</div>
 					<div class="col text-center">
 						<h3>Redes</h3>

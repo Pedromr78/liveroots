@@ -168,8 +168,9 @@ session_start();
 								echo "No hay en el Stock";
 							} else {
 								?> 
-								<input type="number" min="1" max="10" name="cantidad" value="1">
-								<input type="submit" name="cesta" value="Añadir a la cesta">
+								<div id="errorcantidad"></div>
+								<input type="number" min="1" max="10" name="cantidad" value="1" id="cantidad">
+								<input type="submit" name="cesta" value="Añadir a la cesta" id="añadircesta">
 								</div>
 									<?php
 							}
@@ -200,7 +201,7 @@ session_start();
 
 					</div>
 
-
+					<p>&copy; Pagina web de bonsais</p>
 				</footer>
 
 			</div>
@@ -209,10 +210,10 @@ session_start();
 		}
 		?>
 
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-
 	</body>
-
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="js/capapresentacion/producto.js"></script>
+	
 
 
 </html>

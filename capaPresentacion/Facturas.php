@@ -14,105 +14,80 @@ session_start();
 <!DOCTYPE html>
 <!doctype html>
 <html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Living Roots</title>
-
-	<title></title>
-
-</head>
-
-<body>
-	 <div class="total">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		<title>Living Roots</title>
+		<title></title>
+	</head>
+	<body>
+		<?php
+		$nombreImagen = "logo.png";
+		?>
         <div class="container-fluid">
             <header>
-                <div class="row">
-                    <div class="col">
-						  <img src="../capaPresentacion/img/logo.png" width="200"> 
-                    </div>
-                    <div class="titulo col">
-                    
-					   <h1>Living Roots</h1>
-                    </div>
-                    <div class="col"></div>
+                <div class="row text-center">
+						 <!--No funciona <p><img src="img/logo titulo.png" width="200"></p> -->
+					<h1>Live Roots</h1>
                 </div>
             </header>
-			
-			
-			
-			
-<?php
-			
+			<?php
 			if (isset($_SESSION['usuario'])) {
 				$total = 0;
-				$idfactura= $_POST['idfactura'];
-				$compras= new Compras();
+				$idfactura = $_POST['idfactura'];
+				$compras = new Compras();
 				$producto = new Productos();
-				$compra=$compras->extraerFactura($idfactura,$_SESSION['usuario']->getEmail());
-					?> 
-			<h4>Usuario <?php echo $_SESSION['usuario']->getNombre();?></h4>
-				<h4>Nº de pedido <?php echo $compra[0]->getidcompra() ?></h4> 
-				
-					<?php
-	
-				foreach ($compra as $fila) {
-						$datosproductos = $producto->leerProductos($fila->getidpro());
-						?> 
-			
-				<p><?php echo $datosproductos[0]->getnombreProducto()?> x<?php echo $fila->getcantidad()?> <?php echo $fila->getprecio() ?>$ iva incluido (21%)</p>
-				
-			<?php
-				$iva=$fila->getprecio()* 0.21;
-				$precio = $fila->getprecio()+$iva;
-			
-				echo $precio;
-			$cantipro = $fila->getcantidad();
-			$conjun = $cantipro * $precio;
-			$total += $conjun;
-				}
-			?> 
+				$compra = $compras->extraerFactura($idfactura, $_SESSION['usuario']->getEmail());
+				?> 
+				<h4 class="p-5">Compra realizada por <?php echo $_SESSION['usuario']->getEmail(); ?></h4>
+				<div class="row text-center p-5">
+					<h4>Nº de pedido <?php echo $compra[0]->getidcompra() ?></h4> 
+				</div>
+	<?php
+	foreach ($compra as $fila) {
+		$datosproductos = $producto->leerProductos($fila->getidpro());
+		?> 
+					<p><?php echo $datosproductos[0]->getnombreProducto() ?> x<?php echo $fila->getcantidad() ?> <?php echo $fila->getprecio() ?>€ iva incluido (21%)</p>
+		<?php
+		$precio = $fila->getprecio();
+
+		$cantipro = $fila->getcantidad();
+		$conjun = $cantipro * $precio;
+		$total += $conjun;
+	}
+	?> 
 				<hr>
-			<?php	
-			
-					echo '<h3>Total ' . $total . ' $<h3>';
+				<?php
+				echo '<h3>Total ' . $total . ' €<h3>';
 			}
-				?>
-
-
+			?>
 		</div>
-</div>
-	
-</body>
- 		
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 </html>
 <?php
-$html= ob_get_clean();
+$html = ob_get_clean();
 
 include_once '../capaPresentacion/librerias/dompdf/autoload.inc.php';
+
 use Dompdf\Dompdf;
+
 $dompdf = new Dompdf();
-$compras= new Compras();
+$compras = new Compras();
 
+$compra = $compras->extraerFactura($idfactura, $_SESSION['usuario']->getEmail());
+$nombrearchivo = $compra[0]->getidcompra();
 
-$compra=$compras->extraerFactura($idfactura,$_SESSION['usuario']->getEmail());
-$nombrearchivo=$compra[0]->getidcompra();
-
-
-$options= $dompdf->getOptions();
-$options ->set(array('isRemoteEnabled' => true));
+$options = $dompdf->getOptions();
+$options->set(array('isRemoteEnabled' => true));
 $dompdf->setOptions($options);
 
 $dompdf->loadHtml($html);
 $dompdf->setPaper('A4', 'landscape');
 $dompdf->render();
 
-$dompdf->stream("$nombrearchivo.pdf",array("Attachment"=> false));
-
-
+$dompdf->stream("$nombrearchivo.pdf", array("Attachment" => true));
 ?>

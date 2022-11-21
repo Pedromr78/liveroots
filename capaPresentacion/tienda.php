@@ -79,7 +79,7 @@ session_start();
 									</li>
 
 								</ul>
-								<form class="d-flex" metrod="post" action="tienda.php">
+								<form class="d-flex" method="post" action="tienda.php">
 									<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
 									<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
 								</form>
@@ -151,8 +151,9 @@ session_start();
 									<button class="bg-light border border-0" type="submit"  name="cesta"> 
 										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 										<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-										<h4><?php echo $fila->getnombreProducto() ?></h4>
+										<h6><?php echo $fila->getnombreProducto() ?></h6>
 										<?php
+								
 										if($fila->getdescuento()>0){
 											?> 
 											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
@@ -160,7 +161,7 @@ session_start();
 										}
 										?> 
 
-										<h3><?php echo $fila->getprecio() ?>$</h3>
+										<h4><?php echo $fila->getprecio() ?>€</h4>
 										
 										
 									</button>
@@ -189,15 +190,16 @@ session_start();
 									<button class="bg-light border border-0" type="submit"  name="cesta"> 
 										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 										<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-										<h4><?php echo $fila->getnombreProducto() ?></h4>
+										<h6><?php echo $fila->getnombreProducto() ?></h6>
 										<?php
+								
 										if($fila->getdescuento()>0){
 											?> 
 											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
 										<?php
 										}
 										?> 
-										<h3>Precio: <?php echo $fila->getprecio() ?>$</h3>
+										<h4><?php echo $fila->getprecio() ?>€</h4>
 									</button>
 									<?php
 									if ($fila->getcantidad() == 0) {
@@ -226,15 +228,16 @@ session_start();
 									<button class="bg-light border border-0" type="submit"  name="cesta"> 
 										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 										<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-										<h4><?php echo $fila->getnombreProducto() ?></h4>
+										<h6><?php echo $fila->getnombreProducto() ?></h6>
 									<?php
+								
 										if($fila->getdescuento()>0){
 											?> 
 											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
 										<?php
 										}
 										?> 
-										<h3>Precio: <?php echo $fila->getprecio() ?>$</h3>
+										<h4><?php echo $fila->getprecio() ?>€</h4>
 									</button>
 									<?php
 									if ($fila->getcantidad() == 0) {
@@ -253,9 +256,10 @@ session_start();
 							<?php
 						}
 					} else if (isset($_POST['botonsearch'])) {
-						echo'entra';
+						
 						$producto = new Productos();
 						$nose = $producto->buscador($_POST['buscador']);
+						var_dump($nose);
 
 						foreach ($nose as $fila) {
 							?>
@@ -264,15 +268,16 @@ session_start();
 									<button class="bg-light border border-0" type="submit"  name="cesta"> 
 										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 										<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-										<h4><?php echo $fila->getnombreProducto() ?></h4>
+										<h6><?php echo $fila->getnombreProducto() ?></h6>
 										<?php
+								
 										if($fila->getdescuento()>0){
 											?> 
 											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
 										<?php
 										}
 										?> 
-										<h3>Precio: <?php echo $fila->getprecio() ?>$</h3>
+										<h4><?php echo $fila->getprecio() ?>€</h4>
 									</button>
 									<?php
 									if ($fila->getcantidad() == 0) {
@@ -301,15 +306,17 @@ session_start();
 										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 
 										<img class="img-fluid"  src="img/<?php echo $fila->getimg() ?>">
-										<h4><?php echo $fila->getnombreProducto() ?></h4>
+										<h6><?php echo $fila->getnombreProducto() ?></h6>
+										
 									<?php
+								
 										if($fila->getdescuento()>0){
 											?> 
 											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
 										<?php
 										}
 										?> 
-										<h3>Precio: <?php echo $fila->getprecio() ?>$</h3>
+										<h4><?php echo $fila->getprecio() ?>€</h4>
 									</button>
 									<?php
 									if ($fila->getcantidad() == 0) {
@@ -335,7 +342,7 @@ session_start();
 
 				</div>
 
-				<footer class="fooder row bg-light border-top border-bottom border-secondary">
+				<footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
 					<div class="col text-center">
 
 						<h4>Informacion de contacto</h4>
@@ -344,6 +351,9 @@ session_start();
 							Telefono:671424198 <br>
 							Peropela336@gmail.com
 						</h6>
+					</div>
+					<div class="col text-center">
+						<p>&copy; Pagina web de bonsais</p>
 					</div>
 					<div class="col text-center">
 						<h3>Redes</h3>
@@ -388,7 +398,16 @@ session_start();
 
 
 
-										<li><a class=" nav-link  text-dark dropdown-item" href="infoCuidados.php">Info Cuidados</a></li>
+									<li class="nav-item dropdown ">
+										<a id="info3" class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Informacion Cuidados
+										</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<li><a class="dropdown-item" href="topconocidos.php">Top Conocidos</a></li>
+											<li><a class="dropdown-item" href="infoCuidados.php">Info Cuidados</a></li>
+
+										</ul>
+									</li>
 										<li class="nav-item dropdown">
 											<a id="produ3" class=" nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 												Productos
@@ -435,8 +454,14 @@ session_start();
 									<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 									<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
 									<h4><?php echo $fila->getnombreProducto() ?></h4>
-									<p><?php echo $fila->getdescripcion() ?></p>
-									<h3><?php echo $fila->getprecio() ?>$</h3>
+									<?php
+										if($fila->getdescuento()>0){
+											?> 
+											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
+										<?php
+										}
+										?> 
+									<h3><?php echo $fila->getprecio() ?>€</h3>
 									<?php
 									if ($fila->getcantidad() == 0) {
 										echo "No hay en el Stock";
@@ -465,8 +490,14 @@ session_start();
 									<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 									<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
 									<h4><?php echo $fila->getnombreProducto() ?></h4>
-									<p><?php echo $fila->getdescripcion() ?></p>
-									<h3>Precio: <?php echo $fila->getprecio() ?>$</h3>
+								<?php
+										if($fila->getdescuento()>0){
+											?> 
+											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
+										<?php
+										}
+										?> 
+									<h3>Precio: <?php echo $fila->getprecio() ?>€</h3>
 									<?php
 									if ($fila->getcantidad() == 0) {
 										echo "No hay en el Stock";
@@ -494,8 +525,14 @@ session_start();
 									<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 									<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
 									<h4><?php echo $fila->getnombreProducto() ?></h4>
-									<p><?php echo $fila->getdescripcion() ?></p>
-									<h3>Precio: <?php echo $fila->getprecio() ?>$</h3>
+									<?php
+										if($fila->getdescuento()>0){
+											?> 
+											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
+										<?php
+										}
+										?> 
+									<h3>Precio: <?php echo $fila->getprecio() ?>€</h3>
 									<?php
 									if ($fila->getcantidad() == 0) {
 										echo "No hay en el Stock";
@@ -523,8 +560,14 @@ session_start();
 								<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 								<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
 								<h4><?php echo $fila->getnombreProducto() ?></h4>
-								<p><?php echo $fila->getdescripcion() ?></p>
-								<h3>Precio: <?php echo $fila->getprecio() ?>$</h3>
+								<?php
+										if($fila->getdescuento()>0){
+											?> 
+											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
+										<?php
+										}
+										?> 
+								<h3>Precio: <?php echo $fila->getprecio() ?>€</h3>
 								<?php
 								if ($fila->getcantidad() == 0) {
 									echo "No hay en el Stock";
@@ -550,8 +593,14 @@ session_start();
 								<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 								<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
 								<h4><?php echo $fila->getnombreProducto() ?></h4>
-								<p><?php echo $fila->getdescripcion() ?></p>
-								<h3>Precio: <?php echo $fila->getprecio() ?>$</h3>
+								<?php
+										if($fila->getdescuento()>0){
+											?> 
+											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
+										<?php
+										}
+										?> 
+								<h3>Precio: <?php echo $fila->getprecio() ?>€</h3>
 								<?php
 								if ($fila->getcantidad() == 0) {
 									echo "No hay en el Stock";
@@ -575,7 +624,7 @@ session_start();
 
 				</div>
 
-				<footer class="fooder row bg-light border-top border-bottom border-secondary">
+				<footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
 					<div class="col text-center">
 
 						<h4>Informacion de contacto</h4>
@@ -586,11 +635,14 @@ session_start();
 						</h6>
 					</div>
 					<div class="col text-center">
+						<p>&copy; Pagina web de bonsais</p>
+					</div>
+					<div class="col text-center">
 						<h3>Redes</h3>
 
-						<a href="https://www.facebook.com/profile.php?id=100008619615493"><img class="img-fluid" src="img/facebook.png" width="60"></a>
-						<a href="https://www.instagram.com/pedro_mr78/"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
-						<a href="www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
+						<a href="https://www.facebook.com/profile.php?id=100008619615493" target="_blank"><img class="img-fluid" src="img/facebook.png" width="60"></a>
+						<a href="https://www.instagram.com/pedro_mr78/" target="_blank"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
+						<a href="www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab" target="_blank"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
 
 					</div>
 

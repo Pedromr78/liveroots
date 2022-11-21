@@ -52,40 +52,60 @@ session_start();
 			
 			
 				?>
+				
+			<div class="row col-md-3 m-auto mt-2 bg-light rounded border border-secondary p-5" id="productos">
 			<form action="compras.php" method="post">
 			Nombre del Titular <br>
 			<input type="text" style="width:250px"><br>
 			NºTarjeta <br>
-			<input type="text" style="width:250px"><br>
+			<div id="errortarjeta"></div>
+			<input type="text" style="width:250px" id="numerotarjeta"><br>
 			Fecha de Caducidad <br>
 			<input type="text" maxlength="5" style="width:60px"><br>
 			CVV <br>
-			<input type="text" maxlength="3" style="width:40px"><br>
-			<input type="submit" value="Aceptar" name="aceptar"><input type="submit" value="Cancelar" name="cancelar">
+			<div id="errorcvv"></div>
+			<input type="text" maxlength="3" style="width:40px" id="cvv"><br>
+			<br>
+			<input type="submit" value="Aceptar" name="aceptar" id="aceptar"><input type="submit" value="Cancelar" name="cancelar">
 			
 			</form>
+					</div>
 				<?php
 			}else{
 				if(isset($_POST['aceptar'])){
 					$compra= new Compras();
 					$carrit = new Cart();
+				
+					
+					
+					
+					
 					$random=rand(1000, 9999);
 					$random2=rand(1000, 9999);
 					$dia= str_replace("-","",date('Y-m-d'));
 						$cadena="$random-$random2-$dia";
 					foreach ($_SESSION['producto'] as $fila) {
 						
-							
+						$producto=new Productos();
 						
 						
-							
-						
+						$nose=$producto->leerProductos($fila->getidpro());
+						foreach ($nose as $fila2) {
+						$can=$fila2->getcantidad()-$fila->getcantidad();
+						}
 						$compra->setemail($fila->getemail());
 						$compra->setidpro($fila->getidpro());
+					
 						$compra->setidcompra($cadena);
 						$compra->setcantidad($fila->getcantidad());
 						$compra->setprecio($fila->getprecio());
 						$compra->añadircompra();
+						/**Reducir cantidad bd*/
+						$producto->setcodProducto($fila->getidpro());
+						$producto->setcantidad($can);
+						
+						$producto->reduceCantidadProducto();
+						
 						
 						$carrit->setemail($fila->getemail());
 						$carrit->setidpro($fila->getidpro());
@@ -247,7 +267,7 @@ session_start();
 										<div class="col p-5">
 								<h6><?php echo $datosproductos[0]->getnombreProducto()?></h6>
 								<p>Cantidad: <?php echo $fila->getcantidad() ?></p>
-								<h4>Precio: <?php echo $fila->getprecio() ?> $</h4>
+								<h4>Precio: <?php echo $fila->getprecio() ?> €</h4>
 								</div>
 								</div>
 								
@@ -262,7 +282,7 @@ session_start();
          </div>
 			
          
-           <footer class="fooder row bg-light border-top border-bottom border-secondary">
+        <footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
 					<div class="col text-center">
 
 						<h4>Informacion de contacto</h4>
@@ -271,6 +291,9 @@ session_start();
 							Telefono:671424198 <br>
 							Peropela336@gmail.com
 						</h6>
+					</div>
+					<div class="col text-center">
+						<p>&copy; Pagina web de bonsais</p>
 					</div>
 					<div class="col text-center">
 						<h3>Redes</h3>
@@ -282,7 +305,7 @@ session_start();
 					</div>
 
 
-				</footer>  
+				</footer>
         </div>
 
 	 <?php
@@ -300,7 +323,7 @@ session_start();
 						
                 ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-  
+	<script src="js/capapresentacion/compras.js"></script>
 </body>
 
 

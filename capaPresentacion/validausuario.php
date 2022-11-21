@@ -31,17 +31,17 @@ else {
 
 <head>
 	<meta charset="UTF-8">
-	<title>Promociones Empresa Alimentación</title>
+	<title>Live Roots</title>
 	<link rel="stylesheet" type="text/css" href="css/estilo.css">
 	<link rel="icon" type="image/png" href="imagenes/favicon.ico" />
 </head>
 
 <body>
 	<header>
-		<h1><img src="imagenes/virrey.png"> Promociones Empresa Alimentación</h1>
+		<h1><img src="img/logo titulo.png" width="170"> Live Roots</h1>
 	</header>
 	<nav>
-		<a href="index.php">Inicio</a> &nbsp;&nbsp;
+		
 			<?php
 			if (isset($_SESSION['usuario'])) {
 				
@@ -121,7 +121,7 @@ else {
 		?>
 	</article>
 	<footer>
-		<p>&copy; Promociones Empresa Alimentación</p>
+		<p>&copy; Pagina web de bonsais</p>
 	</footer>
 </body>
 

@@ -208,11 +208,11 @@ session_start();
 											$descuentototal=$datos[0]->getprecio()-$numerodescuento;
 											?> 
 							
-											<p><?php echo $datos[0]->getprecio()?>$-<?php echo $datos[0]->getdescuento()?>%-><?php echo $descuentototal; ?>$</p>
+											<p><?php echo $datos[0]->getprecio()?>€-<?php echo $datos[0]->getdescuento()?>%-><?php echo $descuentototal; ?>€</p>
 										<?php
 										}else{
 										?> 
-								<p><?php echo $datos[0]->getprecio() ?> $</p>
+								<p><?php echo $datos[0]->getprecio() ?> €</p>
 							
 							<?php
 										}
@@ -260,7 +260,7 @@ session_start();
 		
 		<form class="ms-auto p-5" method="post" action="compras.php">
 			<?php
-			echo '<h3>Total ' . $total . '$<h3>';
+			echo '<h3>Total ' . $total . '€<h3>';
 			?>	
 			<input type="submit" value="comprar" name="comprar">
 		</form>
@@ -277,7 +277,7 @@ session_start();
 
 					</div>
 
-					<footer class="fooder row bg-light border-top border-bottom border-secondary">
+				<footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
 					<div class="col text-center">
 
 						<h4>Informacion de contacto</h4>
@@ -286,6 +286,9 @@ session_start();
 							Telefono:671424198 <br>
 							Peropela336@gmail.com
 						</h6>
+					</div>
+					<div class="col text-center">
+						<p>&copy; Pagina web de bonsais</p>
 					</div>
 					<div class="col text-center">
 						<h3>Redes</h3>

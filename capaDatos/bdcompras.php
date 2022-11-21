@@ -291,5 +291,49 @@ class BDCompras extends BDPlantas {
 			}
 		}
 	}
+	
+		/**
+	 * Método que comprueba si existe el usuario en la base de datos.
+	 *
+	 * @access public
+	 * @return array	True si existe
+	 * 					False en otro caso.
+	 */
+	public function todaslasCompras() {
+		$data = array();
+		/** Comprueba si existe conexión con la base de datos. */
+		if ($this->pdocon) {
+			/** Prepara la sentencia SQL. */
+			$resultado = $this->pdocon->prepare(
+				"SELECT *
+						FROM Compras"
+			);
+			/** Vincula un parámetro al nombre de variable especificado. */
+			/** Ejecuta la sentencia preparada y comprueba un posible error. */
+			if ($resultado->execute()) {
+
+				foreach ($resultado as $fila) {
+
+					$compra = new Compras();
+
+						$compra->setemail($fila['email']);
+						$compra->setidcompra($fila['codCompra']);
+						$compra->setidpro($fila['codProducto']);
+						$compra->setfecha($fila['fechaCompra']);
+						$compra->setcantidad($fila['cantidadProducto']);
+						$compra->setprecio($fila['Precio']);
+
+					$data[] = $compra;
+				}
+
+
+				return $data;
+			}
+		}
+	}
+
+	
+	
+	
 
 }

@@ -169,7 +169,7 @@ class Compras {
 	 * @return DateTime Fecha de finalización de la promoción.
 	 */
 	public function getfecha(): string {
-		return $this->fecha->format('d/m/Y');
+		return $this->fecha;
 	}
 	
 	/**
@@ -215,5 +215,13 @@ class Compras {
 		/** El usuario no existe. */
 		return $bdcompras->extraerFactura($idcompra,$email);
 	}
-	
+		public function todaslasCompras() {
+
+		/** @var BDUsuarios Instancia un objeto de la clase. */
+		$bdcompras = new BDCompras();
+		/** Inicializa los atributos del objeto. */
+		/** Comprueba si existe el usuario. */
+		/** El usuario no existe. */
+		return $bdcompras->todaslasCompras();
+	}
 }

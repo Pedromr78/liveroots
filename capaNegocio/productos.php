@@ -45,6 +45,11 @@ class Productos {
 	 * @access private
 	 */
 	private int $precio;
+			/**
+	 * @var integer cantidad del producto.
+	 * @access private
+	 */
+	private string $tipo;
 		/**
 	 * @var integer cantidad del producto.
 	 * @access private
@@ -123,6 +128,16 @@ class Productos {
 	 * @param integer $idPromocion Identificador de la promoción.
 	 * @return void
 	 */
+	public function settipo(string $tipo): void {
+		$this->tipo = $tipo;
+	}
+	/**
+	 * Método que inicializa el atributo idPromocion.
+	 *
+	 * @access public
+	 * @param integer $idPromocion Identificador de la promoción.
+	 * @return void
+	 */
 	public function setdescuento(int $descuento): void {
 		$this->descuento = $descuento;
 	}
@@ -185,6 +200,15 @@ class Productos {
 	 */
 	public function getprecio(): int {
 		return $this->precio;
+	}
+	/**
+	 * Método que devuelve el valor del atributo fechaFin.
+	 *
+	 * @access public
+	 * @return DateTime Fecha de finalización de la promoción.
+	 */
+	public function gettipo(): string {
+		return $this->tipo;
 	}
 	/**
 	 * Método que devuelve el valor del atributo fechaFin.
@@ -277,7 +301,7 @@ class Productos {
 	 * @return array	true en caso afirmativo
 	 * 					false en caso contrario.
 	 */
-	public function buscador($valor) {
+	public function buscador(string $valor) {
 
 		/** @var BDUsuarios Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
@@ -286,5 +310,57 @@ class Productos {
 		/** El usuario no existe. */
 		return $bdproducto->buscador($valor);
 	}
+	public function añadeproducto() {
+
+		/** @var BDUsuarios Instancia un objeto de la clase. */
+		$bdproducto = new BDProductos();
+		/** Inicializa los atributos del objeto. */
+				$bdproducto->setcodProducto($this->codProducto);
+				$bdproducto->setnombreProducto($this->nombreProducto);
+				$bdproducto->setdescripcion($this->descripcion);
+				$bdproducto->setcantidad($this->cantidad);
+				$bdproducto->setimg($this->img);
+				$bdproducto->setprecio($this->precio);
+				$bdproducto->settipo($this->tipo);
+				$bdproducto->setdescuento($this->descuento);
+		/** Comprueba si existe el usuario. */
+		/** El usuario no existe. */
+		$bdproducto->añadeproducto();
+	}
+	public function eliminaproducto() {
+
+		/** @var BDUsuarios Instancia un objeto de la clase. */
+		$bdproducto = new BDProductos();
+		/** Inicializa los atributos del objeto. */
+		$bdproducto->setcodProducto($this->codProducto);
+			
+		/** Comprueba si existe el usuario. */
+		/** El usuario no existe. */
+		$bdproducto->eliminaproducto();
+	}
+	public function modificaProducto() {
+		
+		/** @var BDUsuarios Instancia un objeto de la clase. */
+		$bdproducto = new BDProductos();
+		/** Inicializa los atributos del objeto. */
+		$bdproducto->setcodProducto($this->codProducto);
+		$bdproducto->setcantidad($this->cantidad);
+		$bdproducto->setprecio($this->precio);
+		$bdproducto->setdescuento($this->descuento);
+		
+		$bdproducto->modificaProducto();
+	}
+	public function reduceCantidadProducto() {
+		
+		/** @var BDUsuarios Instancia un objeto de la clase. */
+		$bdproducto = new BDProductos();
+		/** Inicializa los atributos del objeto. */
+		$bdproducto->setcodProducto($this->codProducto);
+		$bdproducto->setcantidad($this->cantidad);
+		
+		
+		$bdproducto->reduceCantidadProducto();
+	}
+	
 
 }

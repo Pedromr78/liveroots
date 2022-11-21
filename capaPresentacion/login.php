@@ -9,20 +9,19 @@ session_start();
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
 
     <head>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+       	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <title>Living Roots</title>
         <link rel="stylesheet" href="index.css" type="text/css" media="screen" />
 
 
     </head>
-</head>
+
 
 <body>
  
@@ -49,7 +48,16 @@ session_start();
 
 
                                 
-                               <li><a class=" nav-link  text-dark dropdown-item" href="infoCuidados.php">Info Cuidados</a></li>
+                            <li class="nav-item dropdown ">
+										<a id="info3" class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+											Informacion Cuidados
+										</a>
+										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+											<li><a class="dropdown-item" href="topconocidos.php">Top Conocidos</a></li>
+											<li><a class="dropdown-item" href="infoCuidados.php">Info Cuidados</a></li>
+
+										</ul>
+									</li>
 								<li class="nav-item dropdown">
 											<a id="produ3" class=" nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 												Productos
@@ -156,23 +164,25 @@ session_start();
                     <input type="text" name="apellidos">
                     <br>
                     Correo Electronico:
-                    <br>
-                    <input type="text" name="email">
+                    <div id="erroremail"></div>
+                    <input type="text" name="email" id="email">
                     <br>
                     Fecha de Nacimiento:
                     <br>
-                    <input type="date" name="fechanacimiento">
+					<div id="errorfechanacimiento"></div>
+                    <input type="date" name="fechanacimiento" id="fechanacimiento">
                     <br>
                    Numero de Telefono:
                     <br>
-                    <input type="number" name="telefono">
+					<div id="errortelefono"></div>
+                    <input type="number" name="telefono" id="telefono">
                     <br>
                     Contraseña:
-                    <br>
-                    <input type="text" name="contraseña">
+					<div id="errorcontra"></div>
+                    <input type="text" name="contraseña" id="contraseña">
                     <br>
 
-                    <input type="submit" value="Registrarse">
+                    <input type="submit" value="Registrarse" id="registrarse">
                     </form>
 		</div>
 			<?php
@@ -182,5 +192,6 @@ session_start();
 
 
 </body>
-
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/capapresentacion/login.js"></script>
 </html>

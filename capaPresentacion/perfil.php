@@ -145,34 +145,35 @@ session_start();
 
 				</header>
 
-
+				<div class="row row-cols-7 col-md-8 m-auto mt-5 bg-light rounded border border-secondary" id="productos">
+				<div class="col p-5">
 				<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" fill="currentColor" class="bi bi-person-bounding-box" viewBox="0 0 16 16"> 
 				<path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.
 					  5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.
 					  5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5z"/> 
-				<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/> </svg><h1><?php echo $_SESSION['usuario']->getNombre(); ?></h1>
+				<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/> </svg>
+				</div>
+				<div class="col-9 p-5">
+				<h1><?php echo $_SESSION['usuario']->getNombre(); ?></h1>
+				</div>
 				<form action="perfil.php" method="post">
-					<label>Correo: </label>
-					<input type="text" value="<?php echo $_SESSION['usuario']->getEmail(); ?>" name="email">
-					<input type="submit" value="modificar" name="modificar">
+					<label>Correo: <?php echo $_SESSION['usuario']->getEmail(); ?></label>
 					<br>
-					<label>Nombre: </label>
-					<input type="text" value="<?php echo $_SESSION['usuario']->getNombre(); ?>" name="nombre">
-					<input type="submit" value="modificar" name="modificar">
+					<label>Nombre: <?php echo $_SESSION['usuario']->getNombre(); ?></label>
 					<br>
-					<label>Contraseña: </label>
-					<input type="text" value="<?php echo $_SESSION['usuario']->getContraseña(); ?>" name="contraseña">
-					<input type="submit" value="modificar" name="modificar">
+					
+					<p>Cambiar contraseña <input type="submit" value="modificar" name="modificar"></p>
+					
 				</form>
 
-
+				</div>
 
 
 				<div class="row mb-lg-4">
 
 				</div>
 
-				<footer class="fooder row bg-light border-top border-bottom border-secondary">
+				<footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
 					<div class="col text-center">
 
 						<h4>Informacion de contacto</h4>
@@ -181,6 +182,9 @@ session_start();
 							Telefono:671424198 <br>
 							Peropela336@gmail.com
 						</h6>
+					</div>
+					<div class="col text-center">
+						<p>&copy; Pagina web de bonsais</p>
 					</div>
 					<div class="col text-center">
 						<h3>Redes</h3>

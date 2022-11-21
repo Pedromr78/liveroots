@@ -135,7 +135,7 @@ session_start();
 			?>
 	</article>
 	<footer>
-		<p>&copy; Promociones Empresa Alimentación</p>
+		<p>&copy; Pagina web de bonsais</p>
 	</footer>
 </body>
 
