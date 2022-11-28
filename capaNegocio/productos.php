@@ -237,62 +237,33 @@ class Productos {
 		return $bdproducto->extraerProductos();
 	}
 
-	public function leerProductos(int $codProducto) {
+	public function leerProductos() {
 
 		/** @var BDUsuarios Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
 		/** Inicializa los atributos del objeto. */
+		$bdproducto->setcodProducto($this->codProducto);
 		/** Comprueba si existe el usuario. */
 		/** El usuario no existe. */
-		return $bdproducto->leerProductos($codProducto);
+		return $bdproducto->leerProductos();
 	}
-		/**
+
+						/**
 	 * Método que comprueba si un usuario existe en la base de datos.
 	 *
 	 * @access public
 	 * @return array	true en caso afirmativo
 	 * 					false en caso contrario.
 	 */
-	public function extraerBonsai() {
+	public function Filtro() {
 
 		/** @var BDUsuarios Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
 		/** Inicializa los atributos del objeto. */
+		$bdproducto->settipo($this->tipo);
 		/** Comprueba si existe el usuario. */
 		/** El usuario no existe. */
-		return $bdproducto->extraerBonsai();
-	}
-		/**
-	 * Método que comprueba si un usuario existe en la base de datos.
-	 *
-	 * @access public
-	 * @return array	true en caso afirmativo
-	 * 					false en caso contrario.
-	 */
-	public function extraerPrebonsai() {
-
-		/** @var BDUsuarios Instancia un objeto de la clase. */
-		$bdproducto = new BDProductos();
-		/** Inicializa los atributos del objeto. */
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
-		return $bdproducto->extraerPrebonsai();
-	}
-		/**
-	 * Método que comprueba si un usuario existe en la base de datos.
-	 *
-	 * @access public
-	 * @return array	true en caso afirmativo
-	 * 					false en caso contrario.
-	 */
-	public function extraerPlanton() {
-
-		/** @var BDUsuarios Instancia un objeto de la clase. */
-		$bdproducto = new BDProductos();
-		/** Inicializa los atributos del objeto. */
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
-		return $bdproducto->extraerPlanton();
+		return $bdproducto->Filtro();
 	}
 		/**
 	 * Método que comprueba si un usuario existe en la base de datos.

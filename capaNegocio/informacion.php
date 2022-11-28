@@ -14,6 +14,12 @@ class Informacion {
 	 * @var integer Nombre del Producto.
 	 * @access private
 	 */
+	private string $cuidados;
+	
+	/**
+	 * @var integer Nombre del Producto.
+	 * @access private
+	 */
 	private string $descripcion;
 	
 	/**
@@ -32,6 +38,18 @@ class Informacion {
 	public function setnombre(string $nombre): void
 	{
 		$this->nombre = $nombre;
+	}
+	
+	/**
+	 * Método que inicializa el atributo idPromocion.
+	 *
+	 * @access public
+	 * @param integer $idPromocion Identificador de la promoción.
+	 * @return void
+	 */
+	public function setcuidados(string $cuidados): void
+	{
+		$this->cuidados = $cuidados;
 	}
 	/**
 	 * Método que inicializa el atributo idPromocion.
@@ -76,6 +94,16 @@ class Informacion {
 	public function getdescripcion(): string
 	{
 		return $this->descripcion;
+	}
+	/**
+	 * Método que devuelve el valor del atributo fechaFin.
+	 *
+	 * @access public
+	 * @return DateTime Fecha de finalización de la promoción.
+	 */
+	public function getcuidados(): string
+	{
+		return $this->cuidados;
 	}
 	
 		/**

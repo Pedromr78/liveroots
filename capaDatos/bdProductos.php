@@ -262,7 +262,7 @@ class BDProductos extends BDPlantas {
 		}
 	}
 
-	public function leerProductos(int $codProducto) {
+	public function leerProductos() {
 
 
 		$data = array();
@@ -275,6 +275,7 @@ class BDProductos extends BDPlantas {
 			);
 
 			/** Vincula un parámetro al nombre de variable especificado. */
+			$codProducto=$this->codProducto;
 			$resultado->bindParam(':codProducto', $codProducto);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
@@ -301,50 +302,6 @@ class BDProductos extends BDPlantas {
 		}
 	}
 	
-	/**
-	 * Método que comprueba si existe el usuario en la base de datos.
-	 *
-	 * @access public
-	 * @return array	True si existe
-	 * 					False en otro caso.
-	 */
-	public function extraerBonsai() {
-		$tipo='bonsai';
-
-		$data = array();
-		/** Comprueba si existe conexión con la base de datos. */
-		if ($this->pdocon) {
-			/** Prepara la sentencia SQL. */
-			$resultado = $this->pdocon->prepare(
-				"SELECT *
-						FROM Productos WHERE tipo = :bonsai"
-			);
-			/** Vincula un parámetro al nombre de variable especificado. */
-			$resultado->bindParam(':bonsai',$tipo);
-			/** Ejecuta la sentencia preparada y comprueba un posible error. */
-			if ($resultado->execute()) {
-
-				foreach ($resultado as $fila) {
-
-					$producto = new Productos();
-
-					$producto->setcodProducto($fila['codProducto']);
-					$producto->setnombreProducto($fila['nombreProducto']);
-					$producto->setdescripcion($fila['descripcion']);
-					$producto->setcantidad($fila['cantidad']);
-					$producto->setimg($fila['img']);
-					$producto->setprecio($fila['precio']);
-					$producto->setdescuento($fila['descuento']);
-					
-
-					$data[] = $producto;
-				}
-
-
-				return $data;
-			}
-		}
-	}
 	
 	/**
 	 * Método que comprueba si existe el usuario en la base de datos.
@@ -353,51 +310,8 @@ class BDProductos extends BDPlantas {
 	 * @return array	True si existe
 	 * 					False en otro caso.
 	 */
-	public function extraerPrebonsai() {
-		$tipo='prebonsai';
-
-		$data = array();
-		/** Comprueba si existe conexión con la base de datos. */
-		if ($this->pdocon) {
-			/** Prepara la sentencia SQL. */
-			$resultado = $this->pdocon->prepare(
-				"SELECT *
-						FROM Productos WHERE tipo = :prebonsai"
-			);
-			/** Vincula un parámetro al nombre de variable especificado. */
-			$resultado->bindParam(':prebonsai',$tipo);
-			/** Ejecuta la sentencia preparada y comprueba un posible error. */
-			if ($resultado->execute()) {
-
-				foreach ($resultado as $fila) {
-
-					$producto = new Productos();
-
-					$producto->setcodProducto($fila['codProducto']);
-					$producto->setnombreProducto($fila['nombreProducto']);
-					$producto->setdescripcion($fila['descripcion']);
-					$producto->setcantidad($fila['cantidad']);
-					$producto->setimg($fila['img']);
-					$producto->setprecio($fila['precio']);
-					$producto->setdescuento($fila['descuento']);
-
-					$data[] = $producto;
-				}
-
-
-				return $data;
-			}
-		}
-	}
-	/**
-	 * Método que comprueba si existe el usuario en la base de datos.
-	 *
-	 * @access public
-	 * @return array	True si existe
-	 * 					False en otro caso.
-	 */
-	public function extraerPlanton() {
-		$tipo='planton';
+	public function Filtro() {
+		
 
 		$data = array();
 		/** Comprueba si existe conexión con la base de datos. */
@@ -408,6 +322,7 @@ class BDProductos extends BDPlantas {
 						FROM Productos WHERE tipo = :planton"
 			);
 			/** Vincula un parámetro al nombre de variable especificado. */
+			$tipo=$this->tipo;
 			$resultado->bindParam(':planton',$tipo);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
@@ -447,11 +362,13 @@ class BDProductos extends BDPlantas {
 		if ($this->pdocon) {
 			/** Prepara la sentencia SQL. */
 			$resultado = $this->pdocon->prepare(
-				"SELECT *
-						FROM Productos WHERE nombreProducto LIKE '%':nombre'%' OR descripcion LIKE '%':nombre'%'"
+						'SELECT *
+						FROM Productos 
+						WHERE nombreProducto LIKE "%":nombre"%" OR descripcion LIKE "%":nombre"%"'
 			);
 			/** Vincula un parámetro al nombre de variable especificado. */
 			$resultado->bindParam(':nombre',$valor);
+			
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			$resultado->execute();
 

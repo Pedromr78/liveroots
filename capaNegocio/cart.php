@@ -140,14 +140,15 @@ class Cart {
 
 	}
 
-	public function extraerProducto(string $email) {
+	public function extraerProducto() {
 
 		/** @var BDUsuarios Instancia un objeto de la clase. */
 		$bdcart = new BDCart();
 		/** Inicializa los atributos del objeto. */
+		$bdcart->setemail($this->email);
 		/** Comprueba si existe el usuario. */
 		/** El usuario no existe. */
-		return $bdcart->extraerProducto($email);
+		return $bdcart->extraerProducto();
 	}
 	
 	public function existeProducto() {

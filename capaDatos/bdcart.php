@@ -160,7 +160,7 @@ class BDCart extends BDPlantas {
 	 * @return array	True si existe
 	 * 					False en otro caso.
 	 */
-	public function extraerProducto(string $email) {
+	public function extraerProducto() {
 
 
 		$data = array();
@@ -173,6 +173,7 @@ class BDCart extends BDPlantas {
 			);
 
 			/** Vincula un parámetro al nombre de variable especificado. */
+			$email=$this->email;
 			$resultado->bindParam(':email', $email);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {

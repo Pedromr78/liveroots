@@ -217,7 +217,7 @@ class BDCompras extends BDPlantas {
 	 * @return array	True si existe
 	 * 					False en otro caso.
 	 */
-	public function extraerCompra(string $email) {
+	public function extraerCompra() {
 
 
 		$data = array();
@@ -230,6 +230,7 @@ class BDCompras extends BDPlantas {
 			);
 
 			/** Vincula un parámetro al nombre de variable especificado. */
+			$email=$this->email;
 			$resultado->bindParam(':email', $email);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
@@ -254,7 +255,7 @@ class BDCompras extends BDPlantas {
 			}
 		}
 	}
-		public function extraerFactura(string $idcompra, string $email) {
+		public function extraerFactura() {
 
 
 		$data = array();
@@ -266,7 +267,9 @@ class BDCompras extends BDPlantas {
 						FROM Compras WHERE codCompra = :idcompra AND email = :email");
 
 			/** Vincula un parámetro al nombre de variable especificado. */
+			$idcompra=$this->idcompra;
 			$resultado->bindParam(':idcompra', $idcompra);
+			$email=$this->email;
 				$resultado->bindParam(':email', $email);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {

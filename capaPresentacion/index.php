@@ -1,102 +1,97 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+	<head>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <title>Living Roots</title>
-    <link rel="stylesheet" href="index.css" type="text/css" media="screen" />
-    
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Bootstrap CSS -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+		<title>Live Roots</title>
+		<link rel="stylesheet" href="index.css" type="text/css" media="screen" />
 
-</head>
 
-<body>
+	</head>
 
- 
+	<body>
+
+
         <div class="container-fluid">
-		
+
             <header>
-		
-           
-                    <div class="row navbar-light bg-light border-top border-bottom border-secondary">
-                   
-						     <div class="container-fluid">     
-                <nav class="navbar navbar-expand-lg navbar-light bg-light p-1">
-                   
-
-                        <a class="navbar-brand" href="index.php"> <img class="img-fluid" src="img/logo titulo.png" width="170"></a>
-                      
-
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                               
 
 
-                                
-                             <li class="nav-item dropdown ">
-										<a id="info3" class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-											Informacion Cuidados
-										</a>
-										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<li><a class="dropdown-item" href="topconocidos.php">Top Conocidos</a></li>
-											<li><a class="dropdown-item" href="infoCuidados.php">Info Cuidados</a></li>
+				<div class="row navbar-light bg-light border-top border-bottom border-secondary">
 
-										</ul>
-									</li>
-								<li class="nav-item dropdown">
-											<a id="produ3" class=" nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+					<nav class="navbar navbar-expand-lg navbar-light bg-light p-1">
+						<div class="container-fluid">
+
+							<a class="navbar-brand" href="index.php"> <img class="img-fluid" src="img/logo titulo.png" width="170"></a>
+							<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+									data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+									aria-expanded="false" aria-label="Toggle navigation">
+								<span class="navbar-toggler-icon"></span>
+							</button>
+
+							<div class="collapse navbar-collapse" id="navbarSupportedContent">
+								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+
+
+									
+										<li class="nav-item">
+											<a id="produ3" class=" nav-link text-dark" href="tienda.php" id="navbarDropdown" role="button" aria-expanded="false">
 												Productos
 											</a>
+										</li>
+
+										<li class="nav-item dropdown ">
+											<a id="info3" class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												Informacion
+											</a>
 											<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
-												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Prebonsais" name="productosprebonsai"></form></li>
-												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
+												<li><a class="dropdown-item" href="topconocidos.php">Top Conocidos</a></li>
+												<li><a class="dropdown-item" href="infoCuidados.php">Info Cuidados</a></li>
+
 											</ul>
 										</li>
-										 </ul>
-							 <ul class="navbar-nav">
-								<li>
-							<a class="nav-link text-dark" href="login.php ">Login/Register</a>
-								</li>
- </ul>
-                              
-                           
-                            
 
-                        </div>
+								</ul>
+								<ul class="nav-item mt-3">
+									<form class="d-flex" method="post" action="tienda.php">
+										<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
+										<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
+									</form>
+								</ul>
+								<ul class="nav-item mt-3">
+									<a class="nav-link" href="login.php ">
+										Login/Register
+									</a>
+								</ul>
 
-                   
-          </nav>  
-                       </div>
+							</div>
 
-                  
-                  
-					 </div>
-              
-            </header>
-			
+						</div>
+
+
+
+
+
+				</div>
+
+			</header>
+
             <br>
-   
+
+
+
+
        
+              
 
-            </nav>
-            <div class="row mb-lg-4">
-                <div class="col">
-                    
-                    <div class="toast">
-                        <div class="toast-header">
-                          Este es mi toast
-                        </div>
-                        <div class="toast-body">
-                          Some text inside the toast body
-                        </div>
-                      </div>
-                </div>
-
-                <div id="carrousel" class="col mt-5 m-lg-5 ">
+                <div id="carrousel" class="col-md-5 m-auto">
 
 
 
@@ -105,44 +100,37 @@
                         <!-- Indicators/dots -->
                         <div class="carousel-indicators ">
                             <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"
-                                data-bs-toggle="tooltip" data-bs-placement="top" title="back"></button>
+									data-bs-toggle="tooltip" data-bs-placement="top" title="back"></button>
                             <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
                             <button type="button" data-bs-target="#demo" data-bs-slide-to="2" data-bs-toggle="tooltip"
-                                data-bs-placement="top" title="next"></button>
+									data-bs-placement="top" title="next"></button>
                         </div>
 
                         <!-- The slideshow/carousel -->
                         <div class="carousel-inner ">
                             <div class="carousel-item active img-thumbnail">
                                 <img src="img/banner/bonsai_de_olivo_decoracion_800x800.webp" alt="Los Angeles"
-                                    class="d-block w-70 mx-auto" style="height: 400px;">
+									 class="d-block w-70 mx-auto img-fluid" style="height: 400px;">
                             </div>
                             <div class="carousel-item img-thumbnail">
                                 <img src="img/banner/bonsai-de-junipero-viejo-830x622.jpg" alt="Chicago"
-                                    class="d-block w-70 mx-auto" style="height: 400px;">
+									 class="d-block w-70 mx-auto img-fluid" style="height: 400px;">
                             </div>
                             <div class="carousel-item img-thumbnail">
                                 <img src="img/banner/KINGII-CENTRO-PROFESIONAL-BONSAI.jpg" alt="New York"
-                                    class="d-block w-70 mx-auto" style="height: 400px;">
+									 class="d-block w-70 mx-auto img-fluid" style="height: 400px;">
                             </div>
                         </div>
 
-                        <!-- Left and right controls/icons -->
-                        <button class="carousel-control-prev btn bg-secondary" type="button" data-bs-target="#demo"
-                            data-bs-slide="prev" data-bs-toggle="tooltip" data-bs-placement="top" title="Back">
-                            <span class="carousel-control-prev-icon"></span>
-                        </button>
-                        <button class="carousel-control-next btn bg-secondary" type="button" data-bs-target="#demo"
-                            data-bs-slide="next" data-bs-toggle="tooltip" data-bs-placement="top" title="Next">
-                            <span class="carousel-control-next-icon bg-secondary"></span>
-                        </button>
+                     
+                       
                     </div>
 
 
                 </div>
-                <div class="col"></div>
+                
 
-            </div>
+
 
 
             <div class="info">
@@ -233,7 +221,7 @@
                 </section>
 
 
-                <section>
+               
                     <div class=" info2 bg-light">
                         <article>
                             <div class="descripcion m-lg-1">
@@ -314,41 +302,41 @@
                                 </div>
                                 <button type="button" class="btn btn-lg btn-primary" data-toggle="popover" title="Here is Content Heading" data-content="Here is the actual content inside the popover box and below the heading.">
                                     MiPopover
-                                    </button>
+								</button>
                             </div>
                         </article>
                     </div>
-                </section>
+             
             </div>
 
-         <footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
-					<div class="col text-center">
+			<footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
+				<div class="col text-center mt-5">
 
-						<h4>Informacion de contacto</h4>
-						<h6>
-							Villarrobledo-Albacete <br>
-							Telefono:671424198 <br>
-							Peropela336@gmail.com
-						</h6>
-					</div>
-					<div class="col text-center">
-						<p>&copy; Pagina web de bonsais</p>
-					</div>
-					<div class="col text-center">
-						<h3>Redes</h3>
+					<h4>Informacion de contacto</h4>
+					<h6>
+						Villarrobledo-Albacete <br>
+						Telefono:671424198 <br>
+						Peropela336@gmail.com
+					</h6>
+				</div>
+				<div class="col text-center mt-5">
+					<p>&copy; Pagina web de bonsais</p>
+				</div>
+				<div class="col text-center mt-5">
+					<h3>Redes</h3>
 
-						<a href="https://www.facebook.com/profile.php?id=100008619615493"><img class="img-fluid" src="img/facebook.png" width="60"></a>
-						<a href="https://www.instagram.com/pedro_mr78/"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
-						<a href="www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
+						<a href="https://www.facebook.com/profile.php?id=100008619615493" target="_blank"><img class="img-fluid" src="img/facebook.png" width="60"></a>
+						<a href="https://www.instagram.com/pedro_mr78/" target="_blank"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
+							<a href="https://www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab/" target="_blank"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
 
-					</div>
+				</div>
 
 
-				</footer>
+			</footer>
         </div>
-  
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-<script src="index.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+	<script src="index.js"></script>
 
 </html>

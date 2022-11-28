@@ -1,8 +1,23 @@
 
 document.getElementById("contraseña").addEventListener("change", contraseña);
 document.getElementById("email").addEventListener("change", email);
-document.getElementById("telefono").addEventListener("change",telefono);
+//document.getElementById("telefono").addEventListener("change",telefono);
 //document.getElementById("fechanacimiento").addEventListener("change",fechanacimiento);
+document.getElementById("login").addEventListener("click",login);
+document.getElementById("registro").addEventListener("click",registro);
+
+
+
+function login(){
+  document.getElementById("log").style.display = "";
+  document.getElementById("reg").style.display = "none";
+}
+
+function registro(){
+  document.getElementById("log").style.display = "none";
+  document.getElementById("reg").style.display = "";
+}
+
 
 
 function contraseña(){

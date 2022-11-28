@@ -68,7 +68,7 @@ create table
     Informacion(
         nombre varchar(20) primary key,
         descripcion varchar(2000),
-        cuidados varchar(200),
+        cuidados varchar(2000),
         img varchar(100)
     );
 
@@ -94,7 +94,7 @@ values (
 
 
 insert into
-    Informacion(nombre, descripcion, img)
+    Informacion(nombre, descripcion, cuidados, img)
 values 
     (
         'Arce palmatum',
@@ -103,6 +103,9 @@ values
     Posee numerosas variedades que varían del verde al amarillo dorado y al rojo púrpura. Su crecimiento es bastante lento, característica que hace que se emplee para el cultivo en bonsáis.
     Este arbusto muy empleado en jardinería es remarcable por su porte gracioso, por la forma de sus hojas y la riqueza de sus coloridos, sobre todo en primavera, y nuevamente en otoño, cuando todas sus hojas se vuelven de tonos rojos.
     Es sensible a cochinilla, a carencias de hierro en suelo calizo y a las quemaduras foliares por el sol o el viento',
+    'El arce japonés palmeado no admite sol directo, ya que sus hojas no toleran el calor. Por esa razón y especialmente si vivimos en un clima cálido, lo ideal es que lo plantemos en un lugar en el que reciba luminosidad pero pueda estar
+    fresco.El Acer Palmatum no tolera la sequía. Pero no es la única peculiaridad: también demanda ser regado con agua de lluvia o, en su defecto, agua ácida.El Arce Palmatum soporta heladas rigurosas de hasta menos 10 grados. Es más: 
+    necesita ese frío para poder rebrotar en condiciones con la llegada de la primavera.',
     'arcePalmatum.jpg'
     ), 
     (
@@ -113,6 +116,13 @@ values
         ecamosos, con pequeñas puntas en el extremo de las escamas, tardando dos años en madurar. Los conos masculinos tienen una longitud de 1-2 cm en 
         macizos de 12-20 en las puntas del crecimiento en primavera. La corteza es gris en los árboles jóvenes y pequeñas ramas, cambiando al negro y plateado 
         en ramas más grandes y el tronco; haciéndose bastante espesas en troncos de más edad.',
+    'El árbol no tolera la sombra ni la semisombra, ya que esto lo debilita. Necesita el frío y que las temperaturas bajen lo suficiente durante el invierno para
+    poder hibernar. El paso de las bajas temperaturas permite que las yemas se abran al inicio de la primavera.El riego debe realizarse de forma esporádica, pero no 
+    debe abandonarse, de lo contrario afectaría su crecimiento. Se debe regar cada vez que se seque la superficie de la tierra y el proceso es aplicar agua hasta que 
+    se sature el sustrato y esta salga por los orificios del cuenco.El abonado es el proceso mediante el cual se enriquece el sustrato con nutrientes y vitaminas para 
+    optimizar el crecimiento del bonsái. Es fundamental abonar la especie con abono orgánico, que sea de alta calidad, especialmente para un crecimiento vigoroso.El trasplante 
+    del bonsái pino negro japonés se realiza cada 3 años hasta máximo 5 años. Esto se debe realizar antes de la primera brotación del año, que es cuando están hinchados los brotes. 
+    El trasplante también puede llevarse a cabo durante otoño y durante el verano, y el indicador para hacerlo es cuando el movimiento de la savia se ha reducido.',
     'pinusThumbergi.jpg'
     ),
     (
@@ -122,6 +132,8 @@ values
     Sus hojas son pequeñas, simples, alternas, ovaladas, dentadas y terminadas en punta. Nervadura muy señalada de color verde intenso, que cambia de color durante el otoño a tonos amarillos, naranja y rojizos.
     Al final del verano presenta flores muy pequeñas, hermafroditas, verdosas, blancuzcas o rojizas.
     Fruto sámara aplanado circular, de color verdizo al principio, que termina secándose al final del desarrollo, en el que adopta un tono amarillento. Entre los 15 o 25 años de edad aparecen los primeros frutos.4​',
+    'El Olmo Chino debe ser regado generosamente tan pronto como el substrato se seca. Deben evitarse las sequías, así como un substrato permanentemente húmedo.Durante la estación de crecimiento debe abonarse bien al 
+    Olmo Chino. No requiere ningún abono en particular. Una combinación de abono sólido orgánico y de un producto químico líquido bien equilibrado es un buen concepto.',
     'ulmusParvifolia.jpg'
     );
 insert into
@@ -252,5 +264,87 @@ values (
         10,
         'planton',
         '0'
-    )
-;
+    ),(
+        14,
+        'Tijeras',
+        'Tijeras para cortar ramas',
+        150,
+        'tijeras.jpg',
+        12,
+        'tijeras',
+        '0'
+    ),(
+        15,
+        'Rastrillos',
+        'Rastrillo para bonsais',
+        10,
+        'rastrillo.jpg',
+        5,
+        'rastrillos',
+        '0'
+    ),(
+        16,
+        'Podadoras',
+        'Podadora para bonsais',
+        100,
+        'podadora.jpg',
+        50,
+        'podadora',
+        '0'
+    ),(
+        17,
+        'Maceta alta',
+        'Maceta para bonsais en cascada',
+        10,
+        'macetacascada.jpg',
+        100,
+        'macetacascada',
+        '0'
+    ),(
+        18,
+        'Sustrato Kiryu',
+        'Sustrato con mucho hierro Japones',
+        500,
+        'kiryuzuna.jpg',
+        35,
+        'sustrato',
+        '0'
+    ),(
+        19,
+        'Hiryo Gold',
+        'Abono especial para bonsais',
+        500,
+        'hiryogold.jpg',
+        40,
+        'abono',
+        '0'
+    ),(
+        20,
+        'Maceta Obalada',
+        'Maceta redonda',
+        100,
+        'macetaobalada.jpg',
+        200,
+        'macetaobalada',
+        '0'
+    ),(
+        21,
+        'Maceta Rectangular',
+        'Maceta cuadrada',
+        100,
+        'macetarectangular.jpg',
+        200,
+        'macetacuadrada',
+        '0'
+    ),(
+        22,
+        'Sustrato Akadama',
+        'Sustrato con una buna retencion de agua',
+        100,
+        'akadama.jpg',
+        40,
+        'sustrato',
+        '0'
+    );
+
+

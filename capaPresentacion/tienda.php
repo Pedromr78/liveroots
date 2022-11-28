@@ -16,8 +16,9 @@ session_start();
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-		<title>Living Roots</title>
+		<title>Live Roots</title>
 		<link rel="stylesheet" href="index.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/tienda.css" type="text/css" media="screen" />
 
 
 	</head>
@@ -56,20 +57,16 @@ session_start();
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item dropdown">
-										<a id="produ3" class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										<a id="produ3" class="nav-link  text-dark" href="tienda.php" id="navbarDropdown"  aria-expanded="false">
 											Productos
 										</a>
-										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
-											<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Prebonsais" name="productosprebonsai"></form></li>
-											<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
-										</ul>
+
 									</li>
 
 
 									<li class="nav-item dropdown ">
 										<a id="info3" class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-											Informacion Cuidados
+											Informacion
 										</a>
 										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 											<li><a class="dropdown-item" href="topconocidos.php">Top Conocidos</a></li>
@@ -79,11 +76,13 @@ session_start();
 									</li>
 
 								</ul>
-								<form class="d-flex" method="post" action="tienda.php">
-									<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
-									<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
-								</form>
-								<ul class="navbar-nav  m-lg-2">
+								<ul class="nav-item mt-3">
+									<form class="d-flex" method="post" action="tienda.php">
+										<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
+										<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
+									</form>
+								</ul>
+								<ul class="navbar-item  mt-3">
 									<li class="nav-item dropdown ">
 
 
@@ -106,23 +105,26 @@ session_start();
 												<?php
 											}
 											?>
-											<li><a class="dropdown-item" href="#"><form action="tienda.php" method="post">
-														<button class="bg-light border border-0" type="submit" name="cierrasesion">cierra sesion</button>
-													</form></a></li>
+											<li><form action="tienda.php" method="post">
+													<button class="dropdown-item" type="submit" name="cierrasesion">cierra sesion</button>
+												</form></li>
 										</ul>
 
 
 
 									</li>
-									<li class="nav-item dropdown m-auto">
-										<a href="carrito.php"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"  class="bi bi-basket" viewBox="0 0 16 16"> 
-											<path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 
-												  1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 
-												  9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 
-												  0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.
-												  5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/> </svg>
-										</a>
-									</li>
+
+								</ul>
+								<ul class="nav-nav mt-3">
+
+									<a href="carrito.php"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30"  class="bi bi-basket" viewBox="0 0 16 16"> 
+										<path d="M5.757 1.071a.5.5 0 0 1 .172.686L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15a1 1 0 0 1 1 1v1a1 1 0 0 1-1 
+											  1v4.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 13.5V9a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h1.217L5.07 1.243a.5.5 0 0 1 .686-.172zM2 
+											  9v4.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V9H2zM1 7v1h14V7H1zm3 3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 4 10zm2 
+											  0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 6 10zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3A.5.5 0 0 1 8 10zm2 0a.5.5 0 0 1 .5.
+											  5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5zm2 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 1 .5-.5z"/> </svg>
+									</a>
+
 								</ul>
 							</div>
 
@@ -134,207 +136,668 @@ session_start();
 					</nav>   
 
 				</header>
-				<br>
-
-				<div class="row row-cols-4 col-md-8 m-auto mt-5 bg-light rounded border border-secondary" id="productos">
 
 
-					<?php
-					if (isset($_POST['productosbonsai'])) {
-						$producto = new Productos();
-						$nose = $producto->extraerBonsai();
-
-						foreach ($nose as $fila) {
-							?>
-							<div class="col p-5">
-								<form action="producto.php" method="post">
-									<button class="bg-light border border-0" type="submit"  name="cesta"> 
-										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-										<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-										<h6><?php echo $fila->getnombreProducto() ?></h6>
-										<?php
-								
-										if($fila->getdescuento()>0){
-											?> 
-											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
-										<?php
-										}
-										?> 
-
-										<h4><?php echo $fila->getprecio() ?>€</h4>
-										
-										
-									</button>
-									<?php
-									if ($fila->getcantidad() == 0) {
-										echo "No hay en el Stock";
-									} else {
-										?> 
-										<?php
-									}
-									?> 
-								</form>
-							</div>
+				<div class="row">
 
 
-							<?php
-						}
-					} else if (isset($_POST['productosprebonsai'])) {
-						$producto = new Productos();
-						$nose = $producto->extraerPrebonsai();
-
-						foreach ($nose as $fila) {
-							?>
-							<div class="col p-5">
-								<form action="producto.php" method="post">
-									<button class="bg-light border border-0" type="submit"  name="cesta"> 
-										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-										<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-										<h6><?php echo $fila->getnombreProducto() ?></h6>
-										<?php
-								
-										if($fila->getdescuento()>0){
-											?> 
-											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
-										<?php
-										}
-										?> 
-										<h4><?php echo $fila->getprecio() ?>€</h4>
-									</button>
-									<?php
-									if ($fila->getcantidad() == 0) {
-										echo "No hay en el Stock";
-									} else {
-										?> 
+					<div class="col col-md-2 mt-5 ">
+						<div class="bg-light" id="menu">
 
 
-										<?php
-									}
-									?> 
-								</form>
-							</div>
+
+
+							<ul>
+								<li class="has-sub"><a title="" href="">Plantas</a>
+									<ul class="bg-light rounded border border-secondary">
+										<li class="has-sub"><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Prebonsais" name="productosprebonsai"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
+									</ul>
+								</li>
+								<li class="has-sub"><a title="" href="">Herramientas</a>
+									<ul class="bg-light rounded border border-secondary">
+										<li class="has-sub"><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Tijeras" name="productostijeras"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Rastrillos" name="productosrastrillos"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Podadoras" name="productospodadoras"></form></li>
+									</ul>
+								</li>
+								<li class="has-sub"><a title="" href="">Macetas</a>
+									<ul class="bg-light rounded border border-secondary">
+										<li class="has-sub"><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Obaladas" name="macetasobaladas"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Cuadradas" name="macetascuadradas"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Cascada" name="macetacascada"></form></li>
+									</ul>
+
+								</li>
+								<li class=""><a title="" href="">Cultivo</a>
+									<ul class="bg-light rounded border border-secondary">
+										<li class="has-sub"><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Abonos" name="productosabonos"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Sustratos" name="productossustratos"></form></li>
+									</ul>
+
+								</li>
+							</ul>
+
+						</div>
+					</div>
+					<div class="col mt-5 col-md-8">
+						<div class="row row-cols-4  bg-light rounded border border-secondary" id="productos">
 
 
 							<?php
-						}
-					} else if (isset($_POST['productosplanton'])) {
-						$producto = new Productos();
-						$nose = $producto->extraerPlanton();
+							if (isset($_POST['productosbonsai'])) {
+								$producto = new Productos();
+								$producto->settipo('bonsai');
+								$nose = $producto->Filtro();
 
-						foreach ($nose as $fila) {
-							?>
-							<div class="col p-5">
-								<form action="producto.php" method="post">
-									<button class="bg-light border border-0" type="submit"  name="cesta"> 
-										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-										<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-										<h6><?php echo $fila->getnombreProducto() ?></h6>
-									<?php
-								
-										if($fila->getdescuento()>0){
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+											<?php
+											if ($fila->getcantidad() == 0) {
+												echo "No hay en el Stock";
+											} else {
+												?> 
+												<?php
+											}
 											?> 
-											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
-										<?php
-										}
-										?> 
-										<h4><?php echo $fila->getprecio() ?>€</h4>
-									</button>
-									<?php
-									if ($fila->getcantidad() == 0) {
-										echo "No hay en el Stock";
-									} else {
-										?> 
+										</form>
+									</div>
 
+
+									<?php
+								}
+							} else if (isset($_POST['macetacascada'])) {
+								$producto = new Productos();
+								$producto->settipo('macetacascada');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+											<?php
+											if ($fila->getcantidad() == 0) {
+												echo "No hay en el Stock";
+											} else {
+												?> 
+
+
+												<?php
+											}
+											?> 
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['macetascuadradas'])) {
+								$producto = new Productos();
+								$producto->settipo('macetacuadrada');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+											<?php
+											if ($fila->getcantidad() == 0) {
+												echo "No hay en el Stock";
+											} else {
+												?> 
+
+
+												<?php
+											}
+											?> 
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['macetasobaladas'])) {
+								$producto = new Productos();
+								$producto->settipo('macetaobalada');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+											<?php
+											if ($fila->getcantidad() == 0) {
+												echo "No hay en el Stock";
+											} else {
+												?> 
+
+
+												<?php
+											}
+											?> 
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['productossustratos'])) {
+								$producto = new Productos();
+								$producto->settipo('sustrato');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+											<?php
+											if ($fila->getcantidad() == 0) {
+												echo "No hay en el Stock";
+											} else {
+												?> 
+
+
+												<?php
+											}
+											?> 
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['productosabonos'])) {
+								$producto = new Productos();
+								$producto->settipo('abono');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+											<?php
+											if ($fila->getcantidad() == 0) {
+												echo "No hay en el Stock";
+											} else {
+												?> 
+
+
+												<?php
+											}
+											?> 
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['productosmacetas'])) {
+								$producto = new Productos();
+								$producto->settipo('maceta');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+											<?php
+											if ($fila->getcantidad() == 0) {
+												echo "No hay en el Stock";
+											} else {
+												?> 
+
+
+												<?php
+											}
+											?> 
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['productospodadoras'])) {
+								$producto = new Productos();
+								$producto->settipo('podadora');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+											<?php
+											if ($fila->getcantidad() == 0) {
+												echo "No hay en el Stock";
+											} else {
+												?> 
+
+
+												<?php
+											}
+											?> 
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['productosrastrillos'])) {
+								$producto = new Productos();
+								$producto->settipo('rastrillos');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+											<?php
+											if ($fila->getcantidad() == 0) {
+												echo "No hay en el Stock";
+											} else {
+												?> 
+
+
+												<?php
+											}
+											?> 
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['productostijeras'])) {
+								$producto = new Productos();
+								$producto->settipo('tijeras');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+											<?php
+											if ($fila->getcantidad() == 0) {
+												echo "No hay en el Stock";
+											} else {
+												?> 
+
+
+												<?php
+											}
+											?> 
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['productosprebonsai'])) {
+								$producto = new Productos();
+								$producto->settipo('prebonsai');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+											<?php
+											if ($fila->getcantidad() == 0) {
+												echo "No hay en el Stock";
+											} else {
+												?> 
+
+
+												<?php
+											}
+											?> 
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['productosplanton'])) {
+								$producto = new Productos();
+								$producto->settipo('planton');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+											<?php
+											if ($fila->getcantidad() == 0) {
+												echo "No hay en el Stock";
+											} else {
+												?> 
+
+
+												<?php
+											}
+											?> 
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['botonsearch'])) {
+
+								$producto = new Productos();
+								$nose = $producto->buscador($_POST['buscador']);
+								if (sizeof($nose) < 1) {
+									?>
+									<h6 class="text-center col-md-12">No se encontraron resultados</h6>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+
+
+									<?php
+								} else {
+
+									foreach ($nose as $fila) {
+										?>
+										<div class="col p-5">
+											<form action="producto.php" method="post">
+												<button class="bg-light border border-0" type="submit"  name="cesta"> 
+													<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+													<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+													<h6><?php echo $fila->getnombreProducto() ?></h6>
+													<?php
+													if ($fila->getdescuento() > 0) {
+														?> 
+														<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+														<?php
+													} else {
+														?> 
+														<h4><?php echo $fila->getprecio() ?>€</h4>
+														<?php
+													}
+													?> 
+												</button>
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+													<?php
+												}
+												?> 
+											</form>
+										</div>
 
 										<?php
 									}
-									?> 
-								</form>
-							</div>
+								}
+							} else {
+								$producto = new Productos();
+								$nose = $producto->extraerProductos();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+
+												<img class="img-fluid"  src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+											<?php
+											if ($fila->getcantidad() == 0) {
+												echo "No hay en el Stock";
+											} else {
+												?> 
 
 
-							<?php
-						}
-					} else if (isset($_POST['botonsearch'])) {
-						
-						$producto = new Productos();
-						$nose = $producto->buscador($_POST['buscador']);
-						var_dump($nose);
-
-						foreach ($nose as $fila) {
-							?>
-							<div class="col p-5">
-								<form action="producto.php" method="post">
-									<button class="bg-light border border-0" type="submit"  name="cesta"> 
-										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-										<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-										<h6><?php echo $fila->getnombreProducto() ?></h6>
-										<?php
-								
-										if($fila->getdescuento()>0){
+												<?php
+											}
 											?> 
-											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
-										<?php
-										}
-										?> 
-										<h4><?php echo $fila->getprecio() ?>€</h4>
-									</button>
+										</form>
+									</div>
+
 									<?php
-									if ($fila->getcantidad() == 0) {
-										echo "No hay en el Stock";
-									} else {
-										?> 
+								}
+							}
+							?>         
+						</div>
+					</div>
+					<div class="col col-md-2">
+						<div class=" bg-light mt-5 p-4">
+							<h6 class="">Enlaces de interes</h6>
 
+							<a href="https://www.youtube.com/@KaeruEnBonsaiStudio" target="_blank">David Cortizas</a>
+							<br>
+							<a href="https://www.youtube.com/c/DavidBenaventeBonsai" target="_blank">David Benavente</a>
+							<br>
+							<a href="https://www.youtube.com/@canaldebonsai1309" target="_blank">Canal de bonsai</a>
+							<br>
+							<a href="https://www.youtube.com/@BonsaiReleaf" target="_blank" >Bonsai Releaf</a>
+							<br>
+							<a href="https://www.youtube.com/@Bonsai-Colmenar">Bonsai Colmenar</a>
+							<br>
+							<a href="https://www.youtube.com/@kingiibonsai2713/featured">kingii bonsai</a>
+						</div>
 
-										<?php
-									}
-									?> 
-								</form>
-							</div>
-
-							<?php
-						}
-					} else {
-						$producto = new Productos();
-						$nose = $producto->extraerProductos();
-
-						foreach ($nose as $fila) {
-							?>
-							<div class="col p-5">
-								<form action="producto.php" method="post">
-									<button class="bg-light border border-0" type="submit"  name="cesta"> 
-										<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-
-										<img class="img-fluid"  src="img/<?php echo $fila->getimg() ?>">
-										<h6><?php echo $fila->getnombreProducto() ?></h6>
-										
-									<?php
-								
-										if($fila->getdescuento()>0){
-											?> 
-											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
-										<?php
-										}
-										?> 
-										<h4><?php echo $fila->getprecio() ?>€</h4>
-									</button>
-									<?php
-									if ($fila->getcantidad() == 0) {
-										echo "No hay en el Stock";
-									} else {
-										?> 
-
-
-										<?php
-									}
-									?> 
-								</form>
-							</div>
-
-							<?php
-						}
-					}
-					?>         
+					</div>
 				</div>
 
 
@@ -343,7 +806,7 @@ session_start();
 				</div>
 
 				<footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
-					<div class="col text-center">
+					<div class="col text-center mt-5">
 
 						<h4>Informacion de contacto</h4>
 						<h6>
@@ -352,15 +815,15 @@ session_start();
 							Peropela336@gmail.com
 						</h6>
 					</div>
-					<div class="col text-center">
+					<div class="col text-center mt-5">
 						<p>&copy; Pagina web de bonsais</p>
 					</div>
-					<div class="col text-center">
+					<div class="col text-center mt-5">
 						<h3>Redes</h3>
 
-						<a href="https://www.facebook.com/profile.php?id=100008619615493"><img class="img-fluid" src="img/facebook.png" width="60"></a>
-						<a href="https://www.instagram.com/pedro_mr78/"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
-						<a href="www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
+						<a href="https://www.facebook.com/profile.php?id=100008619615493" target="_blank"><img class="img-fluid" src="img/facebook.png" width="60"></a>
+						<a href="https://www.instagram.com/pedro_mr78/" target="_blank"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
+						<a href="https://www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab/" target="_blank"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
 
 					</div>
 
@@ -396,35 +859,37 @@ session_start();
 									<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
 
-
-
-									<li class="nav-item dropdown ">
-										<a id="info3" class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-											Informacion Cuidados
-										</a>
-										<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-											<li><a class="dropdown-item" href="topconocidos.php">Top Conocidos</a></li>
-											<li><a class="dropdown-item" href="infoCuidados.php">Info Cuidados</a></li>
-
-										</ul>
-									</li>
-										<li class="nav-item dropdown">
-											<a id="produ3" class=" nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										<li class="nav-item">
+											<a id="produ3" class=" nav-link text-dark" href="tienda.php" id="navbarDropdown" role="button" aria-expanded="false">
 												Productos
 											</a>
+										</li>
+
+										<li class="nav-item dropdown ">
+											<a id="info3" class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												Informacion
+											</a>
 											<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
-												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Prebonsais" name="productosprebonsai"></form></li>
-												<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
+												<li><a class="dropdown-item" href="topconocidos.php">Top Conocidos</a></li>
+												<li><a class="dropdown-item" href="infoCuidados.php">Info Cuidados</a></li>
+
 											</ul>
 										</li>
 
 
-									</ul>
 
-									<a class="nav-link" href="login.php ">
-										Login/Register
-									</a>
+									</ul>
+									<ul class="nav-item mt-3">
+										<form class="d-flex" method="post" action="tienda.php">
+											<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
+											<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
+										</form>
+									</ul>
+									<ul class="nav-item mt-3">
+										<a class="nav-link" href="login.php ">
+											Login/Register
+										</a>
+									</ul>
 
 								</div>
 
@@ -438,194 +903,631 @@ session_start();
 
 				</header>
 				<br>
-
-				<div class="row row-cols-4 col-md-8 m-auto mt-5 bg-light rounded border border-secondary" id="productos">
-
-
-					<?php
-					if (isset($_POST['productosbonsai'])) {
-						$producto = new Productos();
-						$nose = $producto->extraerBonsai();
-
-						foreach ($nose as $fila) {
-							?>
-							<div class="col p-5">
-								<form action="carrito.php" method="post">
-									<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-									<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-									<h4><?php echo $fila->getnombreProducto() ?></h4>
-									<?php
-										if($fila->getdescuento()>0){
-											?> 
-											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
-										<?php
-										}
-										?> 
-									<h3><?php echo $fila->getprecio() ?>€</h3>
-									<?php
-									if ($fila->getcantidad() == 0) {
-										echo "No hay en el Stock";
-									} else {
-										?> 
-
-										<a href="login.php"><input  type="button" value="Añadir a la cesta" name="cesta"></a> 
-
-										<?php
-									}
-									?> 
-								</form>
-							</div>
+				<div class="row">
+					<div class="col col-md-2 mt-5">
+						<div class=" row bg-light" id="menu">
 
 
-							<?php
-						}
-					} else if (isset($_POST['productosprebonsai'])) {
-						$producto = new Productos();
-						$nose = $producto->extraerPrebonsai();
 
-						foreach ($nose as $fila) {
-							?>
-							<div class="col p-5">
-								<form action="carrito.php" method="post">
-									<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-									<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-									<h4><?php echo $fila->getnombreProducto() ?></h4>
-								<?php
-										if($fila->getdescuento()>0){
-											?> 
-											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
-										<?php
-										}
-										?> 
-									<h3>Precio: <?php echo $fila->getprecio() ?>€</h3>
-									<?php
-									if ($fila->getcantidad() == 0) {
-										echo "No hay en el Stock";
-									} else {
-										?> 
-										<a href="login.php"><input  type="button" value="Añadir a la cesta" name="cesta"></a> 
 
-										<?php
-									}
-									?> 
-								</form>
-							</div>
+							<ul>
+								<li class="has-sub"><a title="" href="">Plantas</a>
+									<ul>
+										<li class="has-sub"><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Prebonsais" name="productosprebonsai"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
+									</ul>
+								</li>
+								<li class="has-sub"><a title="" href="">Herramientas</a>
+									<ul>
+										<li class="has-sub"><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Tijeras" name="productostijeras"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Rastrillos" name="productosrastrillos"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Podadoras" name="productospodadoras"></form></li>
+									</ul>
+								</li>
+								<li class="has-sub"><a title="" href="">Macetas</a>
+									<ul>
+										<li class="has-sub"><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Obaladas" name="macetasobaladas"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Cuadradas" name="macetascuadradas"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Cascada" name="macetacascada"></form></li>
+									</ul>
+
+								</li>
+								<li class="has-sub"><a title="" href="">Cultivo</a>
+									<ul>
+										<li class="has-sub"><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Abonos" name="productosabonos"></form></li>
+										<li><form action="tienda.php" method="post"><input type="submit" class="dropdown-item" href="#" value="Sustratos" name="productossustratos"></form></li>
+									</ul>
+
+								</li>
+							</ul>
+
+						</div>
+					</div>
+					<div class="col mt-5 col-md-8">
+						<div class="row row-cols-4  bg-light rounded border border-secondary" id="productos">
 
 
 							<?php
-						}
-					} else if (isset($_POST['productosplanton'])) {
-						$producto = new Productos();
-						$nose = $producto->extraerPlanton();
+							if (isset($_POST['productosbonsai'])) {
+								$producto = new Productos();
+								$producto->settipo('bonsai');
+								$nose = $producto->Filtro();
 
-						foreach ($nose as $fila) {
-							?>
-							<div class="col p-5">
-								<form action="carrito.php" method="post">
-									<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-									<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-									<h4><?php echo $fila->getnombreProducto() ?></h4>
-									<?php
-										if($fila->getdescuento()>0){
-											?> 
-											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
-										<?php
-										}
-										?> 
-									<h3>Precio: <?php echo $fila->getprecio() ?>€</h3>
-									<?php
-									if ($fila->getcantidad() == 0) {
-										echo "No hay en el Stock";
-									} else {
-										?> 
-										<a href="login.php"><input  type="button" value="Añadir a la cesta" name="cesta"></a> 
-
-										<?php
-									}
-									?> 
-								</form>
-							</div>
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="login.php" method="post">
+											<button class="bg-light border border-0" type="submit"  value="Añadir a la cesta" name="cesta">
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h4><?php echo $fila->getnombreProducto() ?></h4>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
 
 
-							<?php
-						}
-					} else if (isset($_POST['botonsearch'])) {
-						echo'entra';
-						$producto = new Productos();
-						$nose = $producto->buscador($_POST['buscador']);
+													<?php
+												}
+												?> 
+											</button>
+										</form>
+									</div>
 
-						foreach ($nose as $fila) {
-							?>
-							<form action="carrito.php" method="post">
-								<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-								<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-								<h4><?php echo $fila->getnombreProducto() ?></h4>
-								<?php
-										if($fila->getdescuento()>0){
-											?> 
-											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
-										<?php
-										}
-										?> 
-								<h3>Precio: <?php echo $fila->getprecio() ?>€</h3>
-								<?php
-								if ($fila->getcantidad() == 0) {
-									echo "No hay en el Stock";
-								} else {
-									?> 
-									<a href="login.php"><input  type="button" value="Añadir a la cesta" name="cesta"></a> 
 
 									<?php
 								}
-								?> 
-							</form>
-							<br>
+							} else if (isset($_POST['productossustratos'])) {
+								$producto = new Productos();
+								$producto->settipo('sustrato');
+								$nose = $producto->Filtro();
 
-							<?php
-						}
-					} else {
-						$producto = new Productos();
-						$nose = $producto->extraerProductos();
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="login.php" method="post">
+											<button class="bg-light border border-0" type="submit"  value="Añadir a la cesta" name="cesta">
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h4><?php echo $fila->getnombreProducto() ?></h4>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
 
-						foreach ($nose as $fila) {
-							?>
-							<form class="col p-5" action="carrito.php" method="post">
-								<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-								<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-								<h4><?php echo $fila->getnombreProducto() ?></h4>
-								<?php
-										if($fila->getdescuento()>0){
-											?> 
-											<p style="color:#D8F065;">¡Descuento<?php echo $fila->getdescuento()?>%!</p>
-										<?php
-										}
-										?> 
-								<h3>Precio: <?php echo $fila->getprecio() ?>€</h3>
-								<?php
-								if ($fila->getcantidad() == 0) {
-									echo "No hay en el Stock";
-								} else {
-									?> 
-									<a href="login.php"><input  type="button" value="Añadir a la cesta" name="cesta"></a> 
+
+													<?php
+												}
+												?> 
+											</button>
+										</form>
+									</div>
+
 
 									<?php
 								}
-								?> 
-							</form>
+							} else if (isset($_POST['productosabonos'])) {
+								$producto = new Productos();
+								$producto->settipo('abono');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="login.php" method="post">
+											<button class="bg-light border border-0" type="submit"  value="Añadir a la cesta" name="cesta">
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h4><?php echo $fila->getnombreProducto() ?></h4>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+													<?php
+												}
+												?> 
+											</button>
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['macetacascada'])) {
+								$producto = new Productos();
+								$producto->settipo('macetacascada');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="login.php" method="post">
+											<button class="bg-light border border-0" type="submit"  value="Añadir a la cesta" name="cesta">
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h4><?php echo $fila->getnombreProducto() ?></h4>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+													<?php
+												}
+												?> 
+											</button>
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['macetascuadradas'])) {
+								$producto = new Productos();
+								$producto->settipo('macetacuadrada');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="login.php" method="post">
+											<button class="bg-light border border-0" type="submit"  value="Añadir a la cesta" name="cesta">
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h4><?php echo $fila->getnombreProducto() ?></h4>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+													<?php
+												}
+												?> 
+											</button>
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['macetasobaladas'])) {
+								$producto = new Productos();
+								$producto->settipo('macetaobalada');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="login.php" method="post">
+											<button class="bg-light border border-0" type="submit"  value="Añadir a la cesta" name="cesta">
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h4><?php echo $fila->getnombreProducto() ?></h4>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+													<?php
+												}
+												?> 
+											</button>
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['productospodadoras'])) {
+								$producto = new Productos();
+								$producto->settipo('podadora');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="login.php" method="post">
+											<button class="bg-light border border-0" type="submit"  value="Añadir a la cesta" name="cesta">
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h4><?php echo $fila->getnombreProducto() ?></h4>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+													<?php
+												}
+												?> 
+											</button>
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['productosrastrillos'])) {
+								$producto = new Productos();
+								$producto->settipo('rastrillos');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="login.php" method="post">
+											<button class="bg-light border border-0" type="submit"  value="Añadir a la cesta" name="cesta">
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h4><?php echo $fila->getnombreProducto() ?></h4>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+													<?php
+												}
+												?> 
+											</button>
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['productostijeras'])) {
+								$producto = new Productos();
+								$producto->settipo('tijeras');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="login.php" method="post">
+											<button class="bg-light border border-0" type="submit"  value="Añadir a la cesta" name="cesta">
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h4><?php echo $fila->getnombreProducto() ?></h4>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+													<?php
+												}
+												?> 
+											</button>
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['productosprebonsai'])) {
+								$producto = new Productos();
+								$producto->settipo('prebonsai');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="login.php" method="post">
+											<button class="bg-light border border-0" type="submit"  value="Añadir a la cesta" name="cesta">
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h4><?php echo $fila->getnombreProducto() ?></h4>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+													<?php
+												}
+												?> 
+											</button>
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['productosplanton'])) {
+								$producto = new Productos();
+								$producto->settipo('planton');
+								$nose = $producto->Filtro();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="login.php" method="post">
+											<button class="bg-light border border-0" type="submit"  value="Añadir a la cesta" name="cesta">
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h4><?php echo $fila->getnombreProducto() ?></h4>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+													<?php
+												}
+												?> 
+											</button>
+										</form>
+									</div>
+
+
+									<?php
+								}
+							} else if (isset($_POST['botonsearch'])) {
+
+								$producto = new Productos();
+								$nose = $producto->buscador($_POST['buscador']);
+								if (sizeof($nose) < 1) {
+									?>
+									<h6 class="text-center col-md-12">No se encontraron resultados</h6>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+									<br>
+
+
+									<?php
+								} else {
+									foreach ($nose as $fila) {
+										?>
+										<div class="col p-5">
+											<form action="login.php" method="post">
+												<button class="bg-light border border-0" type="submit"  value="Añadir a la cesta" name="cesta">
+													<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+													<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+													<h4><?php echo $fila->getnombreProducto() ?></h4>
+													<?php
+													if ($fila->getdescuento() > 0) {
+														?> 
+														<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+														<?php
+													} else {
+														?> 
+														<h4><?php echo $fila->getprecio() ?>€</h4>
+														<?php
+													}
+													?> 
+													<?php
+													if ($fila->getcantidad() == 0) {
+														echo "No hay en el Stock";
+													} else {
+														?> 
+
+
+														<?php
+													}
+													?> 
+												</button>
+											</form>
+										</div>
+
+
+										<?php
+									}
+								}
+							} else {
+								$producto = new Productos();
+								$nose = $producto->extraerProductos();
+
+								foreach ($nose as $fila) {
+									?>
+									<div class="col p-5">
+										<form action="login.php" method="post">
+											<button class="bg-light border border-0" type="submit"  value="Añadir a la cesta" name="cesta">
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h4><?php echo $fila->getnombreProducto() ?></h4>
+												<?php
+												if ($fila->getdescuento() > 0) {
+													?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+													<?php
+												}
+												?> 
+											</button>
+										</form>
+									</div>
+
+
+									<?php
+								}
+							}
+							?>         
+						</div>
+
+					</div>
+					<div class="col col-md-2">
+						<div class=" bg-light mt-5 p-4">
+							<h6 class="">Enlaces de interes</h6>
+
+							<a href="https://www.youtube.com/@KaeruEnBonsaiStudio" target="_blank">David Cortizas</a>
 							<br>
+							<a href="https://www.youtube.com/c/DavidBenaventeBonsai" target="_blank">David Benavente</a>
+							<br>
+							<a href="https://www.youtube.com/@canaldebonsai1309" target="_blank">Canal de bonsai</a>
+							<br>
+							<a href="https://www.youtube.com/@BonsaiReleaf" target="_blank" >Bonsai Releaf</a>
+							<br>
+							<a href="https://www.youtube.com/@Bonsai-Colmenar">Bonsai Colmenar</a>
+							<br>
+							<a href="https://www.youtube.com/@kingiibonsai2713/featured">kingii bonsai</a>
+						</div>
 
-							<?php
-						}
-					}
-					?>         
+					</div>
 				</div>
 
-				<div class="row mb-lg-4">
 
-				</div>
 
 				<footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
-					<div class="col text-center">
+					<div class="col text-center mt-5">
 
 						<h4>Informacion de contacto</h4>
 						<h6>
@@ -634,15 +1536,15 @@ session_start();
 							Peropela336@gmail.com
 						</h6>
 					</div>
-					<div class="col text-center">
+					<div class="col text-center mt-5">
 						<p>&copy; Pagina web de bonsais</p>
 					</div>
-					<div class="col text-center">
+					<div class="col text-center mt-5">
 						<h3>Redes</h3>
 
 						<a href="https://www.facebook.com/profile.php?id=100008619615493" target="_blank"><img class="img-fluid" src="img/facebook.png" width="60"></a>
 						<a href="https://www.instagram.com/pedro_mr78/" target="_blank"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
-						<a href="www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab" target="_blank"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
+						<a href="https://www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab/" target="_blank"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
 
 					</div>
 

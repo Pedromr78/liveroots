@@ -37,7 +37,9 @@ class BDInformacion extends BDPlantas{
 				
 				$informacion->setnombre($fila['nombre']);
 				$informacion->setdescripcion($fila['descripcion']);
+				$informacion->setcuidados($fila['cuidados']);
 				$informacion->setimg($fila['img']);
+			
 				
 				$data[] = $informacion;
 			}

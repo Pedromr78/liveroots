@@ -197,24 +197,34 @@ class Compras {
 	}
 	
 	
-	public function extraerCompra(string $email) {
+	public function extraerCompra() {
 
 		/** @var BDUsuarios Instancia un objeto de la clase. */
 		$bdcompras = new BDCompras();
 		/** Inicializa los atributos del objeto. */
+		$bdcompras->setemail($this->email);
 		/** Comprueba si existe el usuario. */
 		/** El usuario no existe. */
-		return $bdcompras->extraerCompra($email);
+		return $bdcompras->extraerCompra();
 	}
-		public function extraerFactura(string $idcompra, string $email) {
+	
+	
+	
+		public function extraerFactura() {
 
 		/** @var BDUsuarios Instancia un objeto de la clase. */
 		$bdcompras = new BDCompras();
 		/** Inicializa los atributos del objeto. */
+		$bdcompras->setemail($this->email);
+		$bdcompras->setidcompra($this->idcompra);
 		/** Comprueba si existe el usuario. */
 		/** El usuario no existe. */
-		return $bdcompras->extraerFactura($idcompra,$email);
+		return $bdcompras->extraerFactura();
 	}
+	
+	
+	
+	
 		public function todaslasCompras() {
 
 		/** @var BDUsuarios Instancia un objeto de la clase. */

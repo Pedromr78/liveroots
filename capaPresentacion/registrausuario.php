@@ -17,13 +17,16 @@ session_start();
 
 <head>
 	<meta charset="UTF-8">
-	<title>Living Roots</title>
-
+	<title>Live Roots</title>
+	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<link rel="icon" type="image/png" href="imagenes/favicon.ico" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
+	<div class="text-center">
 	<header>
-		<h1>Living Roots</h1>
+		<h1><img src="img/logo titulo.png" width="170"></h1>
 	</header>
 	<nav>
 
@@ -122,21 +125,20 @@ session_start();
 		// 	echo '<h5>El usuario no ha sido validado correctamente</h5>';
 		// 	
 		?>
-		// <script>
+		 <script>
 			// 		function funcion() {
 			// 			window.open("../capaPresentacion/login.php", "", "");
 			// 		}
 			// 		let tiempo = setTimeout(funcion, 5000);
 			// 	
 		</script>
-		// <?php
+		 <?php
 			// }
 			// 
 			?>
 	</article>
-	<footer>
-		<p>&copy; Pagina web de bonsais</p>
-	</footer>
+	</div>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

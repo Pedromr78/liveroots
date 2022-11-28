@@ -19,7 +19,7 @@ session_start();
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- Bootstrap CSS -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-		<title>Living Roots</title>
+		<title>Live Roots</title>
 		<title></title>
 	</head>
 	<body>
@@ -39,7 +39,9 @@ session_start();
 				$idfactura = $_POST['idfactura'];
 				$compras = new Compras();
 				$producto = new Productos();
-				$compra = $compras->extraerFactura($idfactura, $_SESSION['usuario']->getEmail());
+				$compras->setemail($_SESSION['usuario']->getEmail());
+				$compras->setidcompra($idfactura);
+				$compra = $compras->extraerFactura();
 				?> 
 				<h4 class="p-5">Compra realizada por <?php echo $_SESSION['usuario']->getEmail(); ?></h4>
 				<div class="row text-center p-5">
@@ -47,7 +49,8 @@ session_start();
 				</div>
 	<?php
 	foreach ($compra as $fila) {
-		$datosproductos = $producto->leerProductos($fila->getidpro());
+			$producto->setcodProducto($fila->getidpro());
+		$datosproductos = $producto->leerProductos();
 		?> 
 					<p><?php echo $datosproductos[0]->getnombreProducto() ?> x<?php echo $fila->getcantidad() ?> <?php echo $fila->getprecio() ?>€ iva incluido (21%)</p>
 		<?php
@@ -78,7 +81,10 @@ use Dompdf\Dompdf;
 $dompdf = new Dompdf();
 $compras = new Compras();
 
-$compra = $compras->extraerFactura($idfactura, $_SESSION['usuario']->getEmail());
+$compras->setemail($_SESSION['usuario']->getEmail());
+$compras->setidcompra($idfactura);
+
+$compra = $compras->extraerFactura();
 $nombrearchivo = $compra[0]->getidcompra();
 
 $options = $dompdf->getOptions();
