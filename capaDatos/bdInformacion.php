@@ -10,7 +10,7 @@ class BDInformacion extends BDPlantas{
 	
 	
 	/**
-	 * Método que comprueba si existe el usuario en la base de datos.
+	 * Método que extrae los datos en la base de datos.
 	 *
 	 * @access public
 	 * @return array	True si existe
