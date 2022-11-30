@@ -80,10 +80,10 @@ session_start();
 
 								</ul>
 								<ul class="nav-item mt-3">
-									<form class="d-flex" method="post" action="tienda.php">
+									<form class="d-flex" method="post" action="tienda.php?pagina=1&search=4">
 										<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
 										<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
-									</form>
+										</form>
 								</ul>
 								<ul class="navbar-item  mt-3">
 									<li class="nav-item dropdown ">
@@ -183,9 +183,9 @@ session_start();
 
 									</ul>
 									<ul class="nav-item mt-3">
-										<form class="d-flex" method="post" action="tienda.php">
-											<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
-											<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
+										<form class="d-flex" method="post" action="tienda.php?pagina=1&search=4">
+										<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
+										<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
 										</form>
 									</ul>
 									<ul class="nav-item mt-3">

@@ -272,14 +272,14 @@ class Productos {
 	 * @return array	true en caso afirmativo
 	 * 					false en caso contrario.
 	 */
-	public function buscador(string $valor) {
+	public function buscador(string $valor,$inicio) {
 
 		/** @var BDUsuarios Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
 		/** Inicializa los atributos del objeto. */
 		/** Comprueba si existe el usuario. */
 		/** El usuario no existe. */
-		return $bdproducto->buscador($valor);
+		return $bdproducto->buscador($valor,$inicio);
 	}
 	public function añadeproducto() {
 
@@ -350,5 +350,13 @@ class Productos {
 		return $paginas;
 	}
 	
+		public function paginasbuscador($tipo){
+		$bdproducto = new BDProductos();
+		
+		
+			$paginas=ceil($bdproducto->paginasbuscador($tipo)/10);
+		
+		return $paginas;
+	}
 
 }

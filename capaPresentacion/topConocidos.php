@@ -80,10 +80,10 @@ if (isset($_SESSION['usuario'])) {
 
 								</ul>
 									<ul class="nav-item mt-3">
-									<form class="d-flex" method="post" action="tienda.php">
+									<form class="d-flex" method="post" action="tienda.php?pagina=1&search=4">
 										<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
 										<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
-									</form>
+										</form>
 								</ul>
 								<ul class="navbar-item  mt-3">
 									<li class="nav-item dropdown ">
@@ -162,9 +162,6 @@ if (isset($_SESSION['usuario'])) {
 									<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
 
-
-
-									
 										<li class="nav-item">
 											<a id="produ3" class=" nav-link text-dark" href="tienda.php" id="navbarDropdown" role="button" aria-expanded="false">
 												Productos
@@ -183,12 +180,12 @@ if (isset($_SESSION['usuario'])) {
 										</li>
 
 
-									</ul>
 
+									</ul>
 									<ul class="nav-item mt-3">
-										<form class="d-flex" method="post" action="tienda.php">
-											<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
-											<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
+										<form class="d-flex" method="post" action="tienda.php?pagina=1&search=4">
+										<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
+										<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
 										</form>
 									</ul>
 									<ul class="nav-item mt-3">
@@ -196,6 +193,7 @@ if (isset($_SESSION['usuario'])) {
 											Login/Register
 										</a>
 									</ul>
+
 								</div>
 
 							</div>

@@ -375,7 +375,7 @@ class BDProductos extends BDPlantas {
 			}
 		}
 	}
-			/**
+	/**
 	 * Método que comprueba si existe el usuario en la base de datos.
 	 *
 	 * @access public
@@ -409,8 +409,8 @@ class BDProductos extends BDPlantas {
 	 * @return array	True si existe
 	 * 					False en otro caso.
 	 */
-	public function buscador(string $valor) {
-		
+	public function buscador(string $valor,$inicio) {
+		$final=9;
 
 		$data = array();
 		/** Comprueba si existe conexión con la base de datos. */
@@ -419,9 +419,11 @@ class BDProductos extends BDPlantas {
 			$resultado = $this->pdocon->prepare(
 						'SELECT *
 						FROM Productos 
-						WHERE nombreProducto LIKE "%":nombre"%" OR descripcion LIKE "%":nombre"%"'
+						WHERE nombreProducto LIKE "%":nombre"%" OR descripcion LIKE "%":nombre"%" LIMIT :inicio,:final'
 			);
 			/** Vincula un parámetro al nombre de variable especificado. */
+			$resultado->bindParam(':inicio', $inicio,PDO::PARAM_INT);
+			$resultado->bindParam(':final', $final,PDO::PARAM_INT);
 			$resultado->bindParam(':nombre',$valor);
 			
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
@@ -445,6 +447,31 @@ class BDProductos extends BDPlantas {
 
 
 				return $data;
+			
+		}
+	}
+		/**
+	 * Método que comprueba si existe el usuario en la base de datos.
+	 *
+	 * @access public
+	 * @return array	True si existe
+	 * 					False en otro caso.
+	 */
+	public function paginasbuscador($tipo) {
+
+		/** Comprueba si existe conexión con la base de datos. */
+		if ($this->pdocon) {
+			/** Prepara la sentencia SQL. */
+			$resultado = $this->pdocon->prepare(
+				'SELECT *
+						FROM Productos WHERE nombreProducto LIKE "%":nombre"%" OR descripcion LIKE "%":nombre"%"'
+			);
+			/** Vincula un parámetro al nombre de variable especificado. */
+				
+				$resultado->bindParam(':nombre',$tipo);
+			/** Ejecuta la sentencia preparada y comprueba un posible error. */
+			$resultado->execute();
+			return $resultado->rowCount();	
 			
 		}
 	}

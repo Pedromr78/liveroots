@@ -18,8 +18,7 @@ session_start();
 				let tiempo = setTimeout(funcion, 5);
 			</script>
 			<?php
-		}
-if(!$_GET&&!$_POST){
+		}else if(!$_GET&&!$_POST){
 header('Location:tienda.php?pagina=1');}
 ?>
 <!doctype html>
@@ -82,7 +81,7 @@ header('Location:tienda.php?pagina=1');}
 
 								</ul>
 								<ul class="nav-item mt-3">
-									<form class="d-flex" method="post" action="tienda.php">
+									<form class="d-flex" method="post" action="tienda.php?pagina=1&search=4">
 										<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
 										<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
 									</form>
@@ -972,10 +971,12 @@ header('Location:tienda.php?pagina=1');}
 										</nav>
 										</div>
 								<?php	
-							} else if (isset($_POST['botonsearch'])) {
-
+						} else if (isset($_GET['search'])) {
+								$iniciar=($_GET['pagina']-1)*9;
+								
 								$producto = new Productos();
-								$nose = $producto->buscador($_POST['buscador']);
+								
+								$nose = $producto->buscador($_POST['buscador'],$iniciar);
 								if (sizeof($nose) < 1) {
 									?>
 									<h6 class="text-center col-md-12">No se encontraron resultados</h6>
@@ -1026,11 +1027,39 @@ header('Location:tienda.php?pagina=1');}
 												}
 												?> 
 											</form>
-										</div>
+									</div>
+									
 
-										<?php
-									}
+									<?php
 								}
+								?> 
+								<div class="col-md-12">
+									<nav>
+										<?php
+										
+										?> 
+											<ul class="pagination justify-content-center">
+												<li class="page-item <?php echo $_GET['pagina']<2 ? 'disabled' : '' ?>">
+													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&pla=4" >
+														Previous</a>
+												</li>
+												<?php
+												for ($i=0;$i<$producto->paginasbuscador($_POST['buscador']);$i++) {
+													?> 
+												
+												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&pla=4"><?php echo $i+1 ?></a></li>
+												<?php
+												}
+												?> 
+												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasbuscador($_POST['buscador'])-1 ? 'disabled' : '' ?>">
+													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&pla=4" >
+														Next</a>
+												</li>
+											</ul>
+										</nav>
+										</div>
+								<?php	
+												}	
 							} else {
 								$iniciar=($_GET['pagina']-1)*9;
 								
@@ -1207,9 +1236,9 @@ header('Location:tienda.php?pagina=1');}
 
 									</ul>
 									<ul class="nav-item mt-3">
-										<form class="d-flex" method="post" action="tienda.php">
-											<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
-											<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
+										<form class="d-flex" method="post" action="tienda.php?pagina=1&search=4">
+										<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
+										<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
 										</form>
 									</ul>
 									<ul class="nav-item mt-3">
@@ -2059,10 +2088,12 @@ header('Location:tienda.php?pagina=1');}
 										</nav>
 										</div>
 								<?php	
-							} else if (isset($_POST['botonsearch'])) {
-
+							} else if (isset($_GET['search'])) {
+								$iniciar=($_GET['pagina']-1)*9;
+								
 								$producto = new Productos();
-								$nose = $producto->buscador($_POST['buscador']);
+								
+								$nose = $producto->buscador($_POST['buscador'],$iniciar);
 								if (sizeof($nose) < 1) {
 									?>
 									<h6 class="text-center col-md-12">No se encontraron resultados</h6>
@@ -2113,12 +2144,40 @@ header('Location:tienda.php?pagina=1');}
 												}
 												?> 
 											</form>
-										</div>
+									</div>
+									
 
-										<?php
-									}
+									<?php
 								}
-							} else {
+								?> 
+								<div class="col-md-12">
+									<nav>
+										<?php
+										
+										?> 
+											<ul class="pagination justify-content-center">
+												<li class="page-item <?php echo $_GET['pagina']<2 ? 'disabled' : '' ?>">
+													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&pla=4" >
+														Previous</a>
+												</li>
+												<?php
+												for ($i=0;$i<$producto->paginasbuscador($_POST['buscador']);$i++) {
+													?> 
+												
+												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&pla=4"><?php echo $i+1 ?></a></li>
+												<?php
+												}
+												?> 
+												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasbuscador($_POST['buscador'])-1 ? 'disabled' : '' ?>">
+													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&pla=4" >
+														Next</a>
+												</li>
+											</ul>
+										</nav>
+										</div>
+								<?php	
+												}	
+							}  else {
 								$iniciar=($_GET['pagina']-1)*9;
 								
 								$producto = new Productos();
