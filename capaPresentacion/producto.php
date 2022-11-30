@@ -37,12 +37,16 @@ session_start();
 			</script>
 			<?php
 		}
-		if (isset($_SESSION['usuario'])) {
+		
 			?>
 
 
 
 			<div class="container-fluid ">
+				<?php
+		if (isset($_SESSION['usuario'])) {
+			?>
+
 				<header class="navbar-light bg-light row border-top border-bottom border-secondary">
 
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -135,85 +139,152 @@ session_start();
 					</nav>   
 
 				</header>
+				<?php
+			}else{
+				?>
+				<header>
 
-				<div class="row col-md-9 row-cols-1 m-auto">
-					<?php
-					if (isset($_POST['cesta'])) {
-						$producto = new Productos();
-						$producto->setcodProducto($_POST['fila']);
-						$prod = $producto->leerProductos();
-						?>
 
-						<form class="row p-5" action="carrito.php" method="post">
-							<input type="hidden" name="fila" value="<?php echo $prod['0']->getcodProducto() ?>">
-							<div class="col">
-								<img class="img-fluid bg-light rounded border border-secondary" width="300" src="img/<?php echo $prod['0']->getimg() ?>">
-							</div>
-							<div class="col p-5 bg-light rounded border border-secondary">
-								<h3><?php echo $prod['0']->getnombreProducto() ?></h3>
-								<p><?php echo $prod['0']->getdescripcion() ?></p>
-								<?php
-								if ($prod['0']->getdescuento() > 0) {
-									$numerodescuento = ($prod['0']->getdescuento() * $prod['0']->getprecio() / 100);
-									$descuentototal = $prod['0']->getprecio() - $numerodescuento;
-									?> 
-									<p style="color:#D8F065;">Descuento <?php echo $prod['0']->getdescuento() ?>%</p>
-									<p><?php echo $prod['0']->getprecio() ?>$-<?php echo $prod['0']->getdescuento() ?>%-><?php echo $descuentototal; ?>$</p>
-									<?php
-								} else {
-									?> 
-									<p><?php echo $prod['0']->getprecio() ?> $</p>
+					<div class="row navbar-light bg-light border-top border-bottom border-secondary">
 
-									<?php
-								}
-								if ($prod['0']->getcantidad() == 0) {
-									echo "No hay en el Stock";
-								} else {
-									?> 
-									<div id="errorcantidad"></div>
-									<input type="number" min="1" max="10" name="cantidad" value="1" id="cantidad">
-									<input type="submit" name="cesta" value="Añadir a la cesta" id="añadircesta">
+
+						<nav class="navbar navbar-expand-lg navbar-light bg-light p-1">
+							<div class="container-fluid">
+
+								<a class="navbar-brand" href="index.php"> <img class="img-fluid" src="img/logo titulo.png" width="170"></a>
+								<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+										data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+										aria-expanded="false" aria-label="Toggle navigation">
+									<span class="navbar-toggler-icon"></span>
+								</button>
+
+								<div class="collapse navbar-collapse" id="navbarSupportedContent">
+									<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+										<li class="nav-item">
+											<a id="produ3" class=" nav-link text-dark" href="tienda.php" id="navbarDropdown" role="button" aria-expanded="false">
+												Productos
+											</a>
+										</li>
+
+										<li class="nav-item dropdown ">
+											<a id="info3" class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+												Informacion
+											</a>
+											<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+												<li><a class="dropdown-item" href="topconocidos.php">Top Conocidos</a></li>
+												<li><a class="dropdown-item" href="infoCuidados.php">Info Cuidados</a></li>
+
+											</ul>
+										</li>
+
+
+
+									</ul>
+									<ul class="nav-item mt-3">
+										<form class="d-flex" method="post" action="tienda.php">
+											<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
+											<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
+										</form>
+									</ul>
+									<ul class="nav-item mt-3">
+										<a class="nav-link" href="login.php ">
+											Login/Register
+										</a>
+									</ul>
+
 								</div>
+
+							</div>
+
+
+
+
+
+					</div>
+
+				</header>
+				<?php
+			}
+			?>
+
+			<div class="row col-md-9 row-cols-1 m-auto">
+				<?php
+				if (isset($_POST['cesta'])) {
+					$producto = new Productos();
+					$producto->setcodProducto($_POST['fila']);
+					$prod = $producto->leerProductos();
+					?>
+
+					<form class="row p-5" action="<?php echo isset($_SESSION['usuario']) ? 'carrito.php' : 'login.php'  ?>" method="post">
+						<input type="hidden" name="fila" value="<?php echo $prod['0']->getcodProducto() ?>">
+						<div class="col">
+							<img class="img-fluid bg-light rounded border border-secondary" width="300" src="img/<?php echo $prod['0']->getimg() ?>">
+						</div>
+						<div class="col p-5 bg-light rounded border border-secondary">
+							<h3><?php echo $prod['0']->getnombreProducto() ?></h3>
+							<p><?php echo $prod['0']->getdescripcion() ?></p>
+							<?php
+							if ($prod['0']->getdescuento() > 0) {
+								$numerodescuento = ($prod['0']->getdescuento() * $prod['0']->getprecio() / 100);
+								$descuentototal = $prod['0']->getprecio() - $numerodescuento;
+								?> 
+								<p style="color:#D8F065;">Descuento <?php echo $prod['0']->getdescuento() ?>%</p>
+								<p><?php echo $prod['0']->getprecio() ?>$-<?php echo $prod['0']->getdescuento() ?>%-><?php echo $descuentototal; ?>$</p>
+								<?php
+							} else {
+								?> 
+								<p><?php echo $prod['0']->getprecio() ?> $</p>
+
 								<?php
 							}
-							?>
-						</form>
+							if ($prod['0']->getcantidad() == 0) {
+								echo "No hay en el Stock";
+							} else {
+								?> 
+								<div id="errorcantidad"></div>
+								<input type="number" min="1" max="10" name="cantidad" value="1" id="cantidad">
+								<input type="submit" name="cesta" value="Añadir a la cesta" id="añadircesta">
+							</div>
+							<?php
+						}
+						?>
+					</form>
 
-						<?php
-					}
-					?>
-				</div>
-
-				<footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
-					<div class="col text-center mt-5">
-
-						<h4>Informacion de contacto</h4>
-						<h6>
-							Villarrobledo-Albacete <br>
-							Telefono:671424198 <br>
-							Peropela336@gmail.com
-						</h6>
-					</div>
-					<div class="col text-center mt-5">
-						<p>&copy; Pagina web de bonsais</p>
-					</div>
-					<div class="col text-center mt-5">
-						<h3>Redes</h3>
-
-						<a href="https://www.facebook.com/profile.php?id=100008619615493" target="_blank"><img class="img-fluid" src="img/facebook.png" width="60"></a>
-						<a href="https://www.instagram.com/pedro_mr78/" target="_blank"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
-						<a href="https://www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab/" target="_blank"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
-
-					</div>
-
-
-				</footer>
-
+					<?php
+				}
+				?>
 			</div>
 
-			<?php
-		}
-		?>
+			<footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
+				<div class="col text-center mt-5">
+
+					<h4>Informacion de contacto</h4>
+					<h6>
+						Villarrobledo-Albacete <br>
+						Telefono:671424198 <br>
+						Peropela336@gmail.com
+					</h6>
+				</div>
+				<div class="col text-center mt-5">
+					<p>&copy; Pagina web de bonsais</p>
+				</div>
+				<div class="col text-center mt-5">
+					<h3>Redes</h3>
+
+					<a href="https://www.facebook.com/profile.php?id=100008619615493" target="_blank"><img class="img-fluid" src="img/facebook.png" width="60"></a>
+					<a href="https://www.instagram.com/pedro_mr78/" target="_blank"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
+					<a href="https://www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab/" target="_blank"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
+
+				</div>
+
+
+			</footer>
+
+		</div>
+
+
 
 	</body>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

@@ -227,14 +227,14 @@ class Productos {
 	 * @return array	true en caso afirmativo
 	 * 					false en caso contrario.
 	 */
-	public function extraerProductos() {
+	public function extraerProductos($inicio,$final) {
 
 		/** @var BDUsuarios Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
 		/** Inicializa los atributos del objeto. */
 		/** Comprueba si existe el usuario. */
 		/** El usuario no existe. */
-		return $bdproducto->extraerProductos();
+		return $bdproducto->extraerProductos($inicio,$final);
 	}
 
 	public function leerProductos() {
@@ -255,7 +255,7 @@ class Productos {
 	 * @return array	true en caso afirmativo
 	 * 					false en caso contrario.
 	 */
-	public function Filtro() {
+	public function Filtro($inicio,$final) {
 
 		/** @var BDUsuarios Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
@@ -263,7 +263,7 @@ class Productos {
 		$bdproducto->settipo($this->tipo);
 		/** Comprueba si existe el usuario. */
 		/** El usuario no existe. */
-		return $bdproducto->Filtro();
+		return $bdproducto->Filtro($inicio,$final);
 	}
 		/**
 	 * Método que comprueba si un usuario existe en la base de datos.
@@ -331,6 +331,23 @@ class Productos {
 		
 		
 		$bdproducto->reduceCantidadProducto();
+	}
+	
+	public function numeropaginas(){
+		$bdproducto = new BDProductos();
+		
+		
+			$paginas=ceil($bdproducto->numeropaginas()/10);
+		
+		return $paginas;
+	}
+		public function paginasFiltro(){
+		$bdproducto = new BDProductos();
+		
+			$bdproducto->settipo($this->tipo);
+			$paginas=ceil($bdproducto->paginasFiltro()/10);
+		
+		return $paginas;
 	}
 	
 

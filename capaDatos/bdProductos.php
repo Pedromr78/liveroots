@@ -225,18 +225,20 @@ class BDProductos extends BDPlantas {
 	 * @return array	True si existe
 	 * 					False en otro caso.
 	 */
-	public function extraerProductos() {
+	public function extraerProductos($inicio,$final) {
 
-
+		
 		$data = array();
 		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
 			/** Prepara la sentencia SQL. */
 			$resultado = $this->pdocon->prepare(
 				"SELECT *
-						FROM Productos"
+						FROM Productos LIMIT :inicio,:final"
 			);
 			/** Vincula un parámetro al nombre de variable especificado. */
+			$resultado->bindParam(':inicio', $inicio,PDO::PARAM_INT);
+			$resultado->bindParam(':final', $final,PDO::PARAM_INT);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
 
@@ -261,6 +263,30 @@ class BDProductos extends BDPlantas {
 			}
 		}
 	}
+		/**
+	 * Método que comprueba si existe el usuario en la base de datos.
+	 *
+	 * @access public
+	 * @return array	True si existe
+	 * 					False en otro caso.
+	 */
+	public function numeropaginas() {
+
+		/** Comprueba si existe conexión con la base de datos. */
+		if ($this->pdocon) {
+			/** Prepara la sentencia SQL. */
+			$resultado = $this->pdocon->prepare(
+				"SELECT *
+						FROM Productos"
+			);
+			/** Vincula un parámetro al nombre de variable especificado. */
+			/** Ejecuta la sentencia preparada y comprueba un posible error. */
+			$resultado->execute();
+			return $resultado->rowCount();	
+			
+		}
+	}
+	
 
 	public function leerProductos() {
 
@@ -310,7 +336,7 @@ class BDProductos extends BDPlantas {
 	 * @return array	True si existe
 	 * 					False en otro caso.
 	 */
-	public function Filtro() {
+	public function Filtro($inicio,$final) {
 		
 
 		$data = array();
@@ -319,9 +345,11 @@ class BDProductos extends BDPlantas {
 			/** Prepara la sentencia SQL. */
 			$resultado = $this->pdocon->prepare(
 				"SELECT *
-						FROM Productos WHERE tipo = :planton"
+						FROM Productos WHERE tipo = :planton LIMIT :inicio,:final"
 			);
 			/** Vincula un parámetro al nombre de variable especificado. */
+			$resultado->bindParam(':inicio', $inicio,PDO::PARAM_INT);
+			$resultado->bindParam(':final', $final,PDO::PARAM_INT);
 			$tipo=$this->tipo;
 			$resultado->bindParam(':planton',$tipo);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
@@ -347,6 +375,33 @@ class BDProductos extends BDPlantas {
 			}
 		}
 	}
+			/**
+	 * Método que comprueba si existe el usuario en la base de datos.
+	 *
+	 * @access public
+	 * @return array	True si existe
+	 * 					False en otro caso.
+	 */
+	public function paginasFiltro() {
+
+		/** Comprueba si existe conexión con la base de datos. */
+		if ($this->pdocon) {
+			/** Prepara la sentencia SQL. */
+			$resultado = $this->pdocon->prepare(
+				"SELECT *
+						FROM Productos WHERE tipo = :planton"
+			);
+			/** Vincula un parámetro al nombre de variable especificado. */
+				$tipo=$this->tipo;
+				$resultado->bindParam(':planton',$tipo);
+			/** Ejecuta la sentencia preparada y comprueba un posible error. */
+			$resultado->execute();
+			return $resultado->rowCount();	
+			
+		}
+	}
+	
+	
 		/**
 	 * Método que comprueba si existe el usuario en la base de datos.
 	 *
