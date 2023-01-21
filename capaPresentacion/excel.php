@@ -62,7 +62,7 @@ exit;
 	$productos= new Productos();
 $documento = new Spreadsheet();
 
-$array=$productos->extraerProductos();
+$array=$productos->extraertodosProductos();
 
 $documento
     ->getProperties()

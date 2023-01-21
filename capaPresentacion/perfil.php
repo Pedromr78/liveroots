@@ -24,6 +24,7 @@ session_start();
 
 	<body>
 		<?php
+		/**Si el usuario presiona cerrar sesion*/
 		if (isset($_POST['cierrasesion'])) {
 			$_SESSION = array();
 			/** Finaliza la sesión. */
@@ -43,7 +44,7 @@ session_start();
 			$_SESSION['usuario']->setNombre($_POST['nombre']);
 			$_SESSION['usuario']->setContraseña($_POST['contraseña']);
 			$_SESSION['usuario']->modificaUsuario();
-		}
+		}/**Si existe el usuario*/
 		if (isset($_SESSION['usuario'])) {
 			?>
 
@@ -202,6 +203,7 @@ session_start();
 			</div>
 
 			<?php
+		/**Si no existe*/
 		} else {
 			/** Si el usuario no se ha validado. */
 			echo '<h5>El usuario no ha sido validado correctamente</h5>';

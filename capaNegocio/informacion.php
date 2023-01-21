@@ -5,34 +5,34 @@ include_once '../capaDatos/bdinformacion.php';
 class Informacion {
 	
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var String Codigo del Producto.
 	 * @access private
 	 */
 	private string $nombre;
 
 	/**
-	 * @var integer Nombre del Producto.
+	 * @var String Cuidados.
 	 * @access private
 	 */
 	private string $cuidados;
 	
 	/**
-	 * @var integer Nombre del Producto.
+	 * @var String descripcion.
 	 * @access private
 	 */
 	private string $descripcion;
 	
 	/**
-	 * @var integer Nombre del Producto.
+	 * @var string img.
 	 * @access private
 	 */
 	private string $img;
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo Nombre.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param string $nombre Nombre.
 	 * @return void
 	 */
 	public function setnombre(string $nombre): void
@@ -41,10 +41,10 @@ class Informacion {
 	}
 	
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo Cuidados.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param string $cuidados Cuidados.
 	 * @return void
 	 */
 	public function setcuidados(string $cuidados): void
@@ -52,10 +52,10 @@ class Informacion {
 		$this->cuidados = $cuidados;
 	}
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo descripcion.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param string $descripcion descripcion.
 	 * @return void
 	 */
 	public function setdescripcion(string $descripcion): void
@@ -64,10 +64,10 @@ class Informacion {
 	}
 	
 		/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo img.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param string $img Imagen de cada arbol.
 	 * @return void
 	 */
 	public function setimg(string $img): void
@@ -76,30 +76,30 @@ class Informacion {
 	}
 	
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo Nombre.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return string Nombre Nombre de cada arbol.
 	 */
 	public function getnombre(): string
 	{
 		return $this->nombre;
 	}
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo descripcion.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return string descripcion de cada arbol.
 	 */
 	public function getdescripcion(): string
 	{
 		return $this->descripcion;
 	}
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo Cuidados.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return string Cuidados de cada arbol.
 	 */
 	public function getcuidados(): string
 	{
@@ -107,10 +107,10 @@ class Informacion {
 	}
 	
 		/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo img.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return string Imagen de cada arbol.
 	 */
 	public function getimg(): string
 	{
@@ -119,20 +119,17 @@ class Informacion {
 	
 
 	/**
-	 * Método que comprueba si un usuario existe en la base de datos.
+	 * Método que extrae los datos en la base de datos.
 	 *
 	 * @access public
-	 * @return array	true en caso afirmativo
-	 * 					false en caso contrario.
+	 * @return array	True si existe
+	 * 					False en otro caso.
 	 */
 	public function extraerinformacion() {
 	
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDInformacion Instancia un objeto de la clase. */
 		$bdinformacion = new BDInformacion();
-		/** Inicializa los atributos del objeto. */
-	
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		/** Extrae todos los datos de la base de datos. */
 		return $bdinformacion->extraerinformacion();
 	}
 }

@@ -24,6 +24,7 @@ session_start();
 
 	<body>
 		<?php
+		/**Si el usuario presiona cerrar sesion*/
 		if (isset($_POST['cierrasesion'])) {
 			$_SESSION = array();
 			/** Finaliza la sesión. */
@@ -44,6 +45,7 @@ session_start();
 
 			<div class="container-fluid ">
 				<?php
+		/**Si existe el usuario*/		
 		if (isset($_SESSION['usuario'])) {
 			?>
 
@@ -140,6 +142,7 @@ session_start();
 
 				</header>
 				<?php
+			/**Si no existe*/	
 			}else{
 				?>
 				<header>
@@ -211,12 +214,17 @@ session_start();
 
 			<div class="row col-md-9 row-cols-1 m-auto">
 				<?php
+				/**Si se pulsa el boton para ver el producto*/
 				if (isset($_POST['cesta'])) {
+					/**Instancia un objeto de la clase*/
 					$producto = new Productos();
+					/**Se inicializan los atributos*/
 					$producto->setcodProducto($_POST['fila']);
+					/**Se llama la funcion para sacar los datos del producto*/
 					$prod = $producto->leerProductos();
 					?>
-
+					<!-- Este form tiene codigo para si se esta logeado te lleva a carrito y si no estas a login-->
+					<!-- Muestra los datos con los get -->
 					<form class="row p-5" action="<?php echo isset($_SESSION['usuario']) ? 'carrito.php' : 'login.php'  ?>" method="post">
 						<input type="hidden" name="fila" value="<?php echo $prod['0']->getcodProducto() ?>">
 						<div class="col">
@@ -226,21 +234,26 @@ session_start();
 							<h3><?php echo $prod['0']->getnombreProducto() ?></h3>
 							<p><?php echo $prod['0']->getdescripcion() ?></p>
 							<?php
+							/**Si el descuento es mayor a 0*/
 							if ($prod['0']->getdescuento() > 0) {
+								/**Calculos para aplicar el descuento*/
 								$numerodescuento = ($prod['0']->getdescuento() * $prod['0']->getprecio() / 100);
 								$descuentototal = $prod['0']->getprecio() - $numerodescuento;
 								?> 
 								<p style="color:#D8F065;">Descuento <?php echo $prod['0']->getdescuento() ?>%</p>
 								<p><?php echo $prod['0']->getprecio() ?>$-<?php echo $prod['0']->getdescuento() ?>%-><?php echo $descuentototal; ?>$</p>
 								<?php
+								/**Si no hay descuento*/
 							} else {
 								?> 
 								<p><?php echo $prod['0']->getprecio() ?> $</p>
 
 								<?php
 							}
+							/**Si no hay productos muestra un mensage*/
 							if ($prod['0']->getcantidad() == 0) {
 								echo "No hay en el Stock";
+								/**Si hay productos en el stock*/
 							} else {
 								?> 
 								<div id="errorcantidad"></div>

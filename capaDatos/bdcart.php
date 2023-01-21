@@ -1,8 +1,8 @@
 <?php
 
 /**
- * bdusuarios.php
- * Módulo secundario que implementa la clase BDUsuarios.
+ * bdcart.php
+ * Módulo secundario que implementa la clase BDCart.
  *
  */
 /** Incluye la clase. */
@@ -17,28 +17,28 @@ class BDCart extends BDPlantas {
 	private int $idpro;
 
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var integer Cantidad del Producto.
 	 * @access private
 	 */
 	private int $cantidad;
 
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var String email Usuario.
 	 * @access private
 	 */
 	private string $email;
 
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var Date Fecha que se añade al carrito.
 	 * @access private
 	 */
 	private string $fechañadida;
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo idProducto.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $idpro Identificador del producto.
 	 * @return void
 	 */
 	public function setidpro(int $idpro): void {
@@ -46,34 +46,32 @@ class BDCart extends BDPlantas {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo cantidad.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $cantidad Cantidad de unidades añadidas al carrito.
 	 * @return void
 	 */
-
 	public function setcantidad(int $cantidad): void {
 		$this->cantidad = $cantidad;
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo email.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param String $email Identificador que enlaza los productos con el usuario.
 	 * @return void
 	 */
-
 	public function setemail(string $email): void {
 		$this->email = $email;
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo fecha que se añade el producto.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param Date $fechaañadida fecha que se añade el producto.
 	 * @return void
 	 */
 	public function setfechañadida(string $fechaañadida): void {
@@ -81,47 +79,47 @@ class BDCart extends BDPlantas {
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo idProducto.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return Int Identificador del producto.
 	 */
 	public function getidpro(): int {
 		return $this->idpro;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo cantidad.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return Int Cantidad de unidades que añades al carrito del producto.
 	 */
 	public function getcantidad(): int {
 		return $this->cantidad;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del email.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String Email del usuario que enlaza el producto.
 	 */
 	public function getemail(): string {
 		return $this->email;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo fecha.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return DateTime Fecha que se añade el producto.
 	 */
 	public function getfechañadida(): string {
 		return $this->fechañadida;
 	}
 
 	/**
-	 * Método que inserta un nuevo usuario en la base de datos
+	 * Método que inserta un producto al carrito
 	 * 
 	 * @access public
 	 * @return boolean	True si tiene éxito
@@ -154,7 +152,7 @@ class BDCart extends BDPlantas {
 	}
 
 	/**
-	 * Método que comprueba si existe el usuario en la base de datos.
+	 * Método que extrae los productos del carrito  del usuario.
 	 *
 	 * @access public
 	 * @return array	True si existe
@@ -162,7 +160,7 @@ class BDCart extends BDPlantas {
 	 */
 	public function extraerProducto() {
 
-
+		/** Array que guardara los datos de la base de datos */
 		$data = array();
 		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
@@ -173,24 +171,25 @@ class BDCart extends BDPlantas {
 			);
 
 			/** Vincula un parámetro al nombre de variable especificado. */
-			$email=$this->email;
+			$email = $this->email;
 			$resultado->bindParam(':email', $email);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
 				if ($resultado->rowCount() > 0) {
-
+					/** Se recorre los resultados de la consulta para crear objetos con las diferentes filas */
 					foreach ($resultado as $fila) {
+						/** Se establece un objeto de la clase */
 						$cart = new Cart();
-
+						/** Se inician los atributos del objeto */
 						$cart->setemail($fila['client_email']);
 						$cart->setidpro($fila['id']);
 						$cart->setfechañadida($fila['fechañadido']);
 						$cart->setcantidad($fila['cantidad']);
-
+						/** Se guardan los objetos en el array */
 						$data[] = $cart;
 					}
 
-
+					/** La funcion devuelve el conjuntos de resultados */
 					return $data;
 				}
 			}
@@ -198,7 +197,7 @@ class BDCart extends BDPlantas {
 	}
 
 	/**
-	 * Método que comprueba si existe el usuario en la base de datos.
+	 * Método que comprueba si existe el producto en el carrito.
 	 *
 	 * @access public
 	 * @return boolean	True si existe
@@ -217,28 +216,21 @@ class BDCart extends BDPlantas {
 			$resultado->bindParam(':id', $id);
 			$email = $this->email;
 			$resultado->bindParam(':email', $email);
-
-						
-			/** Vincula un parámetro al nombre de variable especificado. */
-			$id = $this->idpro;
-			$resultado->bindParam(':id', $id);
-
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
 				/** Comprueba que el número de filas sea 1. */
 				if ($resultado->rowCount() === 1) {
-					/** Existe el email del usuario. */
+					/** Existe el producto. */
 					return true;
 				}
 			}
 		}
-		/** No existe el email del usuario. */
+		/** No existe el producto. */
 		return false;
 	}
 
-	
-		/**
-	 * Método que comprueba si existe el usuario en la base de datos.
+	/**
+	 * Método que elimina los productos del carrito.
 	 *
 	 * @access public
 	 * @return boolean	True si existe
@@ -258,15 +250,13 @@ class BDCart extends BDPlantas {
 			$email = $this->email;
 			$resultado->bindParam(':email', $email);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
-		if ($resultado->execute()) {
+			if ($resultado->execute()) {
 				/** Devuelve true si se ha conseguido. */
 				return true;
 			}
 		}
 		/** Devuelve false si se ha producido un error. */
 		return false;
-	
-		}
-
+	}
 
 }

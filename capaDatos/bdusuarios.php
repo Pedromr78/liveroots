@@ -56,7 +56,7 @@ class BDUsuarios extends BDPlantas {
 	 * Método que inicializa el atributo email.
 	 *
 	 * @access public
-	 * @param string $email Nombre del usuario.
+	 * @param string $email email del usuario.
 	 * @return void
 	 */
 	public function setEmail(string $email): void {
@@ -67,7 +67,7 @@ class BDUsuarios extends BDPlantas {
 	 * Método que inicializa el atributo email.
 	 *
 	 * @access public
-	 * @param string $email Nombre del usuario.
+	 * @param string $email2 email del usuario.
 	 * @return void
 	 */
 	public function setEmail2(string $email2): void {
@@ -97,10 +97,10 @@ class BDUsuarios extends BDPlantas {
 	}
 
 	/**
-	 * Método que inicializa el atributo email.
+	 * Método que inicializa el atributo Apellidos.
 	 *
 	 * @access public
-	 * @param string $email Nombre del usuario.
+	 * @param string $apellidos apellidos del usuario.
 	 * @return void
 	 */
 	public function setApellidos(string $apellidos): void {
@@ -108,10 +108,10 @@ class BDUsuarios extends BDPlantas {
 	}
 
 	/**
-	 * Método que inicializa el atributo email.
+	 * Método que inicializa el atributo Telefono.
 	 *
 	 * @access public
-	 * @param string $email Nombre del usuario.
+	 * @param string $telefono Telefono del usuario.
 	 * @return void
 	 */
 	public function setTelefono(string $telefono): void {
@@ -119,10 +119,10 @@ class BDUsuarios extends BDPlantas {
 	}
 
 	/**
-	 * Método que inicializa el atributo email.
+	 * Método que inicializa el atributo FechaNacimiento.
 	 *
 	 * @access public
-	 * @param string $email Nombre del usuario.
+	 * @param DateTime $fechaNacimiento Feccha de nacimiento del usuario.
 	 * @return void
 	 */
 	public function setFechaNacimiento(string $fechaNacimiento): void {
@@ -170,30 +170,30 @@ class BDUsuarios extends BDPlantas {
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo nombre.
+	 * Método que devuelve el valor del atributo Apellidos.
 	 *
 	 * @access public
-	 * @return string Nombre completo del usuario.
+	 * @return string Apellidos completos del usuario.
 	 */
 	public function getApellidos(): string {
 		return $this->apellidos;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo nombre.
+	 * Método que devuelve el valor del atributo Telefono.
 	 *
 	 * @access public
-	 * @return string Nombre completo del usuario.
+	 * @return string Telefono completo del usuario.
 	 */
 	public function getTelefono(): string {
 		return $this->telefono;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo nombre.
+	 * Método que devuelve el valor del atributo FechaNacimiento.
 	 *
 	 * @access public
-	 * @return string Nombre completo del usuario.
+	 * @return string Fecha de nacimiento del usuario.
 	 */
 	public function getFechaNacimiento(): string {
 		return $this->fechaNacimiento;
@@ -231,20 +231,22 @@ class BDUsuarios extends BDPlantas {
 	}
 
 	/**
-	 * Método que valida un usuario en la base de datos.
+	 * Método que modifica un usuario en la base de datos.
 	 * 
 	 * @access public
 	 * @return boolean	True si existe
 	 * 					False en otro caso.
 	 */
 	public function modificaUsuario(): bool {
-
+	/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
+			/** Prepara la sentencia SQL. */
 			$resultado = $this->pdocon->prepare(
 				"UPDATE  Usuario Set email = :email,
 						contraseña = :contrasena,
 						nombre = :nombre
 					 WHERE email = :email2");
+			/** Vincula un parámetro al nombre de variable especificado. */
 			$email = $this->email;
 			$email2 = $this->email2;
 			$nombre = $this->nombre;
@@ -253,10 +255,13 @@ class BDUsuarios extends BDPlantas {
 			$resultado->bindParam(':email', $email);
 			$resultado->bindParam(':nombre', $nombre);
 			$resultado->bindParam(':contraseña', $contraseña);
+			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
+				/** Modifica el usuario. */
 				return true;
 			}
 		}
+		/** Error. */
 		return false;
 	}
 

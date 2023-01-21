@@ -11,7 +11,7 @@ class Compras {
 	
 	
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var integer Precio.
 	 * @access private
 	 */
 	private int $precio;
@@ -22,44 +22,44 @@ class Compras {
 	 */
 	private int $idpro;
 		/**
-	 * @var integer Codigo del Producto.
+	 * @var String Codigo de Compra.
 	 * @access private
 	 */
 	private string $idcompra;
 
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var integer Cantidad.
 	 * @access private
 	 */
 	private int $cantidad;
 
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var String email.
 	 * @access private
 	 */
 	private string $email;
 
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var String fecha.
 	 * @access private
 	 */
 	private string $fecha;
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo idProducto.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $idpro Identificador del producto.
 	 * @return void
 	 */
 	public function setidpro(int $idpro): void {
 		$this->idpro = $idpro;
 	}
-		/**
-	 * Método que inicializa el atributo idPromocion.
+	/**
+	 * Método que inicializa el atributo compra.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param String $idcompra Identificador de la compra.
 	 * @return void
 	 */
 	public function setidcompra(string $idcompra): void {
@@ -67,10 +67,10 @@ class Compras {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo precio.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $precio Precio de total de la compra.
 	 * @return void
 	 */
 	public function setprecio(int $precio): void {
@@ -78,10 +78,10 @@ class Compras {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo cantidad.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $cantidad Identificador de la promoción.
 	 * @return void
 	 */
 	public function setcantidad(int $cantidad): void {
@@ -89,10 +89,10 @@ class Compras {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo email.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param String $email que relaciona la compra.
 	 * @return void
 	 */
 	public function setemail(string $email): void {
@@ -100,10 +100,10 @@ class Compras {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo fecha.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param DateTime $fecha Fecha de la compra.
 	 * @return void
 	 */
 	public function setfecha(string $fecha): void {
@@ -112,10 +112,10 @@ class Compras {
 
 	
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo precio.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return integer precio de la compra.
 	 */
 	public function getprecio(): int {
 		return $this->precio;
@@ -124,64 +124,63 @@ class Compras {
 	
 	
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo idProducto.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return integer Identificador del producto.
 	 */
 	public function getidpro(): int {
 		return $this->idpro;
 	}
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo idcompra.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String Identificador de la compra.
 	 */
 	public function getidcompra(): string {
 		return $this->idcompra;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo Cantidad.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return integer Cantidad de producto en la compra.
 	 */
 	public function getcantidad(): int {
 		return $this->cantidad;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo email.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String email del usuario.
 	 */
 	public function getemail(): string {
 		return $this->email;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo fecha.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return DateTime Fecha de la compra.
 	 */
 	public function getfecha(): string {
 		return $this->fecha;
 	}
-	
 	/**
-	 * Método que comprueba si un usuario existe en la base de datos.
-	 *
+	 * Método que inserta una compra en la base de datos
+	 * 
 	 * @access public
-	 * @return array	true en caso afirmativo
-	 * 					false en caso contrario.
+	 * @return boolean	True si tiene éxito
+	 * 					False en otro caso
 	 */
 	public function añadircompra() {
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDCompras Instancia un objeto de la clase. */
 		$bdcompra = new BDCompras();
 		/** Inicializa los atributos del objeto. */
 		$bdcompra->setidpro($this->idpro);
@@ -190,48 +189,58 @@ class Compras {
 		$bdcompra->setidcompra($this->idcompra);
 		$bdcompra->setcantidad($this->cantidad);
 		$bdcompra->setprecio($this->precio);
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		/**Se realiza una nueva compra. */
 		return $bdcompra->añadircompra();
 
 	}
 	
-	
+	/**
+	 * Método que extrae todos los productos de un usuario.
+	 *
+	 * @access public
+	 * @return array	True si existe
+	 * 					False en otro caso.
+	 */
 	public function extraerCompra() {
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDCompras Instancia un objeto de la clase. */
 		$bdcompras = new BDCompras();
 		/** Inicializa los atributos del objeto. */
 		$bdcompras->setemail($this->email);
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		/** Se muestra las compras de un usuario. */
 		return $bdcompras->extraerCompra();
 	}
 	
 	
-	
+	/**
+	 * Método que extrae los datos de una compra.
+	 *
+	 * @access public
+	 * @return array	True si existe
+	 * 					False en otro caso.
+	 */
 		public function extraerFactura() {
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDCompras Instancia un objeto de la clase. */
 		$bdcompras = new BDCompras();
 		/** Inicializa los atributos del objeto. */
 		$bdcompras->setemail($this->email);
 		$bdcompras->setidcompra($this->idcompra);
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		/** Estrae los datos de una compra. */
 		return $bdcompras->extraerFactura();
 	}
-	
-	
-	
-	
+	/**
+	 * Método que extrae todas las compras de la base de datos.
+	 *
+	 * @access public
+	 * @return array	True si existe
+	 * 					False en otro caso.
+	 */
 		public function todaslasCompras() {
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDCompras Instancia un objeto de la clase. */
 		$bdcompras = new BDCompras();
-		/** Inicializa los atributos del objeto. */
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		/** Extrae todas las compras de la base de datos. */
 		return $bdcompras->todaslasCompras();
 	}
 }

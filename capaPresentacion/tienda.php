@@ -5,21 +5,23 @@ include '../capaNegocio/productos.php';
 include '../capaNegocio/informacion.php';
 session_start();
 
-/** Inicia sesión. */
-	if (isset($_POST['cierrasesion'])) {
-			$_SESSION = array();
-			/** Finaliza la sesión. */
-			session_destroy();
-			?>
-			<script>
-				function funcion() {
-					window.open("../capaPresentacion/index.php", "_top");
-				}
-				let tiempo = setTimeout(funcion, 5);
-			</script>
-			<?php
-		}else if(!$_GET&&!$_POST){
-header('Location:tienda.php?pagina=1');}
+/** Cierra sesión. */
+if (isset($_POST['cierrasesion'])) {
+	$_SESSION = array();
+	/** Finaliza la sesión. */
+	session_destroy();
+	?>
+	<script>
+		function funcion() {
+			window.open("../capaPresentacion/index.php", "_top");
+		}
+		let tiempo = setTimeout(funcion, 5);
+	</script>
+	<?php
+}else{
+if (!$_GET && !$_POST) {
+	header('Location:tienda.php?pagina=1');
+}
 ?>
 <!doctype html>
 <html lang="en">
@@ -38,16 +40,15 @@ header('Location:tienda.php?pagina=1');}
 	</head>
 
 	<body>
-		<?php
-		
-		
-	
-		if (isset($_SESSION['usuario'])) {
-			?>
+
+		<div class="container-fluid ">
+			<?php
+			if (isset($_SESSION['usuario'])) {
+				?>
 
 
 
-			<div class="container-fluid ">
+
 				<header class="navbar-light bg-light row border-top border-bottom border-secondary">
 
 					<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -95,16 +96,17 @@ header('Location:tienda.php?pagina=1');}
 											<path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/> 
 											<path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 
 												  11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/> </svg>
-												  <?php
-												  echo $_SESSION['usuario']->getNombre();
-												  ?>
+	<?php
+	echo $_SESSION['usuario']->getNombre();
+	?>
 										</button>
 										<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 											<li><a class="dropdown-item" href="perfil.php">Perfil</a></li>
 											<li><a class="dropdown-item" href="compras.php">Compras</a></li>
-											<?php
-											if ($_SESSION['usuario']->getEmail() == "admin@livingroots.es") {
-												?>
+	<?php
+	/**Este if hace que cuando se logee el admin aparezaca el archivo administracion.php*/
+	if ($_SESSION['usuario']->getEmail() == "admin@livingroots.es") {
+		?>
 												<li><a class="dropdown-item" href="administracion.php">Administracion</a></li>
 												<?php
 											}
@@ -142,1059 +144,15 @@ header('Location:tienda.php?pagina=1');}
 				</header>
 
 
-				<div class="row">
 
 
-					<div class="col col-md-2 mt-5 ">
-						<div class="bg-light" id="menu">
+	<?php
+} else {
+	?>
 
 
 
 
-							<ul>
-								<li class="has-sub"><a title="" href="">Plantas</a>
-									<ul class="bg-light rounded border border-secondary">
-										<li class="has-sub"><form action="tienda.php?pagina=1&bo=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
-										<li><form action="tienda.php?pagina=1&prebo=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Prebonsais" name="productosprebonsai"></form></li>
-										<li><form action="tienda.php?pagina=1&pla=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
-									</ul>
-								</li>
-								<li class="has-sub"><a title="" href="">Herramientas</a>
-									<ul class="bg-light rounded border border-secondary">
-										<li class="has-sub"><form action="tienda.php?pagina=1&proti=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Tijeras" name="productostijeras"></form></li>
-										<li><form action="tienda.php?pagina=1&prora=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Rastrillos" name="productosrastrillos"></form></li>
-										<li><form action="tienda.php?pagina=1&propo=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Podadoras" name="productospodadoras"></form></li>
-									</ul>
-								</li>
-								<li class="has-sub"><a title="" href="">Macetas</a>
-									<ul class="bg-light rounded border border-secondary">
-										<li class="has-sub"><form action="tienda.php?pagina=1&mao=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Obaladas" name="macetasobaladas"></form></li>
-										<li><form action="tienda.php?pagina=1&macu=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Cuadradas" name="macetascuadradas"></form></li>
-										<li><form action="tienda.php?pagina=1&maca=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Cascada" name="macetacascada"></form></li>
-									</ul>
-
-								</li>
-								<li class=""><a title="" href="">Cultivo</a>
-									<ul class="bg-light rounded border border-secondary">
-										<li class="has-sub"><form action="tienda.php?pagina=1&proa=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Abonos" name="productosabonos"></form></li>
-										<li><form action="tienda.php?pagina=1&prosu=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Sustratos" name="productossustratos"></form></li>
-									</ul>
-
-								</li>
-							</ul>
-
-						</div>
-					</div>
-					<div class="col mt-5 col-md-8">
-						<div class="bg-light rounded border border-secondary">
-						<div class="row row-cols-3  " id="productos">
-
-
-							<?php
-							
-							if (isset($_GET['bo'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								$producto = new Productos();
-								$producto->settipo('bonsai');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&bo=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&bo=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&bo=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							}else if (isset($_GET['maca'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('macetacascada');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&maca=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&maca=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&maca=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							} else if (isset($_GET['macu'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('macetacuadrada');
-								$nose = $producto->Filtro($iniciar,9);
-
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&macu=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&macu=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&macu=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							}else if (isset($_GET['mao'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('macetaobalada');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&mao=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&mao=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&mao=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							} else if (isset($_GET['prosu'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('sustrato');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&prosu=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&prosu=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&prosu=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							}else	if (isset($_GET['proa'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('abono');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&proa=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&proa=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&proa=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							} else 	if (isset($_GET['propo'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('podadora');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&propo=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&propo=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&propo=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							} else 	if (isset($_GET['prora'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('rastrillos');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&prora=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&prora=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&prora=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							}else 	if (isset($_GET['proti'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('tijeras');
-						$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&proti=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&proti=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&proti=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							} else if (isset($_GET['prebo'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('prebonsai');
-								$nose = $producto->Filtro($iniciar,9);
-
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&prebo=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&prebo=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&prebo=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							} else if (isset($_GET['pla'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('planton');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav>
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina']<2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&pla=4" >
-														Previous</a>
-												</li>
-												<?php
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&pla=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&pla=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-						} else if (isset($_GET['search'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								
-								$nose = $producto->buscador($_POST['buscador'],$iniciar);
-								if (sizeof($nose) < 1) {
-									?>
-									<h6 class="text-center col-md-12">No se encontraron resultados</h6>
-									<br>
-									<br>
-									<br>
-									<br>
-									<br>
-									<br>
-									<br>
-									<br>
-									<br>
-									<br>
-									<br>
-
-
-									<?php
-								} else {
-
-									foreach ($nose as $fila) {
-										?>
-										<div class="col p-5">
-											<form action="producto.php" method="post">
-												<button class="bg-light border border-0" type="submit"  name="cesta"> 
-													<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-													<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-													<h6><?php echo $fila->getnombreProducto() ?></h6>
-													<?php
-													if ($fila->getdescuento() > 0) {
-														?> 
-														<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-														<?php
-													} else {
-														?> 
-														<h4><?php echo $fila->getprecio() ?>€</h4>
-														<?php
-													}
-													?> 
-												</button>
-												<?php
-												if ($fila->getcantidad() == 0) {
-													echo "No hay en el Stock";
-												} else {
-													?> 
-
-
-													<?php
-												}
-												?> 
-											</form>
-									</div>
-									
-
-									<?php
-								}
-								?> 
-								<div class="col-md-12">
-									<nav>
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina']<2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&pla=4" >
-														Previous</a>
-												</li>
-												<?php
-												for ($i=0;$i<$producto->paginasbuscador($_POST['buscador']);$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&pla=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasbuscador($_POST['buscador'])-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&pla=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-												}	
-							} else {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$nose = $producto->extraerProductos($iniciar,9);
-							
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-
-												<img class="img-fluid" width="170" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-									<?php
-								}
-									
-								?>
-									<div class="col-md-12 text-center">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo  $_GET['pagina']<2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>" >
-														Previous</a>
-												</li>
-												<?php
-												for ($i=0;$i<$producto->numeropaginas();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->numeropaginas()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							}
-							?>         
-						</div>
-						</div>
-					</div>
-					<div class="col col-md-2">
-						<div class=" bg-light mt-5 p-4">
-							<h6 class="">Enlaces de interes</h6>
-
-							<a href="https://www.youtube.com/@KaeruEnBonsaiStudio" target="_blank">David Cortizas</a>
-							<br>
-							<a href="https://www.youtube.com/c/DavidBenaventeBonsai" target="_blank">David Benavente</a>
-							<br>
-							<a href="https://www.youtube.com/@canaldebonsai1309" target="_blank">Canal de bonsai</a>
-							<br>
-							<a href="https://www.youtube.com/@BonsaiReleaf" target="_blank" >Bonsai Releaf</a>
-							<br>
-							<a href="https://www.youtube.com/@Bonsai-Colmenar">Bonsai Colmenar</a>
-							<br>
-							<a href="https://www.youtube.com/@kingiibonsai2713/featured">kingii bonsai</a>
-						</div>
-
-					</div>
-				</div>
-
-
-				<div class="row mb-lg-4">
-
-				</div>
-
-				<footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
-					<div class="col text-center mt-5">
-
-						<h4>Informacion de contacto</h4>
-						<h6>
-							Villarrobledo-Albacete <br>
-							Telefono:671424198 <br>
-							Peropela336@gmail.com
-						</h6>
-					</div>
-					<div class="col text-center mt-5">
-						<p>&copy; Pagina web de bonsais</p>
-					</div>
-					<div class="col text-center mt-5">
-						<h3>Redes</h3>
-
-						<a href="https://www.facebook.com/profile.php?id=100008619615493" target="_blank"><img class="img-fluid" src="img/facebook.png" width="60"></a>
-						<a href="https://www.instagram.com/pedro_mr78/" target="_blank"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
-						<a href="https://www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab/" target="_blank"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
-
-					</div>
-
-
-				</footer>
-
-			</div>
-
-			<?php
-		} else {
-			?>
-
-
-
-			<div class="container-fluid ">
 				<header>
 
 
@@ -1237,8 +195,8 @@ header('Location:tienda.php?pagina=1');}
 									</ul>
 									<ul class="nav-item mt-3">
 										<form class="d-flex" method="post" action="tienda.php?pagina=1&search=4">
-										<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
-										<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
+											<input class="form-control me-2"  placeholder="Search" aria-label="Search" name="buscador">
+											<input class="btn  btn-outline-dark" type="submit" name="botonsearch" value="Search">
 										</form>
 									</ul>
 									<ul class="nav-item mt-3">
@@ -1258,65 +216,683 @@ header('Location:tienda.php?pagina=1');}
 					</div>
 
 				</header>
-				<br>
-				<div class="row">
+	<?php
+}
+?>
+			<br>
+			<div class="row">
 
 
-					<div class="col col-md-2 mt-5 ">
-						<div class="bg-light" id="menu">
+				<div class="col col-md-2 mt-5 ">
+					<div class="bg-light" id="menu">
 
 
 
 
-							<ul>
-								<li class="has-sub"><a title="" href="">Plantas</a>
-									<ul class="bg-light rounded border border-secondary">
-										<li class="has-sub"><form action="tienda.php?pagina=1&bo=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
-										<li><form action="tienda.php?pagina=1&prebo=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Prebonsais" name="productosprebonsai"></form></li>
-										<li><form action="tienda.php?pagina=1&pla=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
-									</ul>
-								</li>
-								<li class="has-sub"><a title="" href="">Herramientas</a>
-									<ul class="bg-light rounded border border-secondary">
-										<li class="has-sub"><form action="tienda.php?pagina=1&proti=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Tijeras" name="productostijeras"></form></li>
-										<li><form action="tienda.php?pagina=1&prora=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Rastrillos" name="productosrastrillos"></form></li>
-										<li><form action="tienda.php?pagina=1&propo=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Podadoras" name="productospodadoras"></form></li>
-									</ul>
-								</li>
-								<li class="has-sub"><a title="" href="">Macetas</a>
-									<ul class="bg-light rounded border border-secondary">
-										<li class="has-sub"><form action="tienda.php?pagina=1&mao=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Obaladas" name="macetasobaladas"></form></li>
-										<li><form action="tienda.php?pagina=1&macu=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Cuadradas" name="macetascuadradas"></form></li>
-										<li><form action="tienda.php?pagina=1&maca=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Cascada" name="macetacascada"></form></li>
-									</ul>
+						<ul>
+							<li class="has-sub"><a title="" href="">Plantas</a>
+								<ul class="bg-light rounded border border-secondary">
+									<li class="has-sub"><form action="tienda.php?pagina=1&bo=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Bonsais" name="productosbonsai"></form></li>
+									<li><form action="tienda.php?pagina=1&prebo=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Prebonsais" name="productosprebonsai"></form></li>
+									<li><form action="tienda.php?pagina=1&pla=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Plantones" name="productosplanton"></form></li>
+								</ul>
+							</li>
+							<li class="has-sub"><a title="" href="">Herramientas</a>
+								<ul class="bg-light rounded border border-secondary">
+									<li class="has-sub"><form action="tienda.php?pagina=1&proti=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Tijeras" name="productostijeras"></form></li>
+									<li><form action="tienda.php?pagina=1&prora=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Rastrillos" name="productosrastrillos"></form></li>
+									<li><form action="tienda.php?pagina=1&propo=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Podadoras" name="productospodadoras"></form></li>
+								</ul>
+							</li>
+							<li class="has-sub"><a title="" href="">Macetas</a>
+								<ul class="bg-light rounded border border-secondary">
+									<li class="has-sub"><form action="tienda.php?pagina=1&mao=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Obaladas" name="macetasobaladas"></form></li>
+									<li><form action="tienda.php?pagina=1&macu=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Cuadradas" name="macetascuadradas"></form></li>
+									<li><form action="tienda.php?pagina=1&maca=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Cascada" name="macetacascada"></form></li>
+								</ul>
 
-								</li>
-								<li class=""><a title="" href="">Cultivo</a>
-									<ul class="bg-light rounded border border-secondary">
-										<li class="has-sub"><form action="tienda.php?pagina=1&proa=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Abonos" name="productosabonos"></form></li>
-										<li><form action="tienda.php?pagina=1&prosu=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Sustratos" name="productossustratos"></form></li>
-									</ul>
+							</li>
+							<li class=""><a title="" href="">Cultivo</a>
+								<ul class="bg-light rounded border border-secondary">
+									<li class="has-sub"><form action="tienda.php?pagina=1&proa=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Abonos" name="productosabonos"></form></li>
+									<li><form action="tienda.php?pagina=1&prosu=4" method="post"><input type="submit" class="dropdown-item" href="#" value="Sustratos" name="productossustratos"></form></li>
+								</ul>
 
-								</li>
-							</ul>
+							</li>
+						</ul>
 
-						</div>
 					</div>
-					<div class="col mt-5 col-md-8">
-						<div class="bg-light rounded border border-secondary">
+				</div>
+				<div class="col mt-5 col-md-8">
+					<div class="bg-light rounded border border-secondary">
 						<div class="row row-cols-3  " id="productos">
 
 
-							<?php
-							
-							if (isset($_GET['bo'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								$producto = new Productos();
-								$producto->settipo('bonsai');
-								$nose = $producto->Filtro($iniciar,9);
+<?php
+if (isset($_GET['bo'])) {
+	$iniciar = ($_GET['pagina'] - 1) * 9;
+	$producto = new Productos();
+	$producto->settipo('bonsai');
+	$nose = $producto->Filtro($iniciar, 9);
 
-								foreach ($nose as $fila) {
-									?>
+	foreach ($nose as $fila) {
+		?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+		<?php
+		if ($fila->getdescuento() > 0) {
+			?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+													<?php
+												} else {
+													?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+												<?php
+											}
+											?> 
+										</form>
+									</div>
+
+
+		<?php
+	}
+	?>
+								<div class="col-md-12">
+									<nav  aria-label="Page navigation example">
+								<?php ?> 
+										<ul class="pagination justify-content-center">
+											<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&bo=4" >
+													Previous</a>
+											</li>
+	<?php
+	for ($i = 0; $i < $producto->paginasFiltro(); $i++) {
+		?> 
+
+												<li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i + 1 ?>&bo=4"><?php echo $i + 1 ?></a></li>
+												<?php
+											}
+											?> 
+											<li class="page-item <?php echo $_GET['pagina'] > $producto->paginasFiltro() - 1 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&bo=4" >
+													Next</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+	<?php
+} else if (isset($_GET['maca'])) {
+	$iniciar = ($_GET['pagina'] - 1) * 9;
+
+	$producto = new Productos();
+	$producto->settipo('macetacascada');
+	$nose = $producto->Filtro($iniciar, 9);
+
+	foreach ($nose as $fila) {
+		?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+		<?php
+		if ($fila->getdescuento() > 0) {
+			?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+			<?php
+		} else {
+			?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+												<?php
+											}
+											?> 
+										</form>
+									</div>
+
+
+											<?php
+										}
+										?>
+								<div class="col-md-12">
+									<nav  aria-label="Page navigation example">
+								<?php
+								?> 
+										<ul class="pagination justify-content-center">
+											<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&maca=4" >
+													Previous</a>
+											</li>
+										<?php
+										for ($i = 0; $i < $producto->paginasFiltro(); $i++) {
+											?> 
+
+												<li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i + 1 ?>&maca=4"><?php echo $i + 1 ?></a></li>
+		<?php
+	}
+	?> 
+											<li class="page-item <?php echo $_GET['pagina'] > $producto->paginasFiltro() - 1 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&maca=4" >
+													Next</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+											<?php
+										} else if (isset($_GET['macu'])) {
+											$iniciar = ($_GET['pagina'] - 1) * 9;
+
+											$producto = new Productos();
+											$producto->settipo('macetacuadrada');
+											$nose = $producto->Filtro($iniciar, 9);
+
+											foreach ($nose as $fila) {
+												?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+									<?php
+									if ($fila->getdescuento() > 0) {
+										?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+			<?php
+		} else {
+			?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+													<?php
+												}
+												?> 
+											</button>
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+													<?php
+												}
+												?> 
+										</form>
+									</div>
+
+
+		<?php
+	}
+	?>
+								<div class="col-md-12">
+									<nav  aria-label="Page navigation example">
+	<?php ?> 
+										<ul class="pagination justify-content-center">
+											<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&macu=4" >
+													Previous</a>
+											</li>
+								<?php
+								for ($i = 0; $i < $producto->paginasFiltro(); $i++) {
+									?> 
+
+												<li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i + 1 ?>&macu=4"><?php echo $i + 1 ?></a></li>
+											<?php
+										}
+										?> 
+											<li class="page-item <?php echo $_GET['pagina'] > $producto->paginasFiltro() - 1 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&macu=4" >
+													Next</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+	<?php
+} else if (isset($_GET['mao'])) {
+	$iniciar = ($_GET['pagina'] - 1) * 9;
+
+	$producto = new Productos();
+	$producto->settipo('macetaobalada');
+	$nose = $producto->Filtro($iniciar, 9);
+
+	foreach ($nose as $fila) {
+		?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+									<?php
+									if ($fila->getdescuento() > 0) {
+										?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+										<?php
+									} else {
+										?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+			<?php
+		}
+		?> 
+											</button>
+												<?php
+												if ($fila->getcantidad() == 0) {
+													echo "No hay en el Stock";
+												} else {
+													?> 
+
+
+													<?php
+												}
+												?> 
+										</form>
+									</div>
+
+
+											<?php
+										}
+										?>
+								<div class="col-md-12">
+									<nav  aria-label="Page navigation example">
+										<?php
+										?> 
+										<ul class="pagination justify-content-center">
+											<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&mao=4" >
+													Previous</a>
+											</li>
+								<?php
+								for ($i = 0; $i < $producto->paginasFiltro(); $i++) {
+									?> 
+
+												<li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i + 1 ?>&mao=4"><?php echo $i + 1 ?></a></li>
+											<?php
+										}
+										?> 
+											<li class="page-item <?php echo $_GET['pagina'] > $producto->paginasFiltro() - 1 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&mao=4" >
+													Next</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+											<?php
+										} else if (isset($_GET['prosu'])) {
+											$iniciar = ($_GET['pagina'] - 1) * 9;
+
+											$producto = new Productos();
+											$producto->settipo('sustrato');
+											$nose = $producto->Filtro($iniciar, 9);
+
+											foreach ($nose as $fila) {
+												?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+									<?php
+									if ($fila->getdescuento() > 0) {
+										?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+										<?php
+									} else {
+										?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+			<?php
+		}
+		?> 
+											</button>
+		<?php
+		if ($fila->getcantidad() == 0) {
+			echo "No hay en el Stock";
+		} else {
+			?> 
+
+
+													<?php
+												}
+												?> 
+										</form>
+									</div>
+
+
+											<?php
+										}
+										?>
+								<div class="col-md-12">
+									<nav  aria-label="Page navigation example">
+	<?php
+	?> 
+										<ul class="pagination justify-content-center">
+											<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&prosu=4" >
+													Previous</a>
+											</li>
+	<?php
+	for ($i = 0; $i < $producto->paginasFiltro(); $i++) {
+		?> 
+
+												<li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i + 1 ?>&prosu=4"><?php echo $i + 1 ?></a></li>
+		<?php
+	}
+	?> 
+											<li class="page-item <?php echo $_GET['pagina'] > $producto->paginasFiltro() - 1 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&prosu=4" >
+													Next</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+											<?php
+										} else if (isset($_GET['proa'])) {
+											$iniciar = ($_GET['pagina'] - 1) * 9;
+
+											$producto = new Productos();
+											$producto->settipo('abono');
+											$nose = $producto->Filtro($iniciar, 9);
+
+											foreach ($nose as $fila) {
+												?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+									<?php
+									if ($fila->getdescuento() > 0) {
+										?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+										<?php
+									} else {
+										?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+										<?php
+									}
+									?> 
+											</button>
+		<?php
+		if ($fila->getcantidad() == 0) {
+			echo "No hay en el Stock";
+		} else {
+			?> 
+
+
+													<?php
+												}
+												?> 
+										</form>
+									</div>
+
+
+												<?php
+											}
+											?>
+								<div class="col-md-12">
+									<nav  aria-label="Page navigation example">
+										<?php ?> 
+										<ul class="pagination justify-content-center">
+											<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&proa=4" >
+													Previous</a>
+											</li>
+										<?php
+										for ($i = 0; $i < $producto->paginasFiltro(); $i++) {
+											?> 
+
+												<li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i + 1 ?>&proa=4"><?php echo $i + 1 ?></a></li>
+									<?php
+								}
+								?> 
+											<li class="page-item <?php echo $_GET['pagina'] > $producto->paginasFiltro() - 1 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&proa=4" >
+													Next</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+	<?php
+} else if (isset($_GET['propo'])) {
+	$iniciar = ($_GET['pagina'] - 1) * 9;
+
+	$producto = new Productos();
+	$producto->settipo('podadora');
+	$nose = $producto->Filtro($iniciar, 9);
+
+	foreach ($nose as $fila) {
+		?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+		<?php
+		if ($fila->getdescuento() > 0) {
+			?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+										<?php
+									} else {
+										?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+										<?php
+									}
+									?> 
+											</button>
+									<?php
+									if ($fila->getcantidad() == 0) {
+										echo "No hay en el Stock";
+									} else {
+										?> 
+
+
+													<?php
+												}
+												?> 
+										</form>
+									</div>
+
+
+												<?php
+											}
+											?>
+								<div class="col-md-12">
+									<nav  aria-label="Page navigation example">
+										<?php
+										?> 
+										<ul class="pagination justify-content-center">
+											<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&propo=4" >
+													Previous</a>
+											</li>
+										<?php
+										for ($i = 0; $i < $producto->paginasFiltro(); $i++) {
+											?> 
+
+												<li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i + 1 ?>&propo=4"><?php echo $i + 1 ?></a></li>
+		<?php
+	}
+	?> 
+											<li class="page-item <?php echo $_GET['pagina'] > $producto->paginasFiltro() - 1 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&propo=4" >
+													Next</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+	<?php
+} else if (isset($_GET['prora'])) {
+	$iniciar = ($_GET['pagina'] - 1) * 9;
+
+	$producto = new Productos();
+	$producto->settipo('rastrillos');
+	$nose = $producto->Filtro($iniciar, 9);
+
+	foreach ($nose as $fila) {
+		?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+		<?php
+		if ($fila->getdescuento() > 0) {
+			?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+										<?php
+									} else {
+										?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+										<?php
+									}
+									?> 
+											</button>
+									<?php
+									if ($fila->getcantidad() == 0) {
+										echo "No hay en el Stock";
+									} else {
+										?> 
+
+
+			<?php
+		}
+		?> 
+										</form>
+									</div>
+
+
+												<?php
+											}
+											?>
+								<div class="col-md-12">
+									<nav  aria-label="Page navigation example">
+											<?php
+											?> 
+										<ul class="pagination justify-content-center">
+											<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&prora=4" >
+													Previous</a>
+											</li>
+	<?php
+	for ($i = 0; $i < $producto->paginasFiltro(); $i++) {
+		?> 
+
+												<li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i + 1 ?>&prora=4"><?php echo $i + 1 ?></a></li>
+		<?php
+	}
+	?> 
+											<li class="page-item <?php echo $_GET['pagina'] > $producto->paginasFiltro() - 1 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&prora=4" >
+													Next</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+										<?php
+									} else if (isset($_GET['proti'])) {
+										$iniciar = ($_GET['pagina'] - 1) * 9;
+
+										$producto = new Productos();
+										$producto->settipo('tijeras');
+										$nose = $producto->Filtro($iniciar, 9);
+
+										foreach ($nose as $fila) {
+											?>
+									<div class="col p-5">
+										<form action="producto.php" method="post">
+											<button class="bg-light border border-0" type="submit"  name="cesta"> 
+												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
+												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
+												<h6><?php echo $fila->getnombreProducto() ?></h6>
+		<?php
+		if ($fila->getdescuento() > 0) {
+			?> 
+													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+			<?php
+		} else {
+			?> 
+													<h4><?php echo $fila->getprecio() ?>€</h4>
+										<?php
+									}
+									?> 
+											</button>
+									<?php
+									if ($fila->getcantidad() == 0) {
+										echo "No hay en el Stock";
+									} else {
+										?> 
+
+
+			<?php
+		}
+		?> 
+										</form>
+									</div>
+
+
+												<?php
+											}
+											?>
+								<div class="col-md-12">
+									<nav  aria-label="Page navigation example">
+											<?php
+											?> 
+										<ul class="pagination justify-content-center">
+											<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&proti=4" >
+													Previous</a>
+											</li>
+										<?php
+										for ($i = 0; $i < $producto->paginasFiltro(); $i++) {
+											?> 
+
+												<li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i + 1 ?>&proti=4"><?php echo $i + 1 ?></a></li>
+											<?php
+										}
+										?> 
+											<li class="page-item <?php echo $_GET['pagina'] > $producto->paginasFiltro() - 1 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&proti=4" >
+													Next</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+										<?php
+									} else if (isset($_GET['prebo'])) {
+										$iniciar = ($_GET['pagina'] - 1) * 9;
+
+										$producto = new Productos();
+										$producto->settipo('prebonsai');
+										$nose = $producto->Filtro($iniciar, 9);
+
+										foreach ($nose as $fila) {
+											?>
 									<div class="col p-5">
 										<form action="producto.php" method="post">
 											<button class="bg-light border border-0" type="submit"  name="cesta"> 
@@ -1327,703 +903,61 @@ header('Location:tienda.php?pagina=1');}
 												if ($fila->getdescuento() > 0) {
 													?> 
 													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
+			<?php
+		} else {
+			?> 
 													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
+										<?php
+									}
+									?> 
 											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-												<?php
-											}
-											?> 
+									<?php
+									if ($fila->getcantidad() == 0) {
+										echo "No hay en el Stock";
+									} else {
+										?> 
+
+
+										<?php
+									}
+									?> 
 										</form>
 									</div>
 
 
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&bo=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&bo=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&bo=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							}else if (isset($_GET['maca'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('macetacascada');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
 												<?php
 											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
+											?>
+								<div class="col-md-12">
 									<nav  aria-label="Page navigation example">
+											<?php ?> 
+										<ul class="pagination justify-content-center">
+											<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&prebo=4" >
+													Previous</a>
+											</li>
 										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&maca=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&maca=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&maca=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							} else if (isset($_GET['macu'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('macetacuadrada');
-								$nose = $producto->Filtro($iniciar,9);
+										for ($i = 0; $i < $producto->paginasFiltro(); $i++) {
+											?> 
 
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
+												<li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i + 1 ?>&prebo=4"><?php echo $i + 1 ?></a></li>
 											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
+										}
 										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&macu=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&macu=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&macu=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							}else if (isset($_GET['mao'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('macetaobalada');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&mao=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&mao=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&mao=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							} else if (isset($_GET['prosu'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('sustrato');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&prosu=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&prosu=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&prosu=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							}else	if (isset($_GET['proa'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('abono');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&proa=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&proa=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&proa=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							} else 	if (isset($_GET['propo'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('podadora');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&propo=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&propo=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&propo=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							} else 	if (isset($_GET['prora'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('rastrillos');
-								$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&prora=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&prora=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&prora=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							}else 	if (isset($_GET['proti'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('tijeras');
-						$nose = $producto->Filtro($iniciar,9);
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&proti=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&proti=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&proti=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							} else if (isset($_GET['prebo'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$producto->settipo('prebonsai');
-								$nose = $producto->Filtro($iniciar,9);
-
-
-								foreach ($nose as $fila) {
-									?>
-									<div class="col p-5">
-										<form action="producto.php" method="post">
-											<button class="bg-light border border-0" type="submit"  name="cesta"> 
-												<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
-												<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
-												<h6><?php echo $fila->getnombreProducto() ?></h6>
-												<?php
-												if ($fila->getdescuento() > 0) {
-													?> 
-													<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-													<?php
-												} else {
-													?> 
-													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
-											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
-
-
-												<?php
-											}
-											?> 
-										</form>
-									</div>
-
-
-									<?php
-								}
-									?>
-									<div class="col-md-12">
-									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&prebo=4" >
-														Previous</a>
-												</li>
-												<?php
-											
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&prebo=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&prebo=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
+											<li class="page-item <?php echo $_GET['pagina'] > $producto->paginasFiltro() - 1 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&prebo=4" >
+													Next</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+								<?php
 							} else if (isset($_GET['pla'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
+								$iniciar = ($_GET['pagina'] - 1) * 9;
+
 								$producto = new Productos();
 								$producto->settipo('planton');
-								$nose = $producto->Filtro($iniciar,9);
+								$nose = $producto->Filtro($iniciar, 9);
 
 								foreach ($nose as $fila) {
 									?>
@@ -2041,61 +975,60 @@ header('Location:tienda.php?pagina=1');}
 												} else {
 													?> 
 													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
+			<?php
+		}
+		?> 
 											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
+									<?php
+									if ($fila->getcantidad() == 0) {
+										echo "No hay en el Stock";
+									} else {
+										?> 
 
 
-												<?php
-											}
-											?> 
+										<?php
+									}
+									?> 
 										</form>
 									</div>
 
 
-									<?php
-								}
-									?>
-									<div class="col-md-12">
+		<?php
+	}
+	?>
+								<div class="col-md-12">
 									<nav>
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina']<2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&pla=4" >
-														Previous</a>
-												</li>
-												<?php
-												for ($i=0;$i<$producto->paginasFiltro();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&pla=4"><?php echo $i+1 ?></a></li>
-												<?php
-												}
+											<?php
+											?> 
+										<ul class="pagination justify-content-center">
+											<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&pla=4" >
+													Previous</a>
+											</li>
+											<?php
+											for ($i = 0; $i < $producto->paginasFiltro(); $i++) {
 												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasFiltro()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&pla=4" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							} else if (isset($_GET['search'])) {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								
-								$nose = $producto->buscador($_POST['buscador'],$iniciar);
-								if (sizeof($nose) < 1) {
-									?>
+
+												<li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i + 1 ?>&pla=4"><?php echo $i + 1 ?></a></li>
+											<?php
+										}
+										?> 
+											<li class="page-item <?php echo $_GET['pagina'] > $producto->paginasFiltro() - 1 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&pla=4" >
+													Next</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+	<?php
+} else if (isset($_GET['search'])) {
+	$iniciar = ($_GET['pagina'] - 1) * 9;
+
+	$producto = new Productos();
+
+	$nose = $producto->buscador($_POST['buscador'], $iniciar);
+	if (sizeof($nose) < 1) {
+		?>
 									<h6 class="text-center col-md-12">No se encontraron resultados</h6>
 									<br>
 									<br>
@@ -2110,81 +1043,79 @@ header('Location:tienda.php?pagina=1');}
 									<br>
 
 
-									<?php
-								} else {
+		<?php
+	} else {
 
-									foreach ($nose as $fila) {
-										?>
+		foreach ($nose as $fila) {
+			?>
 										<div class="col p-5">
 											<form action="producto.php" method="post">
 												<button class="bg-light border border-0" type="submit"  name="cesta"> 
 													<input type="hidden" name="fila" value="<?php echo $fila->getcodProducto() ?>">
 													<img class="img-fluid" width="250" src="img/<?php echo $fila->getimg() ?>">
 													<h6><?php echo $fila->getnombreProducto() ?></h6>
-													<?php
-													if ($fila->getdescuento() > 0) {
-														?> 
-														<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
-														<?php
-													} else {
-														?> 
-														<h4><?php echo $fila->getprecio() ?>€</h4>
-														<?php
-													}
-													?> 
-												</button>
-												<?php
-												if ($fila->getcantidad() == 0) {
-													echo "No hay en el Stock";
-												} else {
-													?> 
-
-
-													<?php
-												}
-												?> 
-											</form>
-									</div>
-									
-
-									<?php
-								}
-								?> 
-								<div class="col-md-12">
-									<nav>
 										<?php
-										
+										if ($fila->getdescuento() > 0) {
+											?> 
+														<p style="color:#D22900;">¡-<?php echo $fila->getdescuento() ?>%!</p>
+											<?php
+										} else {
+											?> 
+														<h4><?php echo $fila->getprecio() ?>€</h4>
+				<?php
+			}
+			?> 
+												</button>
+			<?php
+			if ($fila->getcantidad() == 0) {
+				echo "No hay en el Stock";
+			} else {
+				?> 
+
+
+											<?php
+										}
 										?> 
+											</form>
+										</div>
+
+
+			<?php
+		}
+		?> 
+									<div class="col-md-12">
+										<nav>
+												<?php ?> 
 											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo $_GET['pagina']<2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>&pla=4" >
+												<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
+													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] - 1 ?>&pla=4" >
 														Previous</a>
 												</li>
 												<?php
-												for ($i=0;$i<$producto->paginasbuscador($_POST['buscador']);$i++) {
+												for ($i = 0; $i < $producto->paginasbuscador($_POST['buscador']); $i++) {
 													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>&pla=4"><?php echo $i+1 ?></a></li>
+
+													<li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i + 1 ?>&pla=4"><?php echo $i + 1 ?></a></li>
 												<?php
-												}
-												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->paginasbuscador($_POST['buscador'])-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>&pla=4" >
+											}
+											?> 
+												<li class="page-item <?php echo $_GET['pagina'] > $producto->paginasbuscador($_POST['buscador']) - 1 ? 'disabled' : '' ?>">
+													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] + 1 ?>&pla=4" >
 														Next</a>
 												</li>
 											</ul>
 										</nav>
-										</div>
-								<?php	
-												}	
-							}  else {
-								$iniciar=($_GET['pagina']-1)*9;
-								
-								$producto = new Productos();
-								$nose = $producto->extraerProductos($iniciar,9);
-							
-								foreach ($nose as $fila) {
-									?>
+									</div>
+		<?php
+	}
+} else {
+	$iniciar = ($_GET['pagina'] - 1) * 9;
+
+	$producto = new Productos();
+	$nose = $producto->extraerProductos($iniciar, 9);
+
+	foreach ($nose as $fila) {
+		?>
 									<div class="col p-5">
 										<form action="producto.php" method="post">
 											<button class="bg-light border border-0" type="submit"  name="cesta"> 
@@ -2201,109 +1132,105 @@ header('Location:tienda.php?pagina=1');}
 												} else {
 													?> 
 													<h4><?php echo $fila->getprecio() ?>€</h4>
-													<?php
-												}
-												?> 
+			<?php
+		}
+		?> 
 											</button>
-											<?php
-											if ($fila->getcantidad() == 0) {
-												echo "No hay en el Stock";
-											} else {
-												?> 
+		<?php
+		if ($fila->getcantidad() == 0) {
+			echo "No hay en el Stock";
+		} else {
+			?> 
 
 
-												<?php
-											}
-											?> 
+										<?php
+									}
+									?> 
 										</form>
 									</div>
 
-									<?php
-								}
-									
-								?>
-									<div class="col-md-12 text-center">
+		<?php
+	}
+	?>
+								<div class="col-md-12 text-center">
 									<nav  aria-label="Page navigation example">
-										<?php
-										
-										?> 
-											<ul class="pagination justify-content-center">
-												<li class="page-item <?php echo  $_GET['pagina']<2 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']-1?>" >
-														Previous</a>
-												</li>
-												<?php
-												for ($i=0;$i<$producto->numeropaginas();$i++) {
-													?> 
-												
-												<li class="page-item <?php echo $_GET['pagina']==$i+1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i+1 ?>"><?php echo $i+1 ?></a></li>
-												<?php
-												}
+	<?php
+	?> 
+										<ul class="pagination justify-content-center">
+											<li class="page-item <?php echo $_GET['pagina'] < 2 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] - 1 ?>" >
+													Previous</a>
+											</li>
+											<?php
+											for ($i = 0; $i < $producto->numeropaginas(); $i++) {
 												?> 
-												<li class="page-item <?php echo $_GET['pagina']>$producto->numeropaginas()-1 ? 'disabled' : '' ?>">
-													<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina']+1?>" >
-														Next</a>
-												</li>
-											</ul>
-										</nav>
-										</div>
-								<?php	
-							}
-							?>         
-						</div>
+
+												<li class="page-item <?php echo $_GET['pagina'] == $i + 1 ? 'active' : '' ?> "><a class="page-link" href="tienda.php?pagina=<?php echo $i + 1 ?>"><?php echo $i + 1 ?></a></li>
+												<?php
+											}
+											?> 
+											<li class="page-item <?php echo $_GET['pagina'] > $producto->numeropaginas() - 1 ? 'disabled' : '' ?>">
+												<a class="page-link" href="tienda.php?pagina=<?php echo $_GET['pagina'] + 1 ?>" >
+													Next</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+										<?php
+									}
+									?>         
 						</div>
 					</div>
-					<div class="col col-md-2">
-						<div class=" bg-light mt-5 p-4">
-							<h6 class="">Enlaces de interes</h6>
+				</div>
+				<div class="col col-md-2">
+					<div class=" bg-light mt-5 p-4">
+						<h6 class="">Enlaces de interes</h6>
 
-							<a href="https://www.youtube.com/@KaeruEnBonsaiStudio" target="_blank">David Cortizas</a>
-							<br>
-							<a href="https://www.youtube.com/c/DavidBenaventeBonsai" target="_blank">David Benavente</a>
-							<br>
-							<a href="https://www.youtube.com/@canaldebonsai1309" target="_blank">Canal de bonsai</a>
-							<br>
-							<a href="https://www.youtube.com/@BonsaiReleaf" target="_blank" >Bonsai Releaf</a>
-							<br>
-							<a href="https://www.youtube.com/@Bonsai-Colmenar">Bonsai Colmenar</a>
-							<br>
-							<a href="https://www.youtube.com/@kingiibonsai2713/featured">kingii bonsai</a>
-						</div>
-
+						<a href="https://www.youtube.com/@KaeruEnBonsaiStudio" target="_blank">David Cortizas</a>
+						<br>
+						<a href="https://www.youtube.com/c/DavidBenaventeBonsai" target="_blank">David Benavente</a>
+						<br>
+						<a href="https://www.youtube.com/@canaldebonsai1309" target="_blank">Canal de bonsai</a>
+						<br>
+						<a href="https://www.youtube.com/@BonsaiReleaf" target="_blank" >Bonsai Releaf</a>
+						<br>
+						<a href="https://www.youtube.com/@Bonsai-Colmenar">Bonsai Colmenar</a>
+						<br>
+						<a href="https://www.youtube.com/@kingiibonsai2713/featured">kingii bonsai</a>
 					</div>
+
+				</div>
+			</div>
+
+
+
+			<footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
+				<div class="col text-center mt-5">
+
+					<h4>Informacion de contacto</h4>
+					<h6>
+						Villarrobledo-Albacete <br>
+						Telefono:671424198 <br>
+						Peropela336@gmail.com
+					</h6>
+				</div>
+				<div class="col text-center mt-5">
+					<p>&copy; Pagina web de bonsais</p>
+				</div>
+				<div class="col text-center mt-5">
+					<h3>Redes</h3>
+
+					<a href="https://www.facebook.com/profile.php?id=100008619615493" target="_blank"><img class="img-fluid" src="img/facebook.png" width="60"></a>
+					<a href="https://www.instagram.com/pedro_mr78/" target="_blank"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
+					<a href="https://www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab/" target="_blank"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
+
 				</div>
 
 
-
-				<footer class="fooder row bg-light border-top border-bottom border-secondary mt-5">
-					<div class="col text-center mt-5">
-
-						<h4>Informacion de contacto</h4>
-						<h6>
-							Villarrobledo-Albacete <br>
-							Telefono:671424198 <br>
-							Peropela336@gmail.com
-						</h6>
-					</div>
-					<div class="col text-center mt-5">
-						<p>&copy; Pagina web de bonsais</p>
-					</div>
-					<div class="col text-center mt-5">
-						<h3>Redes</h3>
-
-						<a href="https://www.facebook.com/profile.php?id=100008619615493" target="_blank"><img class="img-fluid" src="img/facebook.png" width="60"></a>
-						<a href="https://www.instagram.com/pedro_mr78/" target="_blank"><img class="img-fluid" src="img/insta.jpg" width="90"></a>
-						<a href="https://www.linkedin.com/in/pedro-montero-rodriguez-9ab7841ab/" target="_blank"><img class="img-fluid" src="img/linkedin.jpg" width="60"></a>
-
-					</div>
+			</footer>
+		</div>
 
 
-				</footer>
-			</div>
-
-			<?php
-		}
-		?>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 
 	</body>
@@ -2311,3 +1238,6 @@ header('Location:tienda.php?pagina=1');}
 
 
 </html>
+	<?php
+}
+?>

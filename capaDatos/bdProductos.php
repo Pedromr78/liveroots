@@ -1,14 +1,15 @@
 <?php
 
 /**
- * bdusuarios.php
- * Módulo secundario que implementa la clase BDUsuarios.
+ * bdproductos.php
+ * Módulo secundario que implementa la clase BDProductos.
  *
  */
 /** Incluye la clase. */
 include_once '../capaDatos/bdplantas.php';
 
 class BDProductos extends BDPlantas {
+
 	/**
 	 * @var integer Codigo del Producto.
 	 * @access private
@@ -16,13 +17,13 @@ class BDProductos extends BDPlantas {
 	private int $codProducto;
 
 	/**
-	 * @var integer Nombre del Producto.
+	 * @var string Nombre del Producto.
 	 * @access private
 	 */
 	private string $nombreProducto;
 
 	/**
-	 * @var integer descripcion.
+	 * @var string descripcion.
 	 * @access private
 	 */
 	private string $descripcion;
@@ -34,32 +35,34 @@ class BDProductos extends BDPlantas {
 	private int $cantidad;
 
 	/**
-	 * @var integer cantidad del producto.
+	 * @var string imagen del producto.
 	 * @access private
 	 */
 	private string $img;
 
 	/**
-	 * @var integer cantidad del producto.
+	 * @var integer precio del producto.
 	 * @access private
 	 */
 	private int $precio;
-			/**
-	 * @var integer cantidad del producto.
+
+	/**
+	 * @var string tipo del producto.
 	 * @access private
 	 */
 	private string $tipo;
-		/**
-	 * @var integer cantidad del producto.
+
+	/**
+	 * @var integer descuento del producto.
 	 * @access private
 	 */
 	private int $descuento;
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo codProducto.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $codProducto Identificador del producto.
 	 * @return void
 	 */
 	public function setcodProducto(int $codProducto): void {
@@ -67,10 +70,10 @@ class BDProductos extends BDPlantas {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo nombreProducto.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param string $nombreProducto nombre del producto.
 	 * @return void
 	 */
 	public function setnombreProducto(string $nombreProducto): void {
@@ -78,10 +81,10 @@ class BDProductos extends BDPlantas {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo desccripcion.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param string $descripcion descripcion del producto.
 	 * @return void
 	 */
 	public function setdescripcion(string $descripcion): void {
@@ -89,10 +92,10 @@ class BDProductos extends BDPlantas {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo cantidad.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $cantidad cantidad del producto.
 	 * @return void
 	 */
 	public function setcantidad(int $cantidad): void {
@@ -100,10 +103,10 @@ class BDProductos extends BDPlantas {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo img(imagen).
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param string $img Imagen del producto.
 	 * @return void
 	 */
 	public function setimg(string $img): void {
@@ -111,30 +114,32 @@ class BDProductos extends BDPlantas {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo precio.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $precio Precio del producto.
 	 * @return void
 	 */
 	public function setprecio(int $precio): void {
 		$this->precio = $precio;
 	}
+
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo tipo.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param string $tipo atributo que diferencia el tipo de producto.
 	 * @return void
 	 */
 	public function settipo(string $tipo): void {
 		$this->tipo = $tipo;
 	}
+
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo descuento.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $descuento descuento del Producto.
 	 * @return void
 	 */
 	public function setdescuento(int $descuento): void {
@@ -142,92 +147,96 @@ class BDProductos extends BDPlantas {
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo codProducto.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return Int Identificador del producto.
 	 */
 	public function getcodProducto(): int {
 		return $this->codProducto;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo nombreProducto.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String Nombre del producto.
 	 */
 	public function getnombreProducto(): string {
 		return $this->nombreProducto;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo descripcion.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String descripcion del producto.
 	 */
 	public function getdescripcion(): string {
 		return $this->descripcion;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo cantidad.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return Int Cantidad de unidades que tiene el producto.
 	 */
 	public function getcantidad(): int {
 		return $this->cantidad;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo img.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String Imagen del producto para que los clientes lo vean.
 	 */
 	public function getimg(): string {
 		return $this->img;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo precio.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return Int Precio del producto.
 	 */
 	public function getprecio(): int {
 		return $this->precio;
 	}
+
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo tipo.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String Atributo que diferencia los productos por Tipos.
 	 */
 	public function gettipo(): string {
 		return $this->tipo;
 	}
+
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo descuento.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return Int Descuento del producto.
 	 */
 	public function getdescuento(): int {
 		return $this->descuento;
 	}
-	/**
-	 * Método que comprueba si existe el usuario en la base de datos.
-	 *
-	 * @access public
-	 * @return array	True si existe
-	 * 					False en otro caso.
-	 */
-	public function extraerProductos($inicio,$final) {
 
-		
+	/**
+	 * Método que extrae los productos de la base de datos.
+	 *
+	 * $inicio   Variable que limita el inicio de la consulta
+	 * $final    Variable que limita el final de la consulta
+	 * @access public
+	 * @return array	
+	 */
+	public function extraerProductos($inicio, $final) {
+
+		/*		 * Array que guardara los datos de la base de datos */
 		$data = array();
 		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
@@ -237,15 +246,15 @@ class BDProductos extends BDPlantas {
 						FROM Productos LIMIT :inicio,:final"
 			);
 			/** Vincula un parámetro al nombre de variable especificado. */
-			$resultado->bindParam(':inicio', $inicio,PDO::PARAM_INT);
-			$resultado->bindParam(':final', $final,PDO::PARAM_INT);
+			$resultado->bindParam(':inicio', $inicio, PDO::PARAM_INT);
+			$resultado->bindParam(':final', $final, PDO::PARAM_INT);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
-
+				/** Se recorre los resultados de la consulta para crear objetos con las diferentes filas */
 				foreach ($resultado as $fila) {
-
+					/*					 * Se establece un objeto de la clase Productos */
 					$producto = new Productos();
-
+					/*					 * Se inician los atributos del objeto */
 					$producto->setcodProducto($fila['codProducto']);
 					$producto->setnombreProducto($fila['nombreProducto']);
 					$producto->setdescripcion($fila['descripcion']);
@@ -254,21 +263,64 @@ class BDProductos extends BDPlantas {
 					$producto->setprecio($fila['precio']);
 					$producto->settipo($fila['tipo']);
 					$producto->setdescuento($fila['descuento']);
-
+					/*					 * Se guardan los objetos en el array */
 					$data[] = $producto;
 				}
-
-
+				/** La funcion devuelve el conjuntos de resultados */
 				return $data;
 			}
 		}
 	}
 		/**
-	 * Método que comprueba si existe el usuario en la base de datos.
+	 * Método que extrae los productos de la base de datos.
+	 *
+	 * $inicio   Variable que limita el inicio de la consulta
+	 * $final    Variable que limita el final de la consulta
+	 * @access public
+	 * @return array	
+	 */
+	public function extraertodosProductos() {
+
+		/*		 * Array que guardara los datos de la base de datos */
+		$data = array();
+		/** Comprueba si existe conexión con la base de datos. */
+		if ($this->pdocon) {
+			/** Prepara la sentencia SQL. */
+			$resultado = $this->pdocon->prepare(
+				"SELECT *
+						FROM Productos"
+			);
+			/** Vincula un parámetro al nombre de variable especificado. */
+			/** Ejecuta la sentencia preparada y comprueba un posible error. */
+			if ($resultado->execute()) {
+				/** Se recorre los resultados de la consulta para crear objetos con las diferentes filas */
+				foreach ($resultado as $fila) {
+					/*					 * Se establece un objeto de la clase Productos */
+					$producto = new Productos();
+					/*					 * Se inician los atributos del objeto */
+					$producto->setcodProducto($fila['codProducto']);
+					$producto->setnombreProducto($fila['nombreProducto']);
+					$producto->setdescripcion($fila['descripcion']);
+					$producto->setcantidad($fila['cantidad']);
+					$producto->setimg($fila['img']);
+					$producto->setprecio($fila['precio']);
+					$producto->settipo($fila['tipo']);
+					$producto->setdescuento($fila['descuento']);
+					/*					 * Se guardan los objetos en el array */
+					$data[] = $producto;
+				}
+				/** La funcion devuelve el conjuntos de resultados */
+				return $data;
+			}
+		}
+	}
+
+	/**
+	 * Método que Devuelve el numero de paginas de todos los productos para el
+	 * pagination.
 	 *
 	 * @access public
-	 * @return array	True si existe
-	 * 					False en otro caso.
+	 * @return array	
 	 */
 	public function numeropaginas() {
 
@@ -279,18 +331,23 @@ class BDProductos extends BDPlantas {
 				"SELECT *
 						FROM Productos"
 			);
-			/** Vincula un parámetro al nombre de variable especificado. */
-			/** Ejecuta la sentencia preparada y comprueba un posible error. */
+
+			/** Ejecuta la sentencia preparada. */
 			$resultado->execute();
-			return $resultado->rowCount();	
-			
+			/*			 * Devuelve el numero de productos que hay */
+			return $resultado->rowCount();
 		}
 	}
-	
 
+	/**
+	 * Método que extrae solo un producto.
+	 * 
+	 * @access public
+	 * @return array	
+	 */
 	public function leerProductos() {
 
-
+		/*		 * Array que guardara los datos de la base de datos */
 		$data = array();
 		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
@@ -301,15 +358,16 @@ class BDProductos extends BDPlantas {
 			);
 
 			/** Vincula un parámetro al nombre de variable especificado. */
-			$codProducto=$this->codProducto;
+			$codProducto = $this->codProducto;
 			$resultado->bindParam(':codProducto', $codProducto);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
 				if ($resultado->rowCount() > 0) {
-
+					/** Se recorre los resultados de la consulta para crear objetos con las diferentes filas */
 					foreach ($resultado as $fila) {
+						/*						 * Se establece un objeto de la clase Productos */
 						$producto = new Productos();
-
+						/*						 * Se inician los atributos del objeto */
 						$producto->setcodProducto($fila['codProducto']);
 						$producto->setnombreProducto($fila['nombreProducto']);
 						$producto->setdescripcion($fila['descripcion']);
@@ -317,28 +375,28 @@ class BDProductos extends BDPlantas {
 						$producto->setimg($fila['img']);
 						$producto->setprecio($fila['precio']);
 						$producto->setdescuento($fila['descuento']);
-
+						/*						 * Se guardan los objetos en el array */
 						$data[] = $producto;
 					}
-
-
+					/** La funcion devuelve el conjuntos de resultados */
 					return $data;
 				}
 			}
 		}
 	}
-	
-	
-	/**
-	 * Método que comprueba si existe el usuario en la base de datos.
-	 *
-	 * @access public
-	 * @return array	True si existe
-	 * 					False en otro caso.
-	 */
-	public function Filtro($inicio,$final) {
-		
 
+	/**
+	 * Método que extrae los productos de la base de datos dependiendo del campo
+	 * tipo para filtrar los productos.
+	 *
+	 * $inicio   Variable que limita el inicio de la consulta
+	 * $final    Variable que limita el final de la consulta
+	 * @access public
+	 * @return array	
+	 */
+	public function Filtro($inicio, $final) {
+
+		/*		 * Array que guardara los datos de la base de datos */
 		$data = array();
 		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
@@ -348,17 +406,17 @@ class BDProductos extends BDPlantas {
 						FROM Productos WHERE tipo = :planton LIMIT :inicio,:final"
 			);
 			/** Vincula un parámetro al nombre de variable especificado. */
-			$resultado->bindParam(':inicio', $inicio,PDO::PARAM_INT);
-			$resultado->bindParam(':final', $final,PDO::PARAM_INT);
-			$tipo=$this->tipo;
-			$resultado->bindParam(':planton',$tipo);
+			$resultado->bindParam(':inicio', $inicio, PDO::PARAM_INT);
+			$resultado->bindParam(':final', $final, PDO::PARAM_INT);
+			$tipo = $this->tipo;
+			$resultado->bindParam(':planton', $tipo);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
-
+				/** Se recorre los resultados de la consulta para crear objetos con las diferentes filas */
 				foreach ($resultado as $fila) {
-
+					/*					 * Se establece un objeto de la clase Productos */
 					$producto = new Productos();
-
+					/*					 * Se inician los atributos del objeto */
 					$producto->setcodProducto($fila['codProducto']);
 					$producto->setnombreProducto($fila['nombreProducto']);
 					$producto->setdescripcion($fila['descripcion']);
@@ -366,21 +424,22 @@ class BDProductos extends BDPlantas {
 					$producto->setimg($fila['img']);
 					$producto->setprecio($fila['precio']);
 					$producto->setdescuento($fila['descuento']);
-
+					/*					 * Se guardan los objetos en el array */
 					$data[] = $producto;
 				}
 
-
+				/** La funcion devuelve el conjuntos de resultados */
 				return $data;
 			}
 		}
 	}
+
 	/**
-	 * Método que comprueba si existe el usuario en la base de datos.
+	 * Método que Devuelve el numero de paginas de los productos para el
+	 * pagination filtrados por el tipo de producto.
 	 *
 	 * @access public
-	 * @return array	True si existe
-	 * 					False en otro caso.
+	 * @return array	
 	 */
 	public function paginasFiltro() {
 
@@ -392,70 +451,74 @@ class BDProductos extends BDPlantas {
 						FROM Productos WHERE tipo = :planton"
 			);
 			/** Vincula un parámetro al nombre de variable especificado. */
-				$tipo=$this->tipo;
-				$resultado->bindParam(':planton',$tipo);
+			$tipo = $this->tipo;
+			$resultado->bindParam(':planton', $tipo);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			$resultado->execute();
-			return $resultado->rowCount();	
-			
+			/** La funcion devuelve el numero de productos */
+			return $resultado->rowCount();
 		}
 	}
-	
-	
-		/**
-	 * Método que comprueba si existe el usuario en la base de datos.
-	 *
-	 * @access public
-	 * @return array	True si existe
-	 * 					False en otro caso.
-	 */
-	public function buscador(string $valor,$inicio) {
-		$final=9;
 
+	/**
+	 * Método que extrae los productos de la base de datos que se hayan buscado
+	 * en un buscador.
+	 *
+	 * $valor   Variable que tiene el valor de la busqueda
+	 * $final    Variable que limita el final de la consulta
+	 * @access public
+	 * @return array	
+	 */
+	public function buscador(string $valor, $inicio) {
+		/** Variable que limita el final de la consulta */
+		$final = 9;
+		/*		 * Array que guardara los datos de la base de datos */
 		$data = array();
 		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
 			/** Prepara la sentencia SQL. */
 			$resultado = $this->pdocon->prepare(
-						'SELECT *
+				'SELECT *
 						FROM Productos 
 						WHERE nombreProducto LIKE "%":nombre"%" OR descripcion LIKE "%":nombre"%" LIMIT :inicio,:final'
 			);
 			/** Vincula un parámetro al nombre de variable especificado. */
-			$resultado->bindParam(':inicio', $inicio,PDO::PARAM_INT);
-			$resultado->bindParam(':final', $final,PDO::PARAM_INT);
-			$resultado->bindParam(':nombre',$valor);
-			
+			$resultado->bindParam(':inicio', $inicio, PDO::PARAM_INT);
+			$resultado->bindParam(':final', $final, PDO::PARAM_INT);
+			$resultado->bindParam(':nombre', $valor);
+
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			$resultado->execute();
+			/** Se recorre los resultados de la consulta para crear objetos con las diferentes filas */
+			foreach ($resultado as $fila) {
+				/*				 * Se establece un objeto de la clase Productos */
+				$producto = new Productos();
+				/*				 * Se inician los atributos del objeto */
+				$producto->setcodProducto($fila['codProducto']);
+				$producto->setnombreProducto($fila['nombreProducto']);
+				$producto->setdescripcion($fila['descripcion']);
+				$producto->setcantidad($fila['cantidad']);
+				$producto->setimg($fila['img']);
+				$producto->setprecio($fila['precio']);
+				$producto->setdescuento($fila['descuento']);
 
-				foreach ($resultado as $fila) {
+				/*				 * Se guardan los objetos en el array */
+				$data[] = $producto;
+			}
 
-					$producto = new Productos();
-
-					$producto->setcodProducto($fila['codProducto']);
-					$producto->setnombreProducto($fila['nombreProducto']);
-					$producto->setdescripcion($fila['descripcion']);
-					$producto->setcantidad($fila['cantidad']);
-					$producto->setimg($fila['img']);
-					$producto->setprecio($fila['precio']);
-					$producto->setdescuento($fila['descuento']);
-					
-
-					$data[] = $producto;
-				}
-
-
-				return $data;
-			
+			/** La funcion devuelve el conjuntos de resultados */
+			return $data;
 		}
 	}
-		/**
-	 * Método que comprueba si existe el usuario en la base de datos.
+
+	/**
+	 * Método que devuelve el numero de paginas que se creara al buscar los productos 
+	 * expecificos en el buscador.
 	 *
+	 * $tipo   Variable que tiene el valor de la busqueda
 	 * @access public
-	 * @return array	True si existe
-	 * 					False en otro caso.
+	 * @return array
+
 	 */
 	public function paginasbuscador($tipo) {
 
@@ -467,16 +530,16 @@ class BDProductos extends BDPlantas {
 						FROM Productos WHERE nombreProducto LIKE "%":nombre"%" OR descripcion LIKE "%":nombre"%"'
 			);
 			/** Vincula un parámetro al nombre de variable especificado. */
-				
-				$resultado->bindParam(':nombre',$tipo);
+			$resultado->bindParam(':nombre', $tipo);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			$resultado->execute();
-			return $resultado->rowCount();	
-			
+			/** La funcion devuelve el numero de productos */
+			return $resultado->rowCount();
 		}
 	}
+
 	/**
-	 * Método que inserta un nuevo usuario en la base de datos
+	 * Método que inserta un nuevo producto en la base de datos
 	 * 
 	 * @access public
 	 * @return boolean	True si tiene éxito
@@ -507,11 +570,17 @@ class BDProductos extends BDPlantas {
 			$descuento = $this->descuento;
 			$resultado->bindParam(':descuento', $descuento);
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
-		$resultado->execute();
+			$resultado->execute();
 		}
-		/** Devuelve false si se ha producido un error. */
-	
 	}
+
+	/**
+	 * Método que elimina un producto en la base de datos
+	 * 
+	 * @access public
+	 * @return boolean	True si tiene éxito
+	 * 					False en otro caso
+	 */
 	public function eliminaproducto() {
 		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
@@ -522,29 +591,29 @@ class BDProductos extends BDPlantas {
 			/** Vincula un parámetro al nombre de variable especificado. */
 			$codProducto = $this->codProducto;
 			$resultado->bindParam(':codProducto', $codProducto);
-			
+
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
-		$resultado->execute();
+			$resultado->execute();
 		}
-		/** Devuelve false si se ha producido un error. */
-	
 	}
-	
+
 	/**
-	 * Método que valida un usuario en la base de datos.
+	 * Método que modifica un producto en la base de datos
 	 * 
 	 * @access public
-	 * @return boolean	True si existe
-	 * 					False en otro caso.
+	 * @return boolean	True si tiene éxito
+	 * 					False en otro caso
 	 */
 	public function modificaProducto(): bool {
-
+		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
+			/** Prepara la sentencia SQL. */
 			$resultado = $this->pdocon->prepare(
 				"UPDATE  Productos SET cantidad = :cantidad,
 						precio = :precio,
 						descuento = :descuento
 					 WHERE codProducto = :codProducto");
+			/** Vincula un parámetro al nombre de variable especificado. */
 			$codprod = $this->codProducto;
 			$cantidad = $this->cantidad;
 			$precio = $this->precio;
@@ -553,36 +622,42 @@ class BDProductos extends BDPlantas {
 			$resultado->bindParam(':cantidad', $cantidad);
 			$resultado->bindParam(':precio', $precio);
 			$resultado->bindParam(':descuento', $dscuento);
+			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			$resultado->execute();
-				return true;
-			
+			/*			 * Devuelve true si se ejecuta la sentencia */
+			return true;
 		}
+		/*		 * Devuelve false si se ejecuta la sentencia */
 		return false;
 	}
-		public function reduceCantidadProducto(): bool {
 
+	/**
+	 * Método que resta cantidad de un producto en la base de datos cuando se 
+	 * realiza la compra
+	 * 
+	 * @access public
+	 * @return boolean	True si tiene éxito
+	 * 					False en otro caso
+	 */
+	public function reduceCantidadProducto(): bool {
+		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
+			/** Prepara la sentencia SQL. */
 			$resultado = $this->pdocon->prepare(
 				"UPDATE  Productos SET cantidad = :cantidad
 					 WHERE codProducto = :codProducto");
+			/** Vincula un parámetro al nombre de variable especificado. */
 			$codprod = $this->codProducto;
 			$cantidad = $this->cantidad;
-		
 			$resultado->bindParam(':codProducto', $codprod);
 			$resultado->bindParam(':cantidad', $cantidad);
-	
+			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			$resultado->execute();
-				return true;
-			
+			/*			 * Devuelve true si se ejecuta la sentencia */
+			return true;
 		}
+		/*		 * Devuelve false si se ejecuta la sentencia */
 		return false;
 	}
-
-	
-	
-	
-	
-	
-	
 
 }

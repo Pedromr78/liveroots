@@ -1,8 +1,8 @@
 <?php
 
 /**
- * bdalimentacion.php
- * Módulo secundario que implementa la clase abstracta BDAlimentacion.
+ * bdplantas.php
+ * Módulo secundario que implementa la clase abstracta BDPlantas.
  *
  * @author Nombre alumno
  * @abstract

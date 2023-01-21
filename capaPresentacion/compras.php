@@ -25,7 +25,10 @@ session_start();
 </head>
 
 <body>
-	<?php	if (isset($_POST['cierrasesion'])){
+	
+	<?php
+/**Si el usuario presiona cerrar sesion*/	
+	if (isset($_POST['cierrasesion'])){
 		$_SESSION = array();
 		
 				/** Finaliza la sesión. */
@@ -39,77 +42,82 @@ session_start();
 				</script>
 		<?php
 			}
+				/**Si existe el usuario*/	
 			if (isset($_SESSION['usuario'])) {
-				
-				?>
-	
-
-  
-      
-          
-					<?php
+				/**Si el usuario presiona comprar*/		
 			if(isset($_POST['comprar'])){
 			
 			
 				?>
 				
-			<div class="row col-md-3 m-auto mt-2 bg-light rounded border border-secondary p-5" id="productos">
+			<div class="row col-md-3 m-auto mt-5 bg-light rounded border border-secondary p-5" id="productos">
+				<img src="img/visa.png">
 			<form action="compras.php" method="post">
-			Nombre del Titular <br>
-			<input type="text" style="width:250px"><br>
-			NºTarjeta <br>
+			Nombre del Titular 
+			<input class="form-control me-2" type="text" style="width:250px">
+			NºTarjeta 
 			<div id="errortarjeta"></div>
-			<input type="text" style="width:250px" id="numerotarjeta"><br>
-			Fecha de Caducidad <br>
-			<input type="text" maxlength="5" style="width:60px"><br>
-			CVV <br>
+			<input class="form-control me-2" type="text" style="width:250px" id="numerotarjeta">
+			Fecha de Caducidad 
+			<input class="form-control me-2" type="text" maxlength="5" style="width:60px">
+			CVV 
 			<div id="errorcvv"></div>
-			<input type="text" maxlength="3" style="width:40px" id="cvv"><br>
+			<input class="form-control me-2" type="text" maxlength="3" style="width:40px" id="cvv">
 			<br>
-			<input type="submit" value="Aceptar" name="aceptar" id="aceptar"><input type="submit" value="Cancelar" name="cancelar">
+			<input class="btn btn-primary" type="submit" value="Aceptar" name="aceptar" id="aceptar"><input class="btn btn-primary " type="submit" value="Cancelar" name="cancelar">
 			
 			</form>
 					</div>
 				<?php
 			}else{
+				/**Si el usuario acepta en el formulario de compras*/
 				if(isset($_POST['aceptar'])){
+					/**Se establecen objetos de las clases*/
 					$compra= new Compras();
 					$carrit = new Cart();
 				
 					
 					
 					
-					
+					/**Genera numeros aleatorios*/
 					$random=rand(1000, 9999);
 					$random2=rand(1000, 9999);
+					/**Elimina los guiones de la fecha de hoy*/
 					$dia= str_replace("-","",date('Y-m-d'));
+					/**Genero una cadena la cual sera el codigo de compra*/
 						$cadena="$random-$random2-$dia";
+						/**Recorro una variable que paso por una session*/
 					foreach ($_SESSION['producto'] as $fila) {
-						
+						/**Se establecen objetos de las clases*/
 						$producto=new Productos();
-						
+						/**se inicializan los atributos*/
 						$producto->setcodProducto($fila->getidpro());
+						/**Se llama a la funcion para sacer datos del producto*/
 						$nose=$producto->leerProductos();
+						/**Se recorre los productos*/
 						foreach ($nose as $fila2) {
+						/**Se saca la cantidad al comprar*/
 						$can=$fila2->getcantidad()-$fila->getcantidad();
 						}
+						/**Se inicializan los atributos*/
 						$compra->setemail($fila->getemail());
 						$compra->setidpro($fila->getidpro());
 					
 						$compra->setidcompra($cadena);
 						$compra->setcantidad($fila->getcantidad());
 						$compra->setprecio($fila->getprecio());
+						/**Se realiza la compra*/
 						$compra->añadircompra();
-						/**Reducir cantidad bd*/
+						/**Se inicializan los atributos*/
 						$producto->setcodProducto($fila->getidpro());
 						$producto->setcantidad($can);
-						
+						/**Reducir cantidad bd*/
 						$producto->reduceCantidadProducto();
 						
-						
+						/**Se inicializan los atributos*/
 						$carrit->setemail($fila->getemail());
 						$carrit->setidpro($fila->getidpro());
-
+						/**Eliminamos los productos del carrito*/
 						$carrit->eliminaProducto();
 						
 	
@@ -236,10 +244,14 @@ session_start();
 			 <br>
 	
 			 <?php
+					/**Se establecen objetos de las clases*/
 					$compras= new Compras();
 					$producto = new Productos();
+					/**Se inicializan los atributos*/
 					$compras->setemail($_SESSION['usuario']->getEmail());
+					/**Muestra todas las compras de un usuario*/
 					$datoscarro = $compras->extraerCompra();
+					/**Si no hay ningun valor*/
 						if (!isset($datoscarro)) {
 						?> 
 						<br>
@@ -256,9 +268,13 @@ session_start();
 						<br>
 						<p class="text-center">No ha realizado ninguna compra</p>
 							<?php
+						/**Si hay compras de ese usuario*/
 						} else {
+							/**Se recorre todas las compras*/
 								foreach ($datoscarro as $fila) {
+										/**Se inicializan los atributos*/
 										$producto->setcodProducto($fila->getidpro());
+										/**Se scan los datos de el producto*/
 									$datosproductos = $producto->leerProductos();
 									
 								

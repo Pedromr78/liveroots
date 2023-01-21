@@ -1,7 +1,7 @@
 <?php
 /**
- * usuario.php
- * Módulo secundario que implementa la clase Usuario.
+ * bdcompras.php
+ * Módulo secundario que implementa la clase BDCompras.
  *
  */
 /** Incluye la clase. */
@@ -11,7 +11,7 @@ class BDCompras extends BDPlantas {
 	
 	
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var integer Precio.
 	 * @access private
 	 */
 	private int $precio;
@@ -22,44 +22,44 @@ class BDCompras extends BDPlantas {
 	 */
 	private int $idpro;
 		/**
-	 * @var integer Codigo del Producto.
+	 * @var String Codigo de Compra.
 	 * @access private
 	 */
 	private string $idcompra;
 
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var integer Cantidad.
 	 * @access private
 	 */
 	private int $cantidad;
 
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var String email.
 	 * @access private
 	 */
 	private string $email;
 
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var String fecha.
 	 * @access private
 	 */
 	private string $fecha;
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo idProducto.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $idpro Identificador del producto.
 	 * @return void
 	 */
 	public function setidpro(int $idpro): void {
 		$this->idpro = $idpro;
 	}
-		/**
-	 * Método que inicializa el atributo idPromocion.
+	/**
+	 * Método que inicializa el atributo compra.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param String $idcompra Identificador de la compra.
 	 * @return void
 	 */
 	public function setidcompra(string $idcompra): void {
@@ -67,10 +67,10 @@ class BDCompras extends BDPlantas {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo precio.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $precio Precio de total de la compra.
 	 * @return void
 	 */
 	public function setprecio(int $precio): void {
@@ -78,10 +78,10 @@ class BDCompras extends BDPlantas {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo cantidad.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $cantidad Identificador de la promoción.
 	 * @return void
 	 */
 	public function setcantidad(int $cantidad): void {
@@ -89,10 +89,10 @@ class BDCompras extends BDPlantas {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo email.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param String $email que relaciona la compra.
 	 * @return void
 	 */
 	public function setemail(string $email): void {
@@ -100,10 +100,10 @@ class BDCompras extends BDPlantas {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo fecha.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param DateTime $fecha Fecha de la compra.
 	 * @return void
 	 */
 	public function setfecha(string $fecha): void {
@@ -112,10 +112,10 @@ class BDCompras extends BDPlantas {
 
 	
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo precio.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return integer precio de la compra.
 	 */
 	public function getprecio(): int {
 		return $this->precio;
@@ -124,56 +124,56 @@ class BDCompras extends BDPlantas {
 	
 	
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo idProducto.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return integer Identificador del producto.
 	 */
 	public function getidpro(): int {
 		return $this->idpro;
 	}
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo idcompra.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String Identificador de la compra.
 	 */
 	public function getidcompra(): string {
 		return $this->idcompra;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo Cantidad.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return integer Cantidad de producto en la compra.
 	 */
 	public function getcantidad(): int {
 		return $this->cantidad;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo email.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String email del usuario.
 	 */
 	public function getemail(): string {
 		return $this->email;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo fecha.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return DateTime Fecha de la compra.
 	 */
 	public function getfecha(): string {
 		return $this->fecha->format('d/m/Y');
 	}
 	
 	/**
-	 * Método que inserta un nuevo usuario en la base de datos
+	 * Método que inserta una compra en la base de datos
 	 * 
 	 * @access public
 	 * @return boolean	True si tiene éxito
@@ -211,7 +211,7 @@ class BDCompras extends BDPlantas {
 	
 	
 	/**
-	 * Método que comprueba si existe el usuario en la base de datos.
+	 * Método que extrae todos los productos de un usuario.
 	 *
 	 * @access public
 	 * @return array	True si existe
@@ -219,7 +219,7 @@ class BDCompras extends BDPlantas {
 	 */
 	public function extraerCompra() {
 
-
+		/** Array que guardara los datos de la base de datos */
 		$data = array();
 		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
@@ -235,29 +235,37 @@ class BDCompras extends BDPlantas {
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
 				if ($resultado->rowCount() > 0) {
-
+					/** Se recorre los resultados de la consulta para crear objetos con las diferentes filas */
 					foreach ($resultado as $fila) {
+						/** Se establece un objeto de la clase */
 						$compra = new Compras();
-
+						/** Se inician los atributos del objeto */
 						$compra->setemail($fila['email']);
 						$compra->setidcompra($fila['codCompra']);
 						$compra->setidpro($fila['codProducto']);
 						$compra->setfecha($fila['fechaCompra']);
 						$compra->setcantidad($fila['cantidadProducto']);
 						$compra->setprecio($fila['Precio']);
-
+						/** Se guardan los objetos en el array */
 						$data[] = $compra;
 					}
 
-
+					/** La funcion devuelve el conjuntos de resultados */
 					return $data;
 				}
 			}
 		}
 	}
+	/**
+	 * Método que extrae los datos de una compra.
+	 *
+	 * @access public
+	 * @return array	True si existe
+	 * 					False en otro caso.
+	 */
 		public function extraerFactura() {
 
-
+		/** Array que guardara los datos de la base de datos */
 		$data = array();
 		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
@@ -274,35 +282,37 @@ class BDCompras extends BDPlantas {
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
 				if ($resultado->rowCount() > 0) {
-
+					/** Se recorre los resultados de la consulta para crear objetos con las diferentes filas */
 					foreach ($resultado as $fila) {
+						/** Se establece un objeto de la clase */
 						$compra = new Compras();
-
+						/** Se inician los atributos del objeto */
 						$compra->setemail($fila['email']);
 						$compra->setidcompra($fila['codCompra']);
 						$compra->setidpro($fila['codProducto']);
 						$compra->setfecha($fila['fechaCompra']);
 						$compra->setcantidad($fila['cantidadProducto']);
 						$compra->setprecio($fila['Precio']);
-
+						/** Se guardan los objetos en el array */
 						$data[] = $compra;
 					}
 
-
+					/** La funcion devuelve el conjuntos de resultados */
 					return $data;
 				}
 			}
 		}
 	}
 	
-		/**
-	 * Método que comprueba si existe el usuario en la base de datos.
+	/**
+	 * Método que extrae todas las compras de la base de datos.
 	 *
 	 * @access public
 	 * @return array	True si existe
 	 * 					False en otro caso.
 	 */
 	public function todaslasCompras() {
+		/** Array que guardara los datos de la base de datos */
 		$data = array();
 		/** Comprueba si existe conexión con la base de datos. */
 		if ($this->pdocon) {
@@ -311,25 +321,25 @@ class BDCompras extends BDPlantas {
 				"SELECT *
 						FROM Compras"
 			);
-			/** Vincula un parámetro al nombre de variable especificado. */
+			
 			/** Ejecuta la sentencia preparada y comprueba un posible error. */
 			if ($resultado->execute()) {
-
+					/** Se recorre los resultados de la consulta para crear objetos con las diferentes filas */
 				foreach ($resultado as $fila) {
-
+						/** Se establece un objeto de la clase */
 					$compra = new Compras();
-
+					/** Se inician los atributos del objeto */
 						$compra->setemail($fila['email']);
 						$compra->setidcompra($fila['codCompra']);
 						$compra->setidpro($fila['codProducto']);
 						$compra->setfecha($fila['fechaCompra']);
 						$compra->setcantidad($fila['cantidadProducto']);
 						$compra->setprecio($fila['Precio']);
-
+						/** Se guardan los objetos en el array */
 					$data[] = $compra;
 				}
 
-
+					/** La funcion devuelve el conjuntos de resultados */
 				return $data;
 			}
 		}

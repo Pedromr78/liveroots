@@ -1,5 +1,4 @@
 <?php
-
 /**
  * usuario.php
  * Módulo secundario que implementa la clase Usuario.
@@ -56,7 +55,7 @@ class Usuario {
 	 * Método que inicializa el atributo email.
 	 *
 	 * @access public
-	 * @param string $email Nombre del usuario.
+	 * @param string $email email del usuario.
 	 * @return void
 	 */
 	public function setEmail(string $email): void {
@@ -67,7 +66,7 @@ class Usuario {
 	 * Método que inicializa el atributo email.
 	 *
 	 * @access public
-	 * @param string $email Nombre del usuario.
+	 * @param string $email2 email del usuario.
 	 * @return void
 	 */
 	public function setEmail2(string $email2): void {
@@ -97,10 +96,10 @@ class Usuario {
 	}
 
 	/**
-	 * Método que inicializa el atributo email.
+	 * Método que inicializa el atributo Apellidos.
 	 *
 	 * @access public
-	 * @param string $email Nombre del usuario.
+	 * @param string $apellidos apellidos del usuario.
 	 * @return void
 	 */
 	public function setApellidos(string $apellidos): void {
@@ -108,10 +107,10 @@ class Usuario {
 	}
 
 	/**
-	 * Método que inicializa el atributo email.
+	 * Método que inicializa el atributo Telefono.
 	 *
 	 * @access public
-	 * @param string $email Nombre del usuario.
+	 * @param string $telefono Telefono del usuario.
 	 * @return void
 	 */
 	public function setTelefono(string $telefono): void {
@@ -119,10 +118,10 @@ class Usuario {
 	}
 
 	/**
-	 * Método que inicializa el atributo email.
+	 * Método que inicializa el atributo FechaNacimiento.
 	 *
 	 * @access public
-	 * @param string $email Nombre del usuario.
+	 * @param DateTime $fechaNacimiento Feccha de nacimiento del usuario.
 	 * @return void
 	 */
 	public function setFechaNacimiento(string $fechaNacimiento): void {
@@ -170,34 +169,35 @@ class Usuario {
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo nombre.
+	 * Método que devuelve el valor del atributo Apellidos.
 	 *
 	 * @access public
-	 * @return string Nombre completo del usuario.
+	 * @return string Apellidos completos del usuario.
 	 */
 	public function getApellidos(): string {
 		return $this->apellidos;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo nombre.
+	 * Método que devuelve el valor del atributo Telefono.
 	 *
 	 * @access public
-	 * @return string Nombre completo del usuario.
+	 * @return string Telefono completo del usuario.
 	 */
 	public function getTelefono(): string {
 		return $this->telefono;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo nombre.
+	 * Método que devuelve el valor del atributo FechaNacimiento.
 	 *
 	 * @access public
-	 * @return string Nombre completo del usuario.
+	 * @return string Fecha de nacimiento del usuario.
 	 */
 	public function getFechaNacimiento(): string {
 		return $this->fechaNacimiento;
 	}
+
 
 	/**
 	 * Método que comprueba si un usuario existe en la base de datos.

@@ -210,7 +210,7 @@
 
                                     <div class="card-body">
                                         <h5 class="card-title">Mi imagen</h5>
-                                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                                       
 
                                     </div>
                                 </div>
@@ -300,9 +300,7 @@
                                         rhoncus
                                         aliquet viverra.</p>
                                 </div>
-                                <button type="button" class="btn btn-lg btn-primary" data-toggle="popover" title="Here is Content Heading" data-content="Here is the actual content inside the popover box and below the heading.">
-                                    MiPopover
-								</button>
+                               
                             </div>
                         </article>
                     </div>

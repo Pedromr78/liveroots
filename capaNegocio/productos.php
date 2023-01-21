@@ -17,13 +17,13 @@ class Productos {
 	private int $codProducto;
 
 	/**
-	 * @var integer Nombre del Producto.
+	 * @var string Nombre del Producto.
 	 * @access private
 	 */
 	private string $nombreProducto;
 
 	/**
-	 * @var integer descripcion.
+	 * @var string descripcion.
 	 * @access private
 	 */
 	private string $descripcion;
@@ -35,32 +35,34 @@ class Productos {
 	private int $cantidad;
 
 	/**
-	 * @var integer cantidad del producto.
+	 * @var string imagen del producto.
 	 * @access private
 	 */
 	private string $img;
 
 	/**
-	 * @var integer cantidad del producto.
+	 * @var integer precio del producto.
 	 * @access private
 	 */
 	private int $precio;
-			/**
-	 * @var integer cantidad del producto.
+
+	/**
+	 * @var string tipo del producto.
 	 * @access private
 	 */
 	private string $tipo;
-		/**
-	 * @var integer cantidad del producto.
+
+	/**
+	 * @var integer descuento del producto.
 	 * @access private
 	 */
 	private int $descuento;
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo codProducto.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $codProducto Identificador del producto.
 	 * @return void
 	 */
 	public function setcodProducto(int $codProducto): void {
@@ -68,10 +70,10 @@ class Productos {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo nombreProducto.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param string $nombreProducto nombre del producto.
 	 * @return void
 	 */
 	public function setnombreProducto(string $nombreProducto): void {
@@ -79,10 +81,10 @@ class Productos {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo desccripcion.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param string $descripcion descripcion del producto.
 	 * @return void
 	 */
 	public function setdescripcion(string $descripcion): void {
@@ -90,10 +92,10 @@ class Productos {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo cantidad.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $cantidad cantidad del producto.
 	 * @return void
 	 */
 	public function setcantidad(int $cantidad): void {
@@ -101,10 +103,10 @@ class Productos {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo img(imagen).
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param string $img Imagen del producto.
 	 * @return void
 	 */
 	public function setimg(string $img): void {
@@ -112,30 +114,32 @@ class Productos {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo precio.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $precio Precio del producto.
 	 * @return void
 	 */
 	public function setprecio(int $precio): void {
 		$this->precio = $precio;
 	}
+
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo tipo.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param string $tipo atributo que diferencia el tipo de producto.
 	 * @return void
 	 */
 	public function settipo(string $tipo): void {
 		$this->tipo = $tipo;
 	}
+
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo descuento.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $descuento descuento del Producto.
 	 * @return void
 	 */
 	public function setdescuento(int $descuento): void {
@@ -143,147 +147,176 @@ class Productos {
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo codProducto.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return Int Identificador del producto.
 	 */
 	public function getcodProducto(): int {
 		return $this->codProducto;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo nombreProducto.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String Nombre del producto.
 	 */
 	public function getnombreProducto(): string {
 		return $this->nombreProducto;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo descripcion.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String descripcion del producto.
 	 */
 	public function getdescripcion(): string {
 		return $this->descripcion;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo cantidad.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return Int Cantidad de unidades que tiene el producto.
 	 */
 	public function getcantidad(): int {
 		return $this->cantidad;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo img.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String Imagen del producto para que los clientes lo vean.
 	 */
 	public function getimg(): string {
 		return $this->img;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo precio.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return Int Precio del producto.
 	 */
 	public function getprecio(): int {
 		return $this->precio;
 	}
+
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo tipo.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String Atributo que diferencia los productos por Tipos.
 	 */
 	public function gettipo(): string {
 		return $this->tipo;
 	}
+
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo descuento.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return Int Descuento del producto.
 	 */
 	public function getdescuento(): int {
 		return $this->descuento;
 	}
 
 	/**
-	 * Método que comprueba si un usuario existe en la base de datos.
+	 * Método que extrae los productos de la base de datos.
 	 *
+	 * $inicio   Variable que limita el inicio de la consulta
+	 * $final    Variable que limita el final de la consulta
 	 * @access public
-	 * @return array	true en caso afirmativo
-	 * 					false en caso contrario.
+	 * @return array	
 	 */
 	public function extraerProductos($inicio,$final) {
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDProductos Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
-		/** Inicializa los atributos del objeto. */
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		/**Extrae todos los productos de la base de datos. */
 		return $bdproducto->extraerProductos($inicio,$final);
 	}
+		/**
+	 * Método que extrae los productos de la base de datos.
+	 *
+	 * $inicio   Variable que limita el inicio de la consulta
+	 * $final    Variable que limita el final de la consulta
+	 * @access public
+	 * @return array	
+	 */
+	public function extraertodosProductos() {
 
+		/** @var BDProductos Instancia un objeto de la clase. */
+		$bdproducto = new BDProductos();
+		/**Extrae todos los productos de la base de datos. */
+		return $bdproducto->extraertodosProductos();
+	}
+	/**
+	 * Método que extrae solo un producto.
+	 * 
+	 * @access public
+	 * @return array	
+	 */
 	public function leerProductos() {
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDProductos Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
 		/** Inicializa los atributos del objeto. */
 		$bdproducto->setcodProducto($this->codProducto);
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		/** Extrae un unico producto de la base de datos. */
 		return $bdproducto->leerProductos();
 	}
 
-						/**
-	 * Método que comprueba si un usuario existe en la base de datos.
+	/**
+	 * Método que extrae los productos de la base de datos dependiendo del campo
+	 * tipo para filtrar los productos.
 	 *
+	 * $inicio   Variable que limita el inicio de la consulta
+	 * $final    Variable que limita el final de la consulta
 	 * @access public
-	 * @return array	true en caso afirmativo
-	 * 					false en caso contrario.
+	 * @return array	
 	 */
 	public function Filtro($inicio,$final) {
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDProductos Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
 		/** Inicializa los atributos del objeto. */
 		$bdproducto->settipo($this->tipo);
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		/** Inicializa la funcion de la capa de datos. */
 		return $bdproducto->Filtro($inicio,$final);
 	}
-		/**
-	 * Método que comprueba si un usuario existe en la base de datos.
+	/**
+	 * Método que extrae los productos de la base de datos que se hayan buscado
+	 * en un buscador.
 	 *
+	 * $valor   Variable que tiene el valor de la busqueda
+	 * $final    Variable que limita el final de la consulta
 	 * @access public
-	 * @return array	true en caso afirmativo
-	 * 					false en caso contrario.
+	 * @return array	
 	 */
 	public function buscador(string $valor,$inicio) {
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDProductos Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
-		/** Inicializa los atributos del objeto. */
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		
+		/** Inicializa la funcion de la capa de datos. */
 		return $bdproducto->buscador($valor,$inicio);
 	}
+	/**
+	 * Método que inserta un nuevo producto en la base de datos
+	 * 
+	 * @access public
+	 * @return boolean	True si tiene éxito
+	 * 					False en otro caso
+	 */
 	public function añadeproducto() {
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDProductos Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
 		/** Inicializa los atributos del objeto. */
 				$bdproducto->setcodProducto($this->codProducto);
@@ -294,68 +327,110 @@ class Productos {
 				$bdproducto->setprecio($this->precio);
 				$bdproducto->settipo($this->tipo);
 				$bdproducto->setdescuento($this->descuento);
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		
+		/** Inicializa la funcion de la capa de datos. */
 		$bdproducto->añadeproducto();
 	}
+	/**
+	 * Método que elimina un producto en la base de datos
+	 * 
+	 * @access public
+	 * @return boolean	True si tiene éxito
+	 * 					False en otro caso
+	 */
 	public function eliminaproducto() {
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDProductos Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
 		/** Inicializa los atributos del objeto. */
 		$bdproducto->setcodProducto($this->codProducto);
-			
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		/** Inicializa la funcion de la capa de datos. */
 		$bdproducto->eliminaproducto();
 	}
+	/**
+	 * Método que modifica un producto en la base de datos
+	 * 
+	 * @access public
+	 * @return boolean	True si tiene éxito
+	 * 					False en otro caso
+	 */
 	public function modificaProducto() {
 		
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDProductos Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
 		/** Inicializa los atributos del objeto. */
 		$bdproducto->setcodProducto($this->codProducto);
 		$bdproducto->setcantidad($this->cantidad);
 		$bdproducto->setprecio($this->precio);
 		$bdproducto->setdescuento($this->descuento);
-		
+		/** Inicializa la funcion de la capa de datos. */
 		$bdproducto->modificaProducto();
 	}
+	/**
+	 * Método que resta cantidad de un producto en la base de datos cuando se 
+	 * realiza la compra
+	 * 
+	 * @access public
+	 * @return boolean	True si tiene éxito
+	 * 					False en otro caso
+	 */
 	public function reduceCantidadProducto() {
 		
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDProductos Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
 		/** Inicializa los atributos del objeto. */
 		$bdproducto->setcodProducto($this->codProducto);
 		$bdproducto->setcantidad($this->cantidad);
-		
-		
+		/** Inicializa la funcion de la capa de datos. */
 		$bdproducto->reduceCantidadProducto();
 	}
-	
+	/**
+	 * Método que Devuelve el numero de paginas de todos los productos para el
+	 * pagination.
+	 *
+	 * @access public
+	 * @return array	
+	 */
 	public function numeropaginas(){
+		/** @var BDProductos Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
-		
-		
+		/** Inicializa la funcion de la capa de datos. */
 			$paginas=ceil($bdproducto->numeropaginas()/10);
-		
+		/**Devuelve el numero de paginas*/
 		return $paginas;
 	}
+	/**
+	 * Método que Devuelve el numero de paginas de los productos para el
+	 * pagination filtrados por el tipo de producto.
+	 *
+	 * @access public
+	 * @return array	
+	 */
 		public function paginasFiltro(){
+			/** @var BDProductos Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
-		
+		/** Inicializa los atributos del objeto. */
 			$bdproducto->settipo($this->tipo);
+			/** Inicializa la funcion de la capa de datos. */
 			$paginas=ceil($bdproducto->paginasFiltro()/10);
-		
+		/**Devuelve el numero de paginas*/
 		return $paginas;
 	}
-	
+	/**
+	 * Método que devuelve el numero de paginas que se creara al buscar los productos 
+	 * expecificos en el buscador.
+	 *
+	 * $tipo   Variable que tiene el valor de la busqueda
+	 * @access public
+	 * @return array
+
+	 */	
 		public function paginasbuscador($tipo){
+			/** @var BDProductos Instancia un objeto de la clase. */
 		$bdproducto = new BDProductos();
-		
-		
+		/** Inicializa la funcion de la capa de datos. */
 			$paginas=ceil($bdproducto->paginasbuscador($tipo)/10);
-		
+		/**Devuelve el numero de paginas*/
 		return $paginas;
 	}
 

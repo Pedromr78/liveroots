@@ -17,28 +17,28 @@ class Cart {
 	private int $idpro;
 
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var integer Cantidad del Producto.
 	 * @access private
 	 */
 	private int $cantidad;
 
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var String email Usuario.
 	 * @access private
 	 */
 	private string $email;
 
 	/**
-	 * @var integer Codigo del Producto.
+	 * @var Date Fecha que se añade al carrito.
 	 * @access private
 	 */
 	private string $fechañadida;
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo idProducto.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $idpro Identificador del producto.
 	 * @return void
 	 */
 	public function setidpro(int $idpro): void {
@@ -46,10 +46,10 @@ class Cart {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo cantidad.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param integer $cantidad Cantidad de unidades añadidas al carrito.
 	 * @return void
 	 */
 	public function setcantidad(int $cantidad): void {
@@ -57,10 +57,10 @@ class Cart {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo email.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param String $email Identificador que enlaza los productos con el usuario.
 	 * @return void
 	 */
 	public function setemail(string $email): void {
@@ -68,58 +68,58 @@ class Cart {
 	}
 
 	/**
-	 * Método que inicializa el atributo idPromocion.
+	 * Método que inicializa el atributo fecha que se añade el producto.
 	 *
 	 * @access public
-	 * @param integer $idPromocion Identificador de la promoción.
+	 * @param Date $fechaañadida fecha que se añade el producto.
 	 * @return void
 	 */
-	public function setfechañadida(string $fechañadida): void {
-		$this->fechañadida = $fechañadida;
+	public function setfechañadida(string $fechaañadida): void {
+		$this->fechañadida = $fechaañadida;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo idProducto.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return Int Identificador del producto.
 	 */
 	public function getidpro(): int {
 		return $this->idpro;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo cantidad.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return Int Cantidad de unidades que añades al carrito del producto.
 	 */
 	public function getcantidad(): int {
 		return $this->cantidad;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del email.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return String Email del usuario que enlaza el producto.
 	 */
 	public function getemail(): string {
 		return $this->email;
 	}
 
 	/**
-	 * Método que devuelve el valor del atributo fechaFin.
+	 * Método que devuelve el valor del atributo fecha.
 	 *
 	 * @access public
-	 * @return DateTime Fecha de finalización de la promoción.
+	 * @return DateTime Fecha que se añade el producto.
 	 */
 	public function getfechañadida(): string {
-		return $this->fechañadida->format('d/m/Y');
+		return $this->fechañadida;
 	}
 
 	/**
-	 * Método que comprueba si un usuario existe en la base de datos.
+	 * Método que inserta un producto al carrito
 	 *
 	 * @access public
 	 * @return array	true en caso afirmativo
@@ -127,65 +127,75 @@ class Cart {
 	 */
 	public function añadircarrito() {
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDCart Instancia un objeto de la clase. */
 		$bdcart = new BDCart();
 		/** Inicializa los atributos del objeto. */
 		$bdcart->setidpro($this->idpro);
 		$bdcart->setemail($this->email);
 		$bdcart->setfechañadida(date('Y-m-d'));
 		$bdcart->setcantidad($this->cantidad);
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		/** Añade el producto al carrito. */
 		return $bdcart->añadircarrito();
 
 	}
 
+	/**
+	 * Método que extrae los productos del carrito  del usuario.
+	 *
+	 * @access public
+	 * @return array	True si existe
+	 * 					False en otro caso.
+	 */
 	public function extraerProducto() {
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDCart Instancia un objeto de la clase. */
 		$bdcart = new BDCart();
 		/** Inicializa los atributos del objeto. */
 		$bdcart->setemail($this->email);
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		/** Extrae los productos de un usuario. */
 		return $bdcart->extraerProducto();
 	}
-	
+	/**
+	 * Método que comprueba si existe el producto en el carrito.
+	 *
+	 * @access public
+	 * @return boolean	True si existe
+	 * 					False en otro caso.
+	 */
 	public function existeProducto() {
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDCart Instancia un objeto de la clase. */
 		$bdcart = new BDCart();
 		/** Inicializa los atributos del objeto. */
 		$bdcart->setemail($this->email);
 		$bdcart->setidpro($this->idpro);
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		/** El producto no existe. */
 		if(!$bdcart->existeProducto()){
 			return true;
 		}
+		/** Comprueba si existe el producto. */
 		else{
 			return false;
 		}
 	}
-
-
+	/**
+	 * Método que elimina los productos del carrito.
+	 *
+	 * @access public
+	 * @return boolean	True si existe
+	 * 					False en otro caso.
+	 */
 	public function eliminaProducto() {
 
 
-		/** @var BDUsuarios Instancia un objeto de la clase. */
+		/** @var BDCart Instancia un objeto de la clase. */
 		$bdcart = new BDCart();
 		/** Inicializa los atributos del objeto. */
-
 		$bdcart->setemail($this->email);
 		$bdcart->setidpro($this->idpro);
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		/** Elimina los productos del carrito. */
 		$bdcart->eliminaProducto();
-	}
-	
-
-		/** Comprueba si existe el usuario. */
-		/** El usuario no existe. */
+		}
 
 	}
 

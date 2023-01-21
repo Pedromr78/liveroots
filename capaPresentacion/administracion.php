@@ -48,8 +48,8 @@ if (isset($_POST['eliminaproducto'])) {
 	$producto->setcodProducto($_POST['eliminacodpro']);
 
 
-	
-	$prod1 =$producto2->leerProductos($_POST['eliminacodpro']);
+	$producto2->setcodProducto($_POST['eliminacodpro']);
+	$prod1 =$producto2->leerProductos();
 	
 	unlink('img/'.$prod1[0]->getimg());
 		$producto->eliminaproducto();

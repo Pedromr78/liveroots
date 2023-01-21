@@ -106,7 +106,8 @@ session_start();
 			/** Si algún campo del formulario no está inicializado... */
 			if (
 				isset($_POST['email']) || isset($_POST['contraseña']) ||
-				isset($_POST['nombre'])
+				isset($_POST['nombre']) || isset($_POST['apellidos']) ||
+				isset($_POST['telefono']) || isset($_POST['fechanacimiento']) 
 			) {
 				echo "<h5>Error al registrar el usuario
 							<br>Todos los campos son obligatorios</h5>";

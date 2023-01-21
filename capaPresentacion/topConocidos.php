@@ -24,6 +24,7 @@ session_start();
 
 	<body>
 		<?php
+		/**Si el usuario presiona cerrar sesion*/
 		if (isset($_POST['cierrasesion'])) {
 			$_SESSION = array();
 			/** Finaliza la sesión. */
@@ -45,6 +46,7 @@ session_start();
 
 
 <?php
+/**Si existe el usuario*/
 if (isset($_SESSION['usuario'])) {
 	?>
 				<header class="navbar-light bg-light row border-top border-bottom border-secondary">
@@ -140,6 +142,7 @@ if (isset($_SESSION['usuario'])) {
 
 				</header>
 	<?php
+	/**Si no existe*/
 } else {
 	?>
 				<header>

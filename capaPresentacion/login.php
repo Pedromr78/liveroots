@@ -27,6 +27,7 @@ session_start();
 
         <div class="container-fluid">
 				<?php
+				/**Si existe el usuario*/	
 			if (isset($_SESSION['usuario'])) {
 				/** El usuario ya ha sido validado. */
 			
@@ -40,6 +41,7 @@ session_start();
 					let tiempo = setTimeout(funcion, 100);
 				</script>
 				<?php
+			/**Si no existe*/
 			} else {
 				?>
 			<header>
